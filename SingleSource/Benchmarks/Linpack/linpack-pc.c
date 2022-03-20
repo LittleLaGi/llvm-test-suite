@@ -972,7 +972,7 @@ REAL ddot(int n, REAL dx[], int incx, REAL dy[], int incy)
 }
 
 /*----------------------*/ 
-void dscal(int n, REAL da, REAL dx[], int incx)
+void dscal(int n, REAL da, REAL dx[], int incx) 
 
 /*     scales a vector by a constant.
       jack dongarra, linpack, 3/11/78.
@@ -1029,7 +1029,7 @@ void dscal(int n, REAL da, REAL dx[], int incx)
 }
 
 /*----------------------*/ 
-int idamax(int n, REAL dx[], int incx)
+int idamax(int n, REAL dx[], int incx) 
 
 /*
      finds the index of element having max. absolute value.
@@ -1122,7 +1122,7 @@ REAL epslon (REAL x)
 }
  
 /*----------------------*/ 
-void dmxpy (int n1, REAL y[], int n2, int ldm, REAL x[], REAL m[])
+__attribute__((always_inline)) void dmxpy (int n1, REAL y[], int n2, int ldm, REAL x[], REAL m[]) 
 
 
 /* We would like to declare m[][ldm], but c does not allow it.  In this

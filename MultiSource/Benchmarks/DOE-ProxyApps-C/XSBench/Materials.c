@@ -31,8 +31,8 @@ int * load_num_nucs(long n_isotopes)
 }
 
 // Assigns an array of nuclide ID's to each material
-int ** load_mats( int * num_nucs, long n_isotopes )
-{
+__attribute__((always_inline)) int ** load_mats( int * num_nucs, long n_isotopes )
+{ 
 	int ** mats = (int **) malloc( 12 * sizeof(int *) );
 	for( int i = 0; i < 12; i++ )
 		mats[i] = (int *) malloc(num_nucs[i] * sizeof(int) );

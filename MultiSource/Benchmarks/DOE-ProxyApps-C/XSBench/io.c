@@ -36,7 +36,7 @@ void center_print(const char *s, int width)
 	fputs("\n", stdout);
 }
 
-void print_results( Inputs in, int mype, double runtime, int nprocs,
+__attribute__((always_inline)) void print_results( Inputs in, int mype, double runtime, int nprocs,
 	unsigned long long vhash )
 {
         #ifdef TIMING
@@ -167,7 +167,7 @@ void print_CLI_error(void)
 	exit(4);
 }
 
-Inputs read_CLI( int argc, char * argv[] )
+__attribute__((always_inline)) Inputs read_CLI( int argc, char * argv[] ) 
 {
 	Inputs input;
 	

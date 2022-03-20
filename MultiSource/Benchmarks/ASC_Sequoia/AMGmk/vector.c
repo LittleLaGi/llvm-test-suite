@@ -365,7 +365,7 @@ hypre_SeqVectorScale( double        alpha,
  * hypre_SeqVectorAxpy
  *--------------------------------------------------------------------------*/
 
-int
+__attribute__((always_inline)) int
 hypre_SeqVectorAxpy( double        alpha,
             hypre_Vector *x,
             hypre_Vector *y     )

@@ -146,7 +146,7 @@ void trace(char a)
     printf("%c", a);
 }
 
-void schedule()
+__attribute__((always_inline)) void schedule() 
 {
     while ( tcb != 0 )
     {

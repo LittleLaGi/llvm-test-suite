@@ -30,7 +30,7 @@ static void t2u( char *seq )
 	}
 }
 
-static float recallpairfoldalign( char **mseq1, char **mseq2, int m1, int m2, int *of1pt, int *of2pt, int alloclen )
+static __attribute__((always_inline)) float recallpairfoldalign( char **mseq1, char **mseq2, int m1, int m2, int *of1pt, int *of2pt, int alloclen )
 {
 	static FILE *fp = NULL;
 	float value;
@@ -94,7 +94,7 @@ static float recallpairfoldalign( char **mseq1, char **mseq2, int m1, int m2, in
 	return( value );
 }
 
-static void callfoldalign( int nseq, char **mseq )
+__attribute__((always_inline)) static void callfoldalign( int nseq, char **mseq )
 {
 	FILE *fp;
 	int i;
@@ -166,7 +166,7 @@ static void calllara( int nseq, char **mseq, char *laraarg )
 	}
 }
 
-static float recalllara( char **mseq1, char **mseq2, int alloclen )
+static __attribute__((always_inline)) float recalllara( char **mseq1, char **mseq2, int alloclen )
 {
 	static FILE *fp = NULL;
 	static char *ungap1;
@@ -290,7 +290,7 @@ static float recallmxscarna( char **mseq1, char **mseq2, int m1, int m2, int all
 	return( value );
 }
 
-static float callmxscarna_giving_bpp( char **mseq1, char **mseq2, char **bpp1, char **bpp2, int alloclen )
+static __attribute__((always_inline)) float callmxscarna_giving_bpp( char **mseq1, char **mseq2, char **bpp1, char **bpp2, int alloclen )
 {
 	FILE *fp;
 	int res;
@@ -481,7 +481,7 @@ static void preparebpp( int nseq, char ***bpp )
 	fclose( fp );
 }
 
-void arguments( int argc, char *argv[] )
+__attribute__((always_inline))  void arguments( int argc, char *argv[] )
 {
     int c;
 
@@ -756,7 +756,7 @@ int countamino( char *s, int end )
 	return( val );
 }
 
-static void pairalign( char name[M][B], int nlen[M], char **seq, char **aseq, char **mseq1, char **mseq2, double *effarr, int alloclen )
+static __attribute__((always_inline))  void pairalign( char name[M][B], int nlen[M], char **seq, char **aseq, char **mseq1, char **mseq2, double *effarr, int alloclen )
 {
 	int i, j, ilim;
 	int clus1, clus2;
@@ -1080,7 +1080,7 @@ static void pairalign( char name[M][B], int nlen[M], char **seq, char **aseq, ch
 	}
 }
 
-static void WriteOptions( FILE *fp )
+__attribute__((always_inline)) static void WriteOptions( FILE *fp )
 {
 
 	if( dorp == 'd' ) fprintf( fp, "DNA\n" );

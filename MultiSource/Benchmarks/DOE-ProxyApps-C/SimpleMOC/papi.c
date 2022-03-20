@@ -16,7 +16,7 @@ void papi_serial_init(void)
 	}
 }
 
-void counter_init( int *eventset, int *num_papi_events, Input * I )
+__attribute__((always_inline)) void counter_init( int *eventset, int *num_papi_events, Input * I )
 {
 	char error_str[PAPI_MAX_STR_LEN];
 	int stat;
@@ -377,7 +377,6 @@ printf("Initializing PAPI counters...\n");
 
 // Stops the papi counters and prints results
 void counter_stop( int * eventset, int num_papi_events, Input * I )
-{
 	int * events = malloc(num_papi_events * sizeof(int));
 	int n = num_papi_events;
 	PAPI_list_events( *eventset, events, &n );

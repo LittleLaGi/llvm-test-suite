@@ -1,11 +1,12 @@
 #include "XSbench_header.h"
 
 // Calculates the microscopic cross section for a given nuclide & energy
-void calculate_micro_xs(   double p_energy, int nuc, long n_isotopes,
+__attribute__((always_inline)) void calculate_micro_xs(   double p_energy, int nuc, long n_isotopes,
                            long n_gridpoints,
                            GridPoint * restrict energy_grid,
                            NuclideGridPoint ** restrict nuclide_grids,
-                           int idx, double * restrict xs_vector ){
+                           int idx, double * restrict xs_vector )
+{
 	
 	// Variables
 	double f;
@@ -52,13 +53,14 @@ void calculate_micro_xs(   double p_energy, int nuc, long n_isotopes,
 }
 
 // Calculates macroscopic cross section based on a given material & energy 
-void calculate_macro_xs( double p_energy, int mat, long n_isotopes,
+__attribute__((always_inline)) void calculate_macro_xs( double p_energy, int mat, long n_isotopes,
                          long n_gridpoints, int * restrict num_nucs,
                          double ** restrict concs,
                          GridPoint * restrict energy_grid,
                          NuclideGridPoint ** restrict nuclide_grids,
                          int ** restrict mats,
-                         double * restrict macro_xs_vector ){
+                         double * restrict macro_xs_vector ) 
+{
 	double xs_vector[5];
 	int p_nuc; // the nuclide we are looking up
 	long idx = 0;	
@@ -101,7 +103,7 @@ void calculate_macro_xs( double p_energy, int mat, long n_isotopes,
 
 // (fixed) binary search for energy on unionized energy grid
 // returns lower index
-long grid_search( long n, double quarry, GridPoint * A)
+__attribute__((always_inline)) long grid_search( long n, double quarry, GridPoint * A)
 {
 	long lowerLimit = 0;
 	long upperLimit = n-1;

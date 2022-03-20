@@ -193,8 +193,8 @@ Uniform11 (int *iy, float *yfl)
   *yfl = *iy / 8192.0f;
 }				/* uniform */
 
-void
-Exptab (int n, struct complex e[])
+__attribute__((always_inline)) void
+Exptab (int n, struct complex e[]) 
 {				/* exptab */
   float theta, divisor, h[26];
   int i, j, k, l, m;
@@ -237,9 +237,9 @@ Exptab (int n, struct complex e[])
 
 }				/* exptab */
 
-void
+__attribute__((always_inline)) void
 Fft (int n, struct complex z[], struct complex w[], struct complex e[],
-     float sqrinv)
+     float sqrinv) 
 {
   int i, j, k, l, m, index;
   m = n / 2;
@@ -290,8 +290,8 @@ Fft (int n, struct complex z[], struct complex w[], struct complex e[],
 
 }
 
-void
-Oscar ()
+__attribute__((always_inline)) void
+Oscar () 
 {				/* oscar */
   int i;
   Exptab (fftsize, e);

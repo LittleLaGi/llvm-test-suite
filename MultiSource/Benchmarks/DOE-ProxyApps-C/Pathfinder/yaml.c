@@ -56,7 +56,7 @@ static FILE *output = NULL;
 
 
 
-void YAMLOpen()
+__attribute__((always_inline))  void YAMLOpen()
 {
     time_t rawTime;
     struct tm *timeinfo = NULL;

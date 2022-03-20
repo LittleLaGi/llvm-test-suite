@@ -59,7 +59,7 @@ static Stats *globalStats = NULL;
 
 
 
-void doMultiSearches(Configuration *config)
+__attribute__((always_inline)) void doMultiSearches(Configuration *config)
 {
     NodePtrVec *result;
     bool success;
@@ -439,7 +439,7 @@ bool findLabelPath( Graph *graph, Signature labels, NodePtrVec *result, SearchTy
  * For the time being, it simply prints out the legs that are  possible in
  * this graph.
  */
-int findAllPossibleLegs( Graph *graph, SearchType searchType )
+__attribute__((always_inline)) int findAllPossibleLegs( Graph *graph, SearchType searchType )
 {
     int i, j;
     int found = 0;
@@ -525,7 +525,7 @@ int findAllPossibleLegs( Graph *graph, SearchType searchType )
  * that all the legs be logged requires a more sophisticated means of parallelization in order to do a
  * reduction of the solutions when all the threads are done.
  */
-int findAndLogAllPossibleLegs(Graph *graph, SearchOptions *options)
+__attribute__((always_inline)) int findAndLogAllPossibleLegs(Graph *graph, SearchOptions *options)
 {
     int i, j, k;
     int found = 0;

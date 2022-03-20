@@ -330,7 +330,7 @@ void EPZSWindowPredictorInit (short search_range, EPZSStructure * predictor, sho
 *    EPZS Global Initialization
 ************************************************************************
 */
-int
+__attribute__((always_inline)) int
 EPZSInit (void)
 {
   int pel_error_me = 1 << (img->bitdepth_luma - 8);

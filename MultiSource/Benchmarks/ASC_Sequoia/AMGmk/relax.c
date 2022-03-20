@@ -40,7 +40,7 @@
  * hypre_BoomerAMGSeqRelax
  *--------------------------------------------------------------------------*/
 
-int  hypre_BoomerAMGSeqRelax( hypre_CSRMatrix *A,
+__attribute__((always_inline))  int  hypre_BoomerAMGSeqRelax( hypre_CSRMatrix *A,
                         hypre_Vector    *f,
                         hypre_Vector    *u)
 {

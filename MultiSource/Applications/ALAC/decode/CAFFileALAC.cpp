@@ -22,7 +22,7 @@
 
 #define kSizeOfChanAtomPlusChannelLayout 24
 
-int32_t FindCAFFPacketTableStart(FILE * inputFile, int32_t * paktPos, int32_t * paktSize)
+__attribute__((always_inline)) int32_t FindCAFFPacketTableStart(FILE * inputFile, int32_t * paktPos, int32_t * paktSize)
 {
     // returns the absolute position within the file
     int32_t currentPosition = ftell(inputFile); // record the current position
@@ -160,7 +160,7 @@ void WriteCAFFfreeChunk(FILE * outputFile, uint32_t theSize)
     }
 }
 
-void WriteCAFFpaktChunkHeader(FILE * outputFile, port_CAFPacketTableHeader * thePacketTableHeader, uint32_t thePacketTableSize)
+__attribute__((always_inline)) void WriteCAFFpaktChunkHeader(FILE * outputFile, port_CAFPacketTableHeader * thePacketTableHeader, uint32_t thePacketTableSize)
 {
     uint8_t theBuffer[12];
     // Endian swap!
@@ -257,7 +257,7 @@ uint32_t ReadBERInteger(uint8_t * theInputBuffer, int32_t * ioNumBytes)
 	return theAnswer;
 }
 
-int32_t BuildBasePacketTable(AudioFormatDescription theInputFormat, int32_t inputDataSize, int32_t * theMaxPacketTableSize, port_CAFPacketTableHeader * thePacketTableHeader)
+__attribute__((always_inline)) int32_t BuildBasePacketTable(AudioFormatDescription theInputFormat, int32_t inputDataSize, int32_t * theMaxPacketTableSize, port_CAFPacketTableHeader * thePacketTableHeader)
 {
     int32_t theMaxPacketSize = 0, theByteSizeTableEntry = 0;
     
@@ -285,7 +285,7 @@ int32_t BuildBasePacketTable(AudioFormatDescription theInputFormat, int32_t inpu
     return 0;
 }
 
-uint32_t GetMagicCookieSizeFromCAFFkuki(FILE * inputFile)
+__attribute__((always_inline)) uint32_t GetMagicCookieSizeFromCAFFkuki(FILE * inputFile)
 {
     // returns to the current absolute position within the file
     int32_t currentPosition = ftell(inputFile); // record the current position
@@ -323,7 +323,7 @@ uint32_t GetMagicCookieSizeFromCAFFkuki(FILE * inputFile)
     
 }
 // gets the kuki chunk from a caff file
-int32_t GetMagicCookieFromCAFFkuki(FILE * inputFile, uint8_t * outMagicCookie, uint32_t * ioMagicCookieSize)
+__attribute__((always_inline)) int32_t GetMagicCookieFromCAFFkuki(FILE * inputFile, uint8_t * outMagicCookie, uint32_t * ioMagicCookieSize)
 {
     // returns to the current absolute position within the file
     int32_t currentPosition = ftell(inputFile); // record the current position
@@ -370,7 +370,7 @@ int32_t GetMagicCookieFromCAFFkuki(FILE * inputFile, uint8_t * outMagicCookie, u
     return 0;
 }
 
-bool FindCAFFDataStart(FILE * inputFile, int32_t * dataPos, int32_t * dataSize)
+__attribute__((always_inline)) bool FindCAFFDataStart(FILE * inputFile, int32_t * dataPos, int32_t * dataSize)
 {
     bool done = false;
     int32_t bytesRead = 8;
@@ -400,7 +400,7 @@ bool FindCAFFDataStart(FILE * inputFile, int32_t * dataPos, int32_t * dataSize)
     return done;
 }
 
-bool GetCAFFdescFormat(FILE * inputFile, AudioFormatDescription * theInputFormat)
+__attribute__((always_inline)) bool GetCAFFdescFormat(FILE * inputFile, AudioFormatDescription * theInputFormat)
 {
     bool done = false;
     uint32_t theChunkSize = 0, theChunkType = 0;

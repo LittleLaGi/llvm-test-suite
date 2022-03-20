@@ -171,7 +171,7 @@ void rc_free(rc_quadratic **prc)
  *
  *************************************************************************************
 */
-void rc_init_seq(rc_quadratic *prc)
+__attribute__((always_inline)) void rc_init_seq(rc_quadratic *prc)
 {
   double L1,L2,L3,bpp;
   int qp, i;
@@ -305,7 +305,7 @@ void rc_init_seq(rc_quadratic *prc)
  *
  *************************************************************************************
 */
-void rc_init_GOP(rc_quadratic *prc, int np, int nb)
+__attribute__((always_inline)) void rc_init_GOP(rc_quadratic *prc, int np, int nb)
 {
   Boolean Overum=FALSE;
   int OverBits, OverDuantQp;

@@ -9,7 +9,7 @@
  *
  *  \author
  *      Main contributors (see contributors.h for copyright, address and affiliation details)
- *      - Karsten Sühring                 <suehring@hhi.de>
+ *      - Karsten Sï¿½hring                 <suehring@hhi.de>
  *      - Alexis Tourapis                 <alexismt@ieee.org>
  ***********************************************************************
  */
@@ -97,7 +97,7 @@ void dump_dpb(void)
  *
  ************************************************************************
  */
-int getDpbSize(void)
+__attribute__((always_inline)) int getDpbSize(void)
 {
   int pic_size = (active_sps->pic_width_in_mbs_minus1 + 1) * (active_sps->pic_height_in_map_units_minus1 + 1) * (active_sps->frame_mbs_only_flag?1:2) * 384;
 
@@ -193,7 +193,7 @@ void check_num_ref(void)
  *
  ************************************************************************
  */
-void init_dpb(void)
+__attribute__((always_inline)) void init_dpb(void)
 {
   unsigned i,j;
 
@@ -3358,7 +3358,7 @@ void fill_frame_num_gap(ImageParameters *img)
  *    the allocated StorablePicture structure
  ************************************************************************
  */
-ColocatedParams* alloc_colocated(int size_x, int size_y, int mb_adaptive_frame_field_flag)
+__attribute__((always_inline)) ColocatedParams* alloc_colocated(int size_x, int size_y, int mb_adaptive_frame_field_flag)
 {
   ColocatedParams *s;
 

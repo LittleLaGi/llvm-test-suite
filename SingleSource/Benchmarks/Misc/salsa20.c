@@ -12,7 +12,7 @@ uint32_t outbuf[16];
 uint32_t ptr=0;
 
 #define R(a,b) (((a) << (b)) | ((a) >> (32 - (b))))
-void salsa20(uint32_t out[16],uint32_t in[16]) {
+void salsa20(uint32_t out[16],uint32_t in[16])  {
   uint32_t i, x[16];
 
   for (i = 0;i < 16;++i)

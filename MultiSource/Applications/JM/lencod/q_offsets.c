@@ -132,7 +132,7 @@ static const short Offset8_inter_default[64] = {
  *    Allocate Q matrix arrays
  ***********************************************************************
  */
-void allocate_QOffsets ()
+__attribute__((always_inline)) void allocate_QOffsets ()
 {
   int max_qp_per_luma = (3 + 6*(input->BitDepthLuma) - MIN_QP)/6 + 1;
   int max_qp_per_cr = (3 + 6*(input->BitDepthChroma) - MIN_QP)/6 + 1;
@@ -347,7 +347,7 @@ void ParseQOffsetMatrix (char *buf, int bufsize)
  *    Initialise Q offset matrix values.
  ***********************************************************************
  */
-void Init_QOffsetMatrix ()
+__attribute__((always_inline)) void Init_QOffsetMatrix ()
 {
   char *content;
 
@@ -388,7 +388,7 @@ void Init_QOffsetMatrix ()
  *    none
  ************************************************************************
  */
-void InitOffsetParam ()
+__attribute__((always_inline))  void InitOffsetParam ()
 {
   int k;
 

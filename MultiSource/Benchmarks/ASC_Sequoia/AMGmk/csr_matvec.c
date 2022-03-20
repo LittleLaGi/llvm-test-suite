@@ -40,7 +40,7 @@
  * hypre_CSRMatrixMatvec
  *--------------------------------------------------------------------------*/
 
-int
+__attribute__((always_inline)) int
 hypre_CSRMatrixMatvec( double           alpha,
               hypre_CSRMatrix *A,
               hypre_Vector    *x,

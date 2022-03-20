@@ -175,7 +175,7 @@ void clear_rdopt ()
  *    create structure for RD-optimized mode decision
  ************************************************************************
  */
-void init_rdopt ()
+__attribute__((always_inline)) void init_rdopt ()
 {
   rdopt = NULL;
 
@@ -2752,7 +2752,7 @@ int GetBestTransformP8x8()
 *    Sets MBAFF RD parameters
 ************************************************************************
 */
-void set_mbaff_parameters()
+__attribute__((always_inline))  void set_mbaff_parameters()
 {
   int  i, j, k;
   Macroblock  *currMB  = &img->mb_data[img->current_mb_nr];

@@ -132,7 +132,7 @@ void JMHelpExit (void)
  *    command line parameters
  ***********************************************************************
  */
-void Configure (int ac, char *av[])
+__attribute__((always_inline)) void Configure (int ac, char *av[])
 {
   char *content;
   int CLcount, ContentLen, NumberParams;

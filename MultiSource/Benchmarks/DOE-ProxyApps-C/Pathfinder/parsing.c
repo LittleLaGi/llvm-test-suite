@@ -486,7 +486,7 @@ Graph *parseFile( char *fileName )
  * into a "signature" - a packed array of c-string pointers with
  * a NULL pointer to signify completion.
  */
-char **parseSignature( char *data )
+__attribute__((always_inline)) char **parseSignature( char *data )
 {
     int i = 0;
     int labelCount = 0; // Used to be 1. The algorithm depends on a terminating space, so it counts based on the END of the label.
@@ -551,7 +551,7 @@ char **parseSignature( char *data )
  * are returned in the "graphs" and "signatures" parameters
  * which should be references to the desired pointers. See main.c.
  */
-bool parseConfigFile( char *configFileName, Configuration *config )
+__attribute__((always_inline)) bool parseConfigFile( char *configFileName, Configuration *config )
 {
     char data[1000];
     FILE *configFile = NULL;

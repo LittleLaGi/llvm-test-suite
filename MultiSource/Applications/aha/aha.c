@@ -86,7 +86,7 @@ simulate_one_instruction(int i)
 
 // ----------------------------- check ---------------------------------
 
-int
+__attribute__((always_inline)) int
 check(int i)
 {
   int kx;
@@ -279,7 +279,7 @@ more unused computed values; it hasn't been tried. */
 
 // --------------------------- increment -------------------------------
 
-static inline int
+static inline __attribute__((always_inline)) int
 increment(void)
 {
 
@@ -389,7 +389,7 @@ increment(void)
 
 // ----------------------------- search --------------------------------
 
-int
+__attribute__((always_inline)) int
 search(void)
 {
 

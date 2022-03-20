@@ -60,7 +60,7 @@ void print_array(int maxgrid,
 /* Main computational kernel. The whole function will be timed,
    including the call and return. */
 /* Source (modified): http://www.cs.uic.edu/~iluican/reg_detect.c */
-static
+ __attribute__((always_inline)) static
 void kernel_reg_detect(int niter, int maxgrid, int length,
 		       DATA_TYPE POLYBENCH_2D(sum_tang,MAXGRID,MAXGRID,maxgrid,maxgrid),
 		       DATA_TYPE POLYBENCH_2D(mean,MAXGRID,MAXGRID,maxgrid,maxgrid),
@@ -104,13 +104,13 @@ void kernel_reg_detect(int niter, int maxgrid, int length,
 // NOTE: FMA_DISABLED is true for targets where FMA contraction causes
 // discrepancies which cause the accuracy checks to fail.
 // In this case, the test runs with the option -ffp-contract=off
-static void
+__attribute__((always_inline)) static void
 kernel_reg_detect_StrictFP(int niter, int maxgrid, int length,
                            DATA_TYPE POLYBENCH_2D(sum_tang,MAXGRID,MAXGRID,maxgrid,maxgrid),
                            DATA_TYPE POLYBENCH_2D(mean,MAXGRID,MAXGRID,maxgrid,maxgrid),
                            DATA_TYPE POLYBENCH_2D(path,MAXGRID,MAXGRID,maxgrid,maxgrid),
                            DATA_TYPE POLYBENCH_3D(diff,MAXGRID,MAXGRID,LENGTH,maxgrid,maxgrid,length),
-                           DATA_TYPE POLYBENCH_3D(sum_diff,MAXGRID,MAXGRID,LENGTH,maxgrid,maxgrid,length))
+                           DATA_TYPE POLYBENCH_3D(sum_diff,MAXGRID,MAXGRID,LENGTH,maxgrid,maxgrid,length)) 
 {
 #pragma STDC FP_CONTRACT OFF
   int t, i, j, cnt;
@@ -144,10 +144,10 @@ kernel_reg_detect_StrictFP(int niter, int maxgrid, int length,
 
 /* Return 0 when one of the elements of arrays A and B do not match within the
    allowed FP_ABSTOLERANCE.  Return 1 when all elements match.  */
-static inline int
+__attribute__((always_inline)) static inline int
 check_FP(int maxgrid,
          DATA_TYPE POLYBENCH_2D(A,MAXGRID,MAXGRID,maxgrid,maxgrid),
-         DATA_TYPE POLYBENCH_2D(B,MAXGRID,MAXGRID,maxgrid,maxgrid)) {
+         DATA_TYPE POLYBENCH_2D(B,MAXGRID,MAXGRID,maxgrid,maxgrid))  {
   int i, j;
   double AbsTolerance = FP_ABSTOLERANCE;
   for (i = 0; i < _PB_MAXGRID; i++)

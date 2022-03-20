@@ -60,8 +60,8 @@ void sort_nuclide_grids( NuclideGridPoint ** nuclide_grids, long n_isotopes,
 
 // Allocates unionized energy grid, and assigns union of energy levels
 // from nuclide grids to it.
-GridPoint * generate_energy_grid( long n_isotopes, long n_gridpoints,
-                                  NuclideGridPoint ** nuclide_grids) {
+__attribute__((always_inline)) GridPoint * generate_energy_grid( long n_isotopes, long n_gridpoints,
+                                  NuclideGridPoint ** nuclide_grids){
 	int mype = 0;
 
 	#ifdef MPI
@@ -119,8 +119,8 @@ GridPoint * generate_energy_grid( long n_isotopes, long n_gridpoints,
 // pointer from unionized grid to the correct spot in the nuclide grid.
 // This process is time consuming, as the number of binary searches
 // required is:  binary searches = n_gridpoints * n_isotopes^2
-void set_grid_ptrs( GridPoint * energy_grid, NuclideGridPoint ** nuclide_grids,
-                    long n_isotopes, long n_gridpoints )
+__attribute__((always_inline)) void set_grid_ptrs( GridPoint * energy_grid, NuclideGridPoint ** nuclide_grids,
+                    long n_isotopes, long n_gridpoints ) 
 {
 	int mype = 0;
 

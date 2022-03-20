@@ -18,8 +18,8 @@ gen_random(double max) {
     return( max * (last = (last * IA + IC) % IM) / IM );
 }
 
-void
-heapsort(int n, double *ra) {
+__attribute__((always_inline)) void
+heapsort(int n, double *ra)  {
     int i, j;
     int ir = n;
     int l = (n >> 1) + 1;

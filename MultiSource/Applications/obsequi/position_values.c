@@ -89,7 +89,7 @@ unset_move_value    (Move move, s32bit player)
 // Set the value of all the positions on the board.
 //  We only do this once at the start of the search.
 //=================================================================
-extern void
+extern __attribute__((always_inline)) void
 set_position_values()
 {
   s32bit i, j, k, count;

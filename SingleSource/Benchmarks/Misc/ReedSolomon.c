@@ -110,7 +110,7 @@ static void gen_poly()
  }
 
 
-static void encode_rs()
+__attribute__((always_inline)) static void encode_rs()
 /* take the string of symbols in data[i], i=0..(k-1) and encode systematically
    to produce 2*tt parity symbols in bb[0]..bb[2*tt-1]
    data[] is input and bb[] is output in polynomial form.
@@ -142,7 +142,7 @@ static void encode_rs()
 
 
 
-static void decode_rs()
+__attribute__((always_inline)) static void decode_rs()
 /* assume we have received bits grouped into mm-bit symbols in recd[i],
    i=0..(nn-1),  and recd[i] is index form (ie as powers of alpha).
    We first compute the 2*tt syndromes by substituting alpha**i into rec(X) and
@@ -342,7 +342,7 @@ static void decode_rs()
  }
 
 
-void rsdec_204(unsigned char* data_out, unsigned char* data_in)
+__attribute__((always_inline)) void rsdec_204(unsigned char* data_out, unsigned char* data_in)
 {
   int i;
 
@@ -381,7 +381,7 @@ void rsdec_204(unsigned char* data_out, unsigned char* data_in)
   }  
 }
 
-void rsenc_204(unsigned char* data_out, unsigned char* data_in)
+__attribute__((always_inline)) void rsenc_204(unsigned char* data_out, unsigned char* data_in) 
 {
   int i;
 

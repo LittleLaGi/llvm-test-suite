@@ -71,7 +71,7 @@ void fancy_int( int a )
 }
 
 // Prints out the summary of User input
-void print_input_summary(Input I)
+__attribute__((always_inline)) void print_input_summary(Input I)
 {
 	center_print("INPUT SUMMARY", 79);
 	border_print();
@@ -114,7 +114,7 @@ void print_input_summary(Input I)
 }
 
 // reads command line inputs and applies options
-void read_CLI( int argc, char * argv[], Input * input )
+__attribute__((always_inline)) void read_CLI( int argc, char * argv[], Input * input )
 {
 	// defaults to max threads on the system	
 	#ifdef OPENMP

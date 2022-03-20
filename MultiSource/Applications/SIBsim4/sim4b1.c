@@ -1159,7 +1159,7 @@ print_exons(collec_p_t eCol, int direction)
 
 static int
 pluri_align(uchar *seq1, uchar *seq2, unsigned int *num_matches,
-	    collec_p_t eCol, edit_script_list_p_t *Aligns, int M, int N)
+	    collec_p_t eCol, edit_script_list_p_t *Aligns, int M, int N) __attribute__((always_inline))
 {
   exon_t eFake;
   exon_p_t cur = &eFake;

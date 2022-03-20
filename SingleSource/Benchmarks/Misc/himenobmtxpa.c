@@ -154,7 +154,7 @@ mflops(int nn,double cpu,double flop)
 }
 
 void
-set_param(int is[],char *size)
+set_param(int is[],char *size) 
 {
   if(!strcmp(size,"XS") || !strcmp(size,"xs")){
     is[0]= 32;
@@ -241,9 +241,9 @@ mat_set_init(Matrix* Mat)
           /(float)((Mat->mrows - 1)*(Mat->mrows - 1));
 }
 
-float
+__attribute__((always_inline)) float
 jacobi(int nn, Matrix* a,Matrix* b,Matrix* c,
-       Matrix* p,Matrix* bnd,Matrix* wrk1,Matrix* wrk2)
+       Matrix* p,Matrix* bnd,Matrix* wrk1,Matrix* wrk2) 
 {
   int    i,j,k,n,imax,jmax,kmax;
   float  gosa,s0,ss;

@@ -59,7 +59,7 @@ double probability[128] =
 
 
 
-void create_context_memory ()
+__attribute__((always_inline)) void create_context_memory ()
 {
   int i, j, k;
   int num_mb    = img->FrameSizeInMbs; // number of macroblocks for frame

@@ -162,7 +162,7 @@ int main(int argc,char *argv[])
 create and initialize the MISR's which is a linked list of 
 misr_type.
 *************************************************************/
-void create_link_list(misr_type *cell_array)
+void create_link_list(misr_type *cell_array) 
 {
 	int i;
 	misr_type *temp, *present;
@@ -217,7 +217,7 @@ this proceedure is the workhorse of the program. Each time it
 is called, it calculates the next value of each cell in the
 MISR's and does this for hte number of times necessary.
 ***********************************************************/
-int simulate(int iterations, misr_type *present, double prob, char *structure)
+int simulate(int iterations, misr_type *present, double prob, char *structure) 
 {
 	misr_type *temp;
 	int different, savef_free, savefaulty;

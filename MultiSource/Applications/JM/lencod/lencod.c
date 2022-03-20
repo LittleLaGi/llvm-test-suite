@@ -554,7 +554,7 @@ void report_stats_on_error(void)
  *
  ***********************************************************************
  */
-void init_poc()
+__attribute__((always_inline)) void init_poc()
 {
   //the following should probably go in sequence parameters
   // frame poc's increase by 2, field poc's by 1
@@ -626,7 +626,7 @@ void CAVLC_init(void)
  *    Image Parameters struct img_par *img
  ***********************************************************************
  */
-void init_img()
+__attribute__((always_inline)) void init_img()
 {
   int i;
   int byte_abs_range;
@@ -1893,7 +1893,7 @@ void information_init(void)
  *    memory allocation for original picture buffers
  ************************************************************************
  */
-int init_orig_buffers(void)
+__attribute__((always_inline)) int init_orig_buffers(void)
 {
   int memory_size = 0;
 
@@ -1937,7 +1937,7 @@ int init_orig_buffers(void)
  * \return Number of allocated bytes
  ************************************************************************
  */
-int init_global_buffers(void)
+__attribute__((always_inline)) int init_global_buffers(void)
 {
   int j,memory_size=0;
 #ifdef _ADAPT_LAST_GROUP_
@@ -2515,7 +2515,7 @@ void SetImgType(void)
 }
 
 
-void SetLevelIndices(void)
+__attribute__((always_inline)) void SetLevelIndices(void)
 {
   switch(active_sps->level_idc)
   {
@@ -2719,7 +2719,7 @@ void encode_one_redundant_frame()
  *    Setup Chroma MC Variables
  ************************************************************************
  */
-void chroma_mc_setup(void)
+__attribute__((always_inline)) void chroma_mc_setup(void)
 {
   // initialize global variables used for chroma interpolation and buffering
   if ( img->yuv_format == YUV420 )

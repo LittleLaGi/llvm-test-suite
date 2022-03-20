@@ -214,7 +214,7 @@
     0.1129     0.2119	Dell Dimension XPS P133c, Pentium 133 MHz,
 			Windows 95, Microsoft Visual C 5.0.
 
-    0.0883     0.2166	Silicon Graphics Indigo², MIPS R4400,
+    0.0883     0.2166	Silicon Graphics Indigoï¿½, MIPS R4400,
                         175 Mhz, "-O3".
 
     0.0351     0.0561	Dell Dimension XPS R100, Pentium II 400 MHz,
@@ -431,7 +431,7 @@ double x;
 /*  sqrt(x)	  Return square root.  Initial guess, then Newton-
 		  Raphson refinement  */
 
-double sqrt(x)
+__attribute__((always_inline)) double sqrt(x) 
 double x;
 {
 	double c, cl, y;
@@ -464,7 +464,7 @@ double x;
 /*  atan(x)	  Return arctangent in radians,
 		  range -pi/2 to pi/2  */
 
-static double atan(x)
+__attribute__((always_inline) static double atan(x) )
 double x;
 {
 	int sign, l, y;
@@ -504,7 +504,7 @@ atl:
 /*  atan2(y,x)	  Return arctangent in radians of y/x,
 		  range -pi to pi  */
 
-static double atan2(y, x)
+__attribute__((always_inline)) static double atan2(y, x) 
 double y, x;
 {
 	double temp;
@@ -583,7 +583,7 @@ double x;
 
 */
 
-static void transit_surface() {
+__attribute__((always_inline)) static void transit_surface()  {
 	double iang,		   /* Incidence angle */
 	       rang,		   /* Refraction angle */
 	       iang_sin,	   /* Incidence angle sin */

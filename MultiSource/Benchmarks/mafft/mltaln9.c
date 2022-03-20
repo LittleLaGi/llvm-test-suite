@@ -17,7 +17,7 @@ int intlen( int *num )
 	return( value );
 }
 
-char seqcheck( char **seq )
+__attribute__((always_inline)) char seqcheck( char **seq )
 {
 	int i, len;
 	char **seqbk = seq;

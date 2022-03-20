@@ -20,7 +20,7 @@ struct planet {
   double mass;
 };
 
-void advance(int nbodies, struct planet * bodies, double dt)
+__attribute__((always_inline)) void advance(int nbodies, struct planet * bodies, double dt) 
 {
   int i, j;
 

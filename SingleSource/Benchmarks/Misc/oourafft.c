@@ -190,7 +190,7 @@ void cdft(int n, int isgn, double *a, int *ip, double *w)
 
 #include <math.h>
 
-void makewt(int nw, int *ip, double *w)
+__attribute__((always_inline)) void makewt(int nw, int *ip, double *w) 
 {
   int j, nwh;
   double delta, x, y;
@@ -318,7 +318,7 @@ void bitrv2(int n, int *ip, double *a)
 }
 
 
-static void bitrv2conj(int n, int *ip, double *a)
+static void bitrv2conj(int n, int *ip, double *a) 
 {
   int j, j1, k, k1, l, m, m2;
   double xr, xi, yr, yi;
@@ -477,7 +477,7 @@ void cftfsub(int n, double *a, double *w)
 }
 
 
-void cftbsub(int n, double *a, double *w)
+void cftbsub(int n, double *a, double *w) 
 {
   int j, j1, j2, j3, l;
   double x0r, x0i, x1r, x1i, x2r, x2i, x3r, x3i;

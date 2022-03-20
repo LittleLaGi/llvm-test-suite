@@ -8,7 +8,7 @@
 
 #include "irsmk.h"
 
-void rmatmult3(Domain_t *domain, RadiationData_t *rblk, double *x, double *b )
+__attribute__((always_inline)) void rmatmult3(Domain_t *domain, RadiationData_t *rblk, double *x, double *b )
 {
    char *me = "rmatmult3" ;
    int i, ii, jj, kk ;

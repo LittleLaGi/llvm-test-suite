@@ -68,7 +68,7 @@ static Node *getDuplicateNodeForGraph(Graph *graph, Node *from)
 }
 
 
-Graph *buildGraphFromPaths(NodeVecVec **pathList, BuildType build)
+__attribute__((always_inline)) Graph *buildGraphFromPaths(NodeVecVec **pathList, BuildType build)
 {
     Graph *newGraph = Graph_new();
     Node *pathNode; /* The node we're looking at in the path */

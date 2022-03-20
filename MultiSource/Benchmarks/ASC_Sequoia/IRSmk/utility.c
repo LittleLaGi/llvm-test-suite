@@ -14,7 +14,7 @@
 //--------------
 // read input date
 //--------------
-void readInput(const char *filename)
+__attribute__((always_inline)) void readInput(const char *filename)
 {
   FILE *fp;
   if ((fp = fopen(filename, "r"))==NULL) {
@@ -70,7 +70,7 @@ void readInput(const char *filename)
 //--------------
 // alloc memory
 //--------------
-void allocMem(RadiationData_t *rblk)
+__attribute__((always_inline)) void allocMem(RadiationData_t *rblk)
 {
   int size;
 
@@ -112,7 +112,7 @@ void allocMem(RadiationData_t *rblk)
 //-------------- 
 //  init
 //-------------- 
-void init(Domain_t *domain, RadiationData_t *rblk, double *x, double *b )
+__attribute__((always_inline)) void init(Domain_t *domain, RadiationData_t *rblk, double *x, double *b )
 {
    int i;
 

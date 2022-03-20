@@ -1,7 +1,7 @@
 #include"SimpleMOC_header.h"
 
 // Allocates and initializes an array of 2D tracks
-Track2D * generate_2D_tracks( Input I, size_t * nbytes )
+__attribute__((always_inline)) Track2D * generate_2D_tracks( Input I, size_t * nbytes )
 {
 	// Allocate space for 2D tracks
 	Track2D * tracks = (Track2D *) malloc( I.ntracks_2D * sizeof(Track2D));
@@ -18,7 +18,7 @@ Track2D * generate_2D_tracks( Input I, size_t * nbytes )
 }
 
 // Allocates and initializes all segments
-void generate_2D_segments( 
+__attribute__((always_inline)) void generate_2D_segments( 
 		Input I, 
 		Track2D * tracks, 
 		size_t * nbytes )
@@ -72,7 +72,7 @@ void free_2D_tracks( Track2D * tracks )
 }
 
 // allocate memory for tracks (primarily angular fluxes)
-Track *** generate_tracks(Input I, Track2D * tracks_2D, size_t * nbytes)
+__attribute__((always_inline)) Track *** generate_tracks(Input I, Track2D * tracks_2D, size_t * nbytes)
 {
 	// Allocate space for tracks (3D)
 	Track *** tracks = (Track ***) malloc( I.ntracks_2D * sizeof(Track **));
@@ -171,7 +171,7 @@ float * generate_polar_angles( Input I )
 	return polar_angles;
 }
 
-Track2D * load_OpenMOC_tracks(char* fname, bool CMFD_obj, Input* I, size_t* nbytes)
+__attribute__((always_inline)) Track2D * load_OpenMOC_tracks(char* fname, bool CMFD_obj, Input* I, size_t* nbytes)
 {
 	int ret;
 	FILE* in;

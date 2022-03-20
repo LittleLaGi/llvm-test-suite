@@ -118,7 +118,7 @@ static const short Quant8_inter_default[64] =
  *    -1 for error
  ***********************************************************************
  */
-int CheckParameterName (char *s, int *type)
+__attribute__((always_inline)) int CheckParameterName (char *s, int *type)
 {
   int i = 0;
 
@@ -276,7 +276,7 @@ void ParseMatrix (char *buf, int bufsize)
  *    whole matrix will be patch with default value 16.
  ***********************************************************************
  */
-void PatchMatrix(void)
+__attribute__((always_inline)) void PatchMatrix(void)
 {
   short *ScalingList;
   int i, cnt, fail;
@@ -361,7 +361,7 @@ void PatchMatrix(void)
  *    Allocate Q matrix arrays
  ***********************************************************************
  */
-void allocate_QMatrix ()
+__attribute__((always_inline)) void allocate_QMatrix ()
 {
   int bitdepth_qp_scale = 6*(input->BitDepthLuma - 8);
   int i;
@@ -413,7 +413,7 @@ void free_QMatrix ()
  *    Initialise Q matrix values.
  ***********************************************************************
  */
-void Init_QMatrix (void)
+__attribute__((always_inline)) void Init_QMatrix (void)
 {
   char *content;
 

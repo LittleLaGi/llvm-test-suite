@@ -90,7 +90,7 @@ static const int NP1 = 2001; // N + 1
 #endif
 
 // benchmark code
-void matgen (double ** a, double * b)
+__attribute__((always_inline))  void matgen (double ** a, double * b)
 {
     // fill arrays
     int i, j;
@@ -108,7 +108,7 @@ void matgen (double ** a, double * b)
 }
 
 // finds the index of element having max. absolute value.
-int idamax(int n, double * dx, int dx_off, int incx)
+__attribute__((always_inline)) int idamax(int n, double * dx, int dx_off, int incx) 
 {
     double dmax, dtemp;
     int i, ix, itemp = 0;
@@ -202,7 +202,7 @@ static double ddot(int n, double * dx, int dx_off, int incx, double * dy, int dy
 }
 
 // scales a vector by a constant.
-void dscal(int n, double da, double * dx, int dx_off, int incx)
+__attribute__((always_inline)) void dscal(int n, double da, double * dx, int dx_off, int incx) 
 {
     int i;
 
@@ -263,7 +263,7 @@ void daxpy(int n, double da, double * dx, int dx_off, int incx, double * dy, int
 }
 
 // Factors a double precision matrix by gaussian elimination.
-void dgefa(double ** a, int * ipvt)
+__attribute__((always_inline)) void dgefa(double ** a, int * ipvt) 
 {
     double temp;
     int k, j;
@@ -314,7 +314,7 @@ void dgefa(double ** a, int * ipvt)
 
 //  Solves the double precision system a * x = b  or trans(a) * x = b
 //  using the factors computed by dgeco or dgefa.
-void dgesl(double ** a, int * ipvt, double * b)
+__attribute__((always_inline)) void dgesl(double ** a, int * ipvt, double * b) 
 {
     double t;
     int k, kb;

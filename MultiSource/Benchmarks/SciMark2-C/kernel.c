@@ -16,7 +16,7 @@
 #define CYCLES (1<<12)
 #endif
 
-    double kernel_measureFFT(int N, double mintime, Random R)
+    __attribute__((always_inline)) double kernel_measureFFT(int N, double mintime, Random R)
     {
         /* initialize FFT data as complex (N real/img pairs) */
 
@@ -50,7 +50,7 @@
         return result;
     }
 
-    double kernel_measureSOR(int N, double min_time, Random R)
+    __attribute__((always_inline)) double kernel_measureSOR(int N, double min_time, Random R)
     {
         double **G = RandomMatrix(N, N, R);
         double result = 0.0;
@@ -79,7 +79,7 @@
 
 
 
-    double kernel_measureMonteCarlo(double min_time, Random R)
+    __attribute__((always_inline)) double kernel_measureMonteCarlo(double min_time, Random R)
     {
         double result = 0.0;
         Stopwatch Q = new_Stopwatch();
@@ -101,7 +101,7 @@
     }
 
 
-    double kernel_measureSparseMatMult(int N, int nz, 
+    __attribute__((always_inline)) double kernel_measureSparseMatMult(int N, int nz, 
             double min_time, Random R)
     {
         /* initialize vector multipliers and storage for result */
@@ -190,7 +190,7 @@
     }
 
 
-    double kernel_measureLU(int N, double min_time, Random R)
+    __attribute__((always_inline)) double kernel_measureLU(int N, double min_time, Random R)
     {
 
         double **A = NULL;

@@ -40,7 +40,7 @@ static int NumberIntraPerPicture;
  ************************************************************************
  */
 
-void RandomIntraInit(int xsize, int ysize, int refresh)
+__attribute__((always_inline)) void RandomIntraInit(int xsize, int ysize, int refresh)
 {
   int i, pos;
 

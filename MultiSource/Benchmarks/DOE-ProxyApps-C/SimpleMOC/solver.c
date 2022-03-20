@@ -280,7 +280,7 @@ void attenuate_fluxes( Track * track, bool forward, Source * QSR, Input * I_in,
 }	
 
 // single direction transport sweep
-void transport_sweep( Params * params, Input * I )
+__attribute__((always_inline)) void transport_sweep( Params * params, Input * I )
 {
 	if(I->mype==0) printf("Starting transport sweep ...\n");
 
@@ -1142,7 +1142,7 @@ void attenuate_FSR_fluxes( Track * track, bool forward, Source * FSR, Input * I,
 /* Renormalizes scalar and angular flux for next transport sweep iteration.
  * Calculation requires multiple pair-wise sums and a reduction accross all 
  * nodes. */
-void renormalize_flux( Params params, Input I, CommGrid grid )
+__attribute__((always_inline))  void renormalize_flux( Params params, Input I, CommGrid grid )
 {
 	if( I.mype == 0 ) printf("Renormalizing Flux...\n");
 	float node_fission_rate = 0;
@@ -1234,7 +1234,7 @@ void renormalize_flux( Params params, Input I, CommGrid grid )
 /* Updates sources for next iteration by computing scattering and fission
  * components. Calculation includes multiple pair-wise sums and reductions
  * accross all nodes */
-float update_sources( Params params, Input I, float keff )
+__attribute__((always_inline)) float update_sources( Params params, Input I, float keff )
 {
 	// source residual
 	float residual;
@@ -1323,7 +1323,7 @@ float update_sources( Params params, Input I, float keff )
 
 /* Computes globall k-effective using multiple pair-wise summations and finally
  * a reduction accross all nodes */
-float compute_keff(Params params, Input I, CommGrid grid)
+__attribute__((always_inline)) float compute_keff(Params params, Input I, CommGrid grid)
 {
 	// allocate temporary memory
 	float * sigma = malloc( I.n_egroups * sizeof(float) );

@@ -9,7 +9,7 @@
         return (Md-1)*(Nd-1)*num_iterD*6.0;
     }
 
-    void SOR_execute(int M, int N, double omega, double **G, int 
+    __attribute__((always_inline))  void SOR_execute(int M, int N, double omega, double **G, int 
             num_iterations)
     {
 

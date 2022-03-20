@@ -2,7 +2,7 @@
 
 #ifdef MPI
 // Transfer information between nodes (angular fluxes)
-void fast_transfer_boundary_fluxes( Params params, Input I, CommGrid grid)
+__attribute__((always_inline)) void fast_transfer_boundary_fluxes( Params params, Input I, CommGrid grid)
 {
 	MPI_Barrier(grid.cart_comm_3d);
 	if(I.mype==0) printf("Beginning Inter-Node Border Flux Transfer...\n");

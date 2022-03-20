@@ -112,7 +112,7 @@ negamax(s32bit depth_remaining, s32bit whos_turn_t, s32bit alpha, s32bit beta);
 //=================================================================
 // Search for move function. (Negamax Driver)
 //=================================================================
-extern s32bit
+extern __attribute__((always_inline)) s32bit
 search_for_move(char dir, s32bit *row, s32bit *col, u64bit *nodes)
 {
   s32bit  d, i, value = 0, num_moves;

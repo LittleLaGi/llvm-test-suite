@@ -218,7 +218,7 @@ double anpm (double a)
 //---------------------------------------------------------------------------    
 // The reference frame is equatorial and is with respect to the
 //    mean equator and equinox of epoch j2000.
-void planetpv (double epoch[2], int np, double pv[2][3])
+__attribute__((always_inline)) void planetpv (double epoch[2], int np, double pv[2][3]) 
 {
     // working storage
     int i, j, k;

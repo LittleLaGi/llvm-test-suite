@@ -183,8 +183,8 @@ char *from;
 */
 #define SETPTR	{if(strlen(argv[1]) == 2) {argv++;argc--;ptr=argv[1];}else ptr=(&argv[1][2]);}
 
-static void
-_Y_doargs(argc,argv,file1,file2,max_d)
+static __attribute__((always_inline)) void
+_Y_doargs(argc,argv,file1,file2,max_d) 
 int argc;
 char *argv[];
 char **file1,**file2;

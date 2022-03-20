@@ -36,7 +36,7 @@
 *    Mode Decision for a macroblock with error resilience
 *************************************************************************************
 */
-void encode_one_macroblock_highloss ()
+__attribute__((always_inline))  void encode_one_macroblock_highloss ()
 {
   int max_index;
 

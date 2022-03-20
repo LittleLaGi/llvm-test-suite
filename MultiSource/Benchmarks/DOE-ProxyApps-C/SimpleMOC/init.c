@@ -103,7 +103,7 @@ void set_small_input( Input * I )
 }
 
 // Initializes all track data
-Params build_tracks( Input* input )
+__attribute__((always_inline)) Params build_tracks( Input* input )
 {
 	Input I = *input;
 	size_t nbytes = 0;
@@ -165,7 +165,7 @@ Params build_tracks( Input* input )
 }
 
 // Initializes 3D Cartesian Communication Grid + Shift Ranks
-CommGrid init_mpi_grid( Input I )
+__attribute__((always_inline)) CommGrid init_mpi_grid( Input I )
 {
 	CommGrid grid;
 

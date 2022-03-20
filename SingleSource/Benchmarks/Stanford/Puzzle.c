@@ -159,7 +159,7 @@ int Trial (int j) {
 	return (false);
 }
 
-void Puzzle ()  {
+__attribute__((always_inline)) void Puzzle ()  {
     int i, j, k, m;
     for ( m = 0; m <= size; m++ ) puzzl[m] = true;
     for( i = 1; i <= 5; i++ )for( j = 1; j <= 5; j++ )for( k = 1; k <= 5; k++ )	puzzl[i+d*(j+d*k)] = false;

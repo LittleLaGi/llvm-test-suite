@@ -67,7 +67,7 @@ extern void SetMotionVectorPredictor (short  pmv[2], signed char **refPic,
  *    function creating arrays for fast integer motion estimation
  ***********************************************************************
  */
-void
+__attribute__((always_inline)) void
 InitializeFastFullIntegerSearch ()
 {
   int  i, j, k, list;

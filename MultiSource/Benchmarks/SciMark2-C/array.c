@@ -7,7 +7,7 @@
 #endif
 
 
-double** new_Array2D_double(int M, int N)
+__attribute__((always_inline))  double** new_Array2D_double(int M, int N)
 {
     int i=0;
     int failed = 0;
@@ -53,7 +53,7 @@ void Array2D_double_delete(int M, int N, double **A)
 }
 
 
-  void Array2D_double_copy(int M, int N, double **B, double **A)
+  __attribute__((always_inline)) void Array2D_double_copy(int M, int N, double **B, double **A)
   {
 
         int remainder = N & 3;       /* N mod 4; */

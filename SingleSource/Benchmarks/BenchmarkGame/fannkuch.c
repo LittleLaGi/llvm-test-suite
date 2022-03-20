@@ -14,8 +14,8 @@
 #define Int	int
 #define Aint	int
 
-    static long
-fannkuch( int n )
+__attribute__((always_inline))  static long
+fannkuch( int n ) 
 {
     Aint*	perm;
     Aint*	perm1;

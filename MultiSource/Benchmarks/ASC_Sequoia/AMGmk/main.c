@@ -115,7 +115,7 @@ int main(int argc, char *argv[])
 
 }
 
-void test_Matvec()
+__attribute__((always_inline)) void test_Matvec()
 {
   struct timeval  t0, t1;
   clock_t t0_cpu = 0,
@@ -176,8 +176,8 @@ void test_Matvec()
   hypre_SeqVectorDestroy(sol);
 
 }
-
-void test_Relax()
+ 
+__attribute__((always_inline)) void test_Relax()
 {
   struct timeval  t0, t1;
   clock_t t0_cpu = 0,
@@ -236,7 +236,7 @@ void test_Relax()
 
 }
 
-void test_Axpy()
+__attribute__((always_inline)) void test_Axpy()
 {
   struct timeval  t0, t1;
   clock_t t0_cpu = 0,

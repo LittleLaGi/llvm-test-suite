@@ -67,7 +67,7 @@ int write_PPS(int len, int PPS_id)
  *    appropriate sequence header
  ************************************************************************
  */
-int start_sequence()
+__attribute__((always_inline)) int start_sequence()
 {
   int i,len=0, total_pps = (input->GenerateMultiplePPS) ? 3 : 1;
   NALU_t *nalu;

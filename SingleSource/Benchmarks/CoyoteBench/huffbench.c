@@ -133,7 +133,7 @@ static void heap_adjust(size_t * freq, size_t * heap, int n, int k)
 }
 
 // Huffman compression/decompression function
-void compdecomp(byte * data, size_t data_len)
+__attribute__((always_inline)) void compdecomp(byte * data, size_t data_len) 
 {
     size_t i, j, n, mask;
     bits32 k, t;

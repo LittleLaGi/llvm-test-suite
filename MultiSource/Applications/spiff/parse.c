@@ -288,7 +288,7 @@ W_lit litptr;
 #endif
 } /* _P_litsnarf */
 
-static int
+static __attribute__((always_inline)) int
 _P_bolsnarf(bolptr)
 W_bol bolptr; 
 {
@@ -371,7 +371,7 @@ W_bol bolptr;
 /*
 **	pass over a comment -- look for nexting
 */
-static int
+static __attribute__((always_inline)) int
 _P_comsnarf(comptr)
 W_com comptr; 
 {
@@ -484,7 +484,7 @@ W_com comptr;
 /*
 **	parse a file
 */
-static void
+static __attribute__((always_inline)) void
 _P_do_parse()
 {
 
@@ -753,7 +753,7 @@ _P_do_parse()
 #endif
 }
 
-void
+__attribute__((always_inline)) void
 P_file_parse(num,strt,lcnt,flags)
 int num;	/* file number */
 int strt;	/* first line to parse expressed in real line numbers */

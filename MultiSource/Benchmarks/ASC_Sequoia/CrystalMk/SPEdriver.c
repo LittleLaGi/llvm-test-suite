@@ -35,7 +35,7 @@ void Crystal_Cholesky(int nSlip,
 //-------------- 
 //  SPE driver
 //-------------- 
-double SPEdriver(double slipRate[MS_XTAL_NSLIP_MAX],
+__attribute__((always_inline)) double SPEdriver(double slipRate[MS_XTAL_NSLIP_MAX],
                  double dSlipRate[MS_XTAL_NSLIP_MAX],
                  double tau[MS_XTAL_NSLIP_MAX],
                  double tauc[MS_XTAL_NSLIP_MAX],

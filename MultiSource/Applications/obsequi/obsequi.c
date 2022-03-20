@@ -180,7 +180,7 @@ main(int argc, char** argv)
 // It discards all input which does not match this format and
 //   writes an error message to stderr.
 //========================================================
-static void
+static __attribute__((always_inline)) void
 get_solve_command()
 {
   char*   line      = NULL, *blocks = NULL;
@@ -343,7 +343,7 @@ get_other_commands()
 //  -v print version information.
 //  -w wait for standard in to be closed before exiting.
 //########################################################
-static void
+static __attribute__((always_inline)) void
 decode_switches(int argc, char **argv)
 {
   int c;
@@ -434,7 +434,7 @@ stop_alrm_handler(int sig)
   exit(0);
 }
 
-static void
+static __attribute__((always_inline)) void
 set_stop_alrm(long minutes)
 {
   struct sigaction   act;
@@ -543,7 +543,7 @@ write_to_lock_file(char winner, const char* num_nodes)
 }
 
 
-static void
+static __attribute__((always_inline)) void
 get_solve_command_from_lock_file()
 {
   FILE* file = NULL;

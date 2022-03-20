@@ -19,7 +19,7 @@
         ith row in col[].  
     */
 
-    void SparseCompRow_matmult( int M, double *y, double *val, int *row,
+    __attribute__((always_inline))  void SparseCompRow_matmult( int M, double *y, double *val, int *row,
         int *col, double *x, int NUM_ITERATIONS)
     {
         int reps;

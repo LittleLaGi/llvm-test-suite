@@ -42,7 +42,7 @@ static const int SEED = 113;
 
     
 
-    double MonteCarlo_integrate(int Num_samples)
+    __attribute__((always_inline)) double MonteCarlo_integrate(int Num_samples)
     {
 
 

@@ -324,8 +324,8 @@ int start,end,file;
 	}
 }
 
-void
-O_output(start,flags)
+__attribute__((always_inline)) void
+O_output(start,flags) 
 E_edit start;
 int flags;
 {

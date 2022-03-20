@@ -41,7 +41,7 @@ static imgpel temp_imgY[16][16]; // to temp store the Y data for 8x8 transform
 *    Mode Decision for a macroblock
 *************************************************************************************
 */
-void encode_one_macroblock_low ()
+__attribute__((always_inline)) void encode_one_macroblock_low ()
 {
 
   int         block, mode, i, j, k, dummy, MEPos;

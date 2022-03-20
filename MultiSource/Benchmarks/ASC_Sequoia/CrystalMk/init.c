@@ -13,7 +13,7 @@
 //-------------- 
 //  init
 //-------------- 
-void init(double slipRate[MS_XTAL_NSLIP_MAX],
+__attribute__((always_inline)) void init(double slipRate[MS_XTAL_NSLIP_MAX],
           double dSlipRate[MS_XTAL_NSLIP_MAX],
           double tau[MS_XTAL_NSLIP_MAX],
           double tauc[MS_XTAL_NSLIP_MAX],

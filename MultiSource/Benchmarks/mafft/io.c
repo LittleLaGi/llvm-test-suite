@@ -349,7 +349,7 @@ void putlocalhom3( char *al1, char *al2, LocalHom *localhompt, int off1, int off
 				start1 = pos1; start2 = pos2;
 				st = 1;
 			}
-			score += (double)n_dis[(int)amino_n[(int)*pt1]][(int)amino_n[(int)*pt2]]; // - offset ¤Ï¤¤¤é¤Ê¤¤¤«¤â
+			score += (double)n_dis[(int)amino_n[(int)*pt1]][(int)amino_n[(int)*pt2]]; // - offset ï¿½Ï¤ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½ï¿½ï¿½
 //			fprintf( stderr, "%c-%c, score(0) = %f\n", *pt1, *pt2, score );
 		}
 		if( *pt1++ != '-' ) pos1++;
@@ -410,7 +410,7 @@ void putlocalhom3( char *al1, char *al2, LocalHom *localhompt, int off1, int off
 		}
 	}
 }
-void putlocalhom_ext( char *al1, char *al2, LocalHom *localhompt, int off1, int off2, int opt, int overlapaa )
+__attribute__((always_inline)) void putlocalhom_ext( char *al1, char *al2, LocalHom *localhompt, int off1, int off2, int opt, int overlapaa )
 {
 	int pos1, pos2, start1, start2, end1, end2;
 	char *pt1, *pt2;
@@ -483,7 +483,7 @@ void putlocalhom_ext( char *al1, char *al2, LocalHom *localhompt, int off1, int 
 				start1 = pos1; start2 = pos2;
 				st = 1;
 			}
-			iscore += n_dis[(int)amino_n[(int)*pt1]][(int)amino_n[(int)*pt2]]; // - offset ¤Ï¤¤¤é¤Ê¤¤¤«¤â
+			iscore += n_dis[(int)amino_n[(int)*pt1]][(int)amino_n[(int)*pt2]]; // - offset ï¿½Ï¤ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½ï¿½ï¿½
 //			fprintf( stderr, "%c-%c, iscore(0) = %d\n", *pt1, *pt2, iscore );
 		}
 		if( *pt1++ != '-' ) pos1++;
@@ -540,7 +540,7 @@ void putlocalhom_ext( char *al1, char *al2, LocalHom *localhompt, int off1, int 
 		}
 	}
 }
-void putlocalhom2( char *al1, char *al2, LocalHom *localhompt, int off1, int off2, int opt, int overlapaa )
+__attribute__((always_inline)) void putlocalhom2( char *al1, char *al2, LocalHom *localhompt, int off1, int off2, int opt, int overlapaa )
 {
 	int pos1, pos2, start1, start2, end1, end2;
 	char *pt1, *pt2;
@@ -613,7 +613,7 @@ void putlocalhom2( char *al1, char *al2, LocalHom *localhompt, int off1, int off
 				start1 = pos1; start2 = pos2;
 				st = 1;
 			}
-			iscore += n_dis[(int)amino_n[(int)*pt1]][(int)amino_n[(int)*pt2]]; // - offset ¤Ï¤¤¤é¤Ê¤¤¤«¤â
+			iscore += n_dis[(int)amino_n[(int)*pt1]][(int)amino_n[(int)*pt2]]; // - offset ï¿½Ï¤ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½ï¿½ï¿½
 //			fprintf( stderr, "%c-%c, iscore(0) = %d\n", *pt1, *pt2, iscore );
 		}
 		if( *pt1++ != '-' ) pos1++;
@@ -742,7 +742,7 @@ void putlocalhom( char *al1, char *al2, LocalHom *localhompt, int off1, int off2
 				start1 = pos1; start2 = pos2;
 				st = 1;
 			}
-			score += (double)n_dis[(int)amino_n[(int)*pt1]][(int)amino_n[(int)*pt2]]; // - offset ¤Ï¤¤¤é¤Ê¤¤¤«¤â
+			score += (double)n_dis[(int)amino_n[(int)*pt1]][(int)amino_n[(int)*pt2]]; // - offset ï¿½Ï¤ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½ï¿½ï¿½
 //			fprintf( stderr, "%c-%c, score(0) = %f\n", *pt1, *pt2, score );
 		}
 		if( *pt1++ != '-' ) pos1++;
@@ -878,7 +878,7 @@ char    s[] ; int l ; FILE *fp ;
 		return( !noteofflag );
 }
 
-int myfgets(s, l, fp)  /* l°Ê¾å¤Ï¡¢¹ÔËö¤Þ¤ÇÆÉ¤ßÈô¤Ð¤¹ */
+int myfgets(s, l, fp)  /* lï¿½Ê¾ï¿½Ï¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½É¤ï¿½ï¿½ï¿½ï¿½Ð¤ï¿½ */
 char    s[] ; int l ; FILE *fp ;
 {
         int     c = 0, i = 0 ;
@@ -1137,7 +1137,7 @@ char *load1SeqWithoutName_realloc( FILE *fpp )
 	while( ( c = getc( fpp ) ) != EOF &&           
           !( ( c == '>' || c == '=' || c == '(' || c == EOF ) && b == '\n' ) )
 	{
-		*cbuf++ = (char)c;  /* Ä¹¤¹¤®¤Æ¤â¤·¤é¤Ê¤¤ */
+		*cbuf++ = (char)c;  /* Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤â¤·ï¿½ï¿½Ê¤ï¿½ */
 		if( cbuf - val == size )
 		{
 			size += N;
@@ -1172,7 +1172,7 @@ int load1SeqWithoutName_new( FILE *fpp, char *cbuf )
 	while( ( c = getc( fpp ) ) != EOF &&                    /* by T. Nishiyama */
           !( ( c == '>' || c == '=' || c == '(' || c == EOF ) && b == '\n' ) )
 	{
-		*cbuf++ = (char)c;  /* Ä¹¤¹¤®¤Æ¤â¤·¤é¤Ê¤¤ */
+		*cbuf++ = (char)c;  /* Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤â¤·ï¿½ï¿½Ê¤ï¿½ */
 		b = c;
 	}
 	ungetc( c, fpp );
@@ -1304,7 +1304,7 @@ void readData_pointer( FILE *fp, char **name, int *nlen, char **seq )
 #endif
 }
 
-void readData( FILE *fp, char name[][B], int nlen[], char **seq )
+__attribute__((always_inline)) void readData( FILE *fp, char name[][B], int nlen[], char **seq )
 {
 	int i; 
 	static char *tmpseq = NULL;
@@ -1449,7 +1449,7 @@ void getnumlen_nogap( FILE *fp, int *nlenminpt )
 	}
 }
 
-void getnumlen( FILE *fp )
+__attribute__((always_inline)) void getnumlen( FILE *fp )
 {
 	int total;
 	int nsite;
@@ -2970,7 +2970,7 @@ int writePre( int nseq, char name[][B], int nlen[M], char **aseq, int force )
 #endif
 		if( signalSM[SEMAPHORE]-- > 0 )
 		{
-#if 0 /* /tmp/pre ¤Î´Ø·¸¤Ç¤Ï¤º¤·¤¿ */
+#if 0 /* /tmp/pre ï¿½Î´Ø·ï¿½ï¿½Ç¤Ï¤ï¿½ï¿½ï¿½ï¿½ï¿½ */
 			if( ferror( prep_g ) ) prep_g = fopen( "pre", "w" );
 			if( !prep_g ) ErrorExit( "Cannot re-open pre." ); 
 #endif
@@ -3293,7 +3293,7 @@ void outlocalhompt( LocalHom ***localhom, int n1, int n2 )
 	}
 }
 
-void FreeLocalHomTable( LocalHom **localhomtable, int n ) 
+__attribute__((always_inline))  void FreeLocalHomTable( LocalHom **localhomtable, int n ) 
 {
 	int i, j;
 	LocalHom *ppp, *tmpptr;
@@ -3392,12 +3392,12 @@ void clustalout_pointer( FILE *fp, int nseq, int maxlen, char **seq, char **name
 		for( j=0; j<nseq; j++ )
 		{
 			fprintf( fp, "%-15.15s ", extractfirstword( name[order[j]]+1 ) );
-			fprintf( fp, "%.60s\n", seq[order[j]]+pos ); // Ä¹¤µ¤¬°ã¤¦¤È¤À¤á¡£
+			fprintf( fp, "%.60s\n", seq[order[j]]+pos ); // Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½ã¤¦ï¿½È¤ï¿½ï¿½á¡£
 		}
 		if( mark )
 		{
 			fprintf( fp, "%-15.15s ", "" );
-			fprintf( fp, "%.60s\n", mark + pos ); // Ä¹¤µ¤¬°ã¤¦¤È¤À¤á¡£
+			fprintf( fp, "%.60s\n", mark + pos ); // Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½ã¤¦ï¿½È¤ï¿½ï¿½á¡£
 		}
 		pos += 60;
 	}
@@ -3691,7 +3691,7 @@ void readmccaskill( FILE *fp, RNApair **pairprob, int length )
 	free( pairnum );
 }
 
-void readpairfoldalign( FILE *fp, char *s1, char *s2, char *aln1, char *aln2, int q1, int q2, int *of1, int *of2, int sumlen )
+__attribute__((always_inline)) void readpairfoldalign( FILE *fp, char *s1, char *s2, char *aln1, char *aln2, int q1, int q2, int *of1, int *of2, int sumlen )
 {
 	char gett[1000];
 	int *maptoseq1;

@@ -286,7 +286,7 @@ void SetMotionVectorPredictor (short  pmv[2],
 *    Initialize the motion search
 ************************************************************************
 */
-void
+__attribute__((always_inline)) void
 Init_Motion_Search_Module ()
 {
   int bits, i_min, i_max, k;
@@ -1317,7 +1317,7 @@ int GetDirectCost8x8 (int block, int *cost8x8)
  *    Get cost for direct mode for an macroblock
  ************************************************************************
  */
-int GetDirectCostMB (void)
+__attribute__((always_inline)) int GetDirectCostMB (void)
 {
   int i;
   int cost = 0;

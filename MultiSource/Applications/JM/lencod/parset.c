@@ -58,7 +58,7 @@ static const byte ZZ_SCAN8[64] =
  *
  *************************************************************************************
 */
-void GenerateParameterSets (void)
+__attribute__((always_inline)) void GenerateParameterSets (void)
 {
   int i;
   seq_parameter_set_rbsp_t *sps = NULL;
@@ -207,7 +207,7 @@ NALU_t *GeneratePic_parameter_set_NALU(int PPS_id)
  ************************************************************************
  */
 
-void GenerateSequenceParameterSet( seq_parameter_set_rbsp_t *sps, //!< Sequence Parameter Set to be filled
+__attribute__((always_inline)) void GenerateSequenceParameterSet( seq_parameter_set_rbsp_t *sps, //!< Sequence Parameter Set to be filled
                                    int SPS_id                     //!< SPS ID
                                    )
 {

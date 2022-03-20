@@ -94,7 +94,7 @@ DLL *list_new() {
 }
 
 /* inclusive sequence 'from' <-> 'to' */
-DLL *list_sequence(int from, int to) {
+__attribute__((always_inline)) DLL *list_sequence(int from, int to) {
   int size, tmp, i, j;
   DLL *l;
   if (from > to) {
@@ -139,7 +139,7 @@ void list_reverse (DLL *head) {
   } while (p != head);
 }
 
-int test_lists() {
+__attribute__((always_inline)) int test_lists()  {
   int len = 0;
   /* create a list of integers (li1) from 1 to SIZE */
   DLL *li1 = list_sequence(1, SIZE);

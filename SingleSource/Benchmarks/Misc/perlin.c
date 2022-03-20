@@ -32,7 +32,7 @@ static double grad(int hash, double x, double y, double z) {
   return ((h&1) == 0 ? u : -u) + ((h&2) == 0 ? v : -v);
 }
 
-static double noise(double x, double y, double z) {
+__attribute__((always_inline)) static double noise(double x, double y, double z)  {
   int X = (int)floor(x) & 255,                  // FIND UNIT CUBE THAT
       Y = (int)floor(y) & 255,                  // CONTAINS POINT.
       Z = (int)floor(z) & 255;

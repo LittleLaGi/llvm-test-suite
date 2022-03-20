@@ -43,7 +43,7 @@ int NGP_compare( const void * a, const void * b )
 
 // Binary Search function for nuclide grid
 // Returns ptr to energy less than the quarry that is closest to the quarry
-int binary_search( NuclideGridPoint * A, double quarry, int n )
+__attribute__((always_inline)) int binary_search( NuclideGridPoint * A, double quarry, int n )
 {
 	int min = 0;
 	int max = n-1;

@@ -307,7 +307,7 @@ void recSearch( int searchDepth, int usedMask )
     }
 }
 
-void doSearch(void)
+__attribute__((always_inline)) void doSearch(void) 
 
 /*  Preliminary search. Takes care of the special case where |S| = 1
     and the only element of S is t.
@@ -339,8 +339,8 @@ void doSearch(void)
 	printSolution( solution, bestDepth );
 }
 
-int getInput(void)
-{
+__attribute__((always_inline)) int getInput(void) 
+{ 
     int nums[16];
     int i = 0;
     int c;

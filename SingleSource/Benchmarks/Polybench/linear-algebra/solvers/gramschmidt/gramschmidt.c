@@ -57,7 +57,7 @@ void init_array(int ni, int nj,
 /* FIXME: This print_array method wasn't converted to use the
    faster print_element method like the others because it's
    not bit identical across multiple runs on ARM64. It should be. */
-static
+static __attribute__((always_inline)) 
 void print_array(int ni, int nj,
 		 DATA_TYPE POLYBENCH_2D(A,NI,NJ,ni,nj),
 		 DATA_TYPE POLYBENCH_2D(R,NJ,NJ,nj,nj),
@@ -89,10 +89,10 @@ void print_array(int ni, int nj,
 /* Main computational kernel. The whole function will be timed,
    including the call and return. */
 static
-void kernel_gramschmidt(int ni, int nj,
+__attribute__((always_inline)) void kernel_gramschmidt(int ni, int nj,
 			DATA_TYPE POLYBENCH_2D(A,NI,NJ,ni,nj),
 			DATA_TYPE POLYBENCH_2D(R,NJ,NJ,nj,nj),
-			DATA_TYPE POLYBENCH_2D(Q,NI,NJ,ni,nj))
+			DATA_TYPE POLYBENCH_2D(Q,NI,NJ,ni,nj)) 
 {
   int i, j, k;
 
@@ -125,7 +125,7 @@ void kernel_gramschmidt(int ni, int nj,
 // discrepancies which cause the accuracy checks to fail.
 // In this case, the test runs with the option -ffp-contract=off
 static void
-kernel_gramschmidt_StrictFP(int ni, int nj,
+ __attribute__((always_inline)) kernel_gramschmidt_StrictFP(int ni, int nj,
                             DATA_TYPE POLYBENCH_2D(A,NI,NJ,ni,nj),
                             DATA_TYPE POLYBENCH_2D(R,NJ,NJ,nj,nj),
                             DATA_TYPE POLYBENCH_2D(Q,NI,NJ,ni,nj))
@@ -159,7 +159,7 @@ kernel_gramschmidt_StrictFP(int ni, int nj,
 static inline int
 check_FP(int ni, int nj,
          DATA_TYPE POLYBENCH_2D(A,NI,NJ,ni,nj),
-         DATA_TYPE POLYBENCH_2D(B,NI,NJ,ni,nj)) {
+         DATA_TYPE POLYBENCH_2D(B,NI,NJ,ni,nj))  {
   int i, j;
   double AbsTolerance = FP_ABSTOLERANCE;
   for (i = 0; i < _PB_NI; i++)

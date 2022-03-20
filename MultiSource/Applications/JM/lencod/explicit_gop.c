@@ -29,8 +29,8 @@
 *    Generation of hierarchical GOP
 ************************************************************************
 */
-void create_hierarchy()
-{
+__attribute__((always_inline)) void create_hierarchy()
+{ 
   int i, j;
   int centerB=input->successive_Bframe/2;
   GOP_DATA tmp;
@@ -147,7 +147,7 @@ void clear_gop_structure()
 *    Interpret GOP struct from input parameters
 ************************************************************************
 */
-void interpret_gop_structure()
+__attribute__((always_inline)) void interpret_gop_structure()
 {
 
   int nLength = strlen(input->ExplicitHierarchyFormat);
@@ -294,7 +294,7 @@ void interpret_gop_structure()
 *    Encode Enhancement Layer.
 ************************************************************************
 */
-void encode_enhancement_layer()
+__attribute__((always_inline)) void encode_enhancement_layer()
 {
   int previous_ref_idc = 1;
 

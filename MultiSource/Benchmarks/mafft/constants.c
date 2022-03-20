@@ -91,7 +91,7 @@ static void calcfreq( int nseq, char **seq, double *datafreq )
 	for( i=0; i<20; i++ ) datafreq[i] /= (double)total;
 }
 
-void constants( int nseq, char **seq )
+__attribute__((always_inline)) void constants( int nseq, char **seq )
 {
 	int i, j, x;
 //	double tmp;
@@ -545,7 +545,7 @@ void constants( int nseq, char **seq )
 		}
 #endif
 #if 0
-/* Ãí°Õ ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª */
+/* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 			penalty -= offset;
 #endif
 
@@ -848,7 +848,7 @@ void constants( int nseq, char **seq )
 		}
 #endif
 #if 0
-/* Ãí°Õ ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª */
+/* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 			penalty -= offset;
 #endif
 

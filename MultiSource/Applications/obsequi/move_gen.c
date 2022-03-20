@@ -88,7 +88,7 @@ move_generator_stage1(Move movelist[MAXMOVES], s32bit player)
 }
 
 extern s32bit
-move_generator_stage2(Move movelist[MAXMOVES], s32bit count, s32bit player)
+move_generator_stage2(Move movelist[MAXMOVES], s32bit count, s32bit player) __attribute__((always_inline))
 {
   s32bit i, player_index;
   u32bit prot_rows, curr_row, m, tmp;

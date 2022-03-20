@@ -63,7 +63,7 @@ char *str;
 **
 **	stores data and sets maximum counts
 */
-int L_init_file(int fnumber, char *fname)
+__attribute__((always_inline)) int L_init_file(int fnumber, char *fname) 
 {
 	extern char *fgets();
 	FILE *fp;

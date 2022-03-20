@@ -256,7 +256,7 @@ align_path(uchar *seq1, uchar *seq2, int i1, int j1, int i2, int j2, int dist,
 
 int
 align_get_dist(uchar *seq1, uchar *seq2, int i1, int j1, int i2, int j2,
-	       int limit)
+	       int limit) __attribute__((always_inline))
 {
         int *last_d, *temp_d;
         int goal_diag, ll, uu;
@@ -382,7 +382,7 @@ get_pos_width(collec_p_t eCol)
 void
 IDISPLAY(uchar *A, uchar *B, unsigned int M, unsigned int N,
 	 int *S, unsigned int AP, unsigned int BP, collec_p_t eCol,
-	 int direction)
+	 int direction) __attribute__((always_inline))
 {
   uchar *a, *b, *c, sign;
   int op, index, starti;

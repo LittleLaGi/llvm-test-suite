@@ -229,7 +229,7 @@ int main(int argc, char *argv[])
     return(0); /* zero means no error */
 }
 
-void runBatch(char *configFile, Configuration *config)
+__attribute__((always_inline)) void runBatch(char *configFile, Configuration *config)
 {
     bool success;
     int i;
@@ -291,7 +291,7 @@ void mygets(char *str, size_t n)
         str[len - 1] = '\0';
 }
 
-void runInteractively(char *fileName, Configuration *config)
+__attribute__((always_inline)) void runInteractively(char *fileName, Configuration *config)
 {
     char stringBuffer[200];
     Graph *graph;
@@ -357,7 +357,7 @@ void runInteractively(char *fileName, Configuration *config)
 
 }
 
-void exhaustiveLegSearch(char *fileName, Configuration *config)
+__attribute__((always_inline)) void exhaustiveLegSearch(char *fileName, Configuration *config)
 {
     Graph *graph;
     int found;

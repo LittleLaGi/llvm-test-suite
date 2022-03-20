@@ -178,7 +178,7 @@ int *make_data(int row,int col) /* creates a new _data with the correct */
   return new;         /* and return pointer to first element */
 }
 
-struct _list *make_list(int *data,int *value,int *all) /* create the whole _list of moves */
+ __attribute__((always_inline))  struct _list *make_list(int *data,int *value,int *all)  /* create the whole _list of moves */
                                                           /* for the _data structure data */
 {
   int row,col;
@@ -224,7 +224,7 @@ struct _list *make_list(int *data,int *value,int *all) /* create the whole _list
   return current;                           /* not the empty board */
 }
 
-struct _play *make_play(int all) /* make up the entire tree-like stuff */
+ __attribute__((always_inline)) struct _play *make_play(int all) /* make up the entire tree-like stuff */
 {
   int val;
   int *temp;
@@ -259,7 +259,7 @@ struct _play *make_play(int all) /* make up the entire tree-like stuff */
   return current;         /* and return pointer to start of list */
 }
 
-void make_wanted(int *data) /* makes up the list of positions from the full board */
+ __attribute__((always_inline)) void make_wanted(int *data) /* makes up the list of positions from the full board */
 {
          /* everything here is almost like in the previous function. */
 	 /* The reason its here, is that it does not do as much as   */

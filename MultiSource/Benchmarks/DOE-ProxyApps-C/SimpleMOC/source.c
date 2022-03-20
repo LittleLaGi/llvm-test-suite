@@ -1,7 +1,7 @@
 #include"SimpleMOC_header.h"
 
 // intitialize source structures and intitialize XS values to random numbers
-Source * initialize_sources( Input I, size_t * nbytes )
+__attribute__((always_inline)) Source * initialize_sources( Input I, size_t * nbytes )
 {
 	// Allocate space
 	Source * sources = (Source *) malloc( I.n_source_regions_per_node 
