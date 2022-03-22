@@ -57,7 +57,7 @@
 
 // 16-bit routines
 
-void unmix16( int32_t * u, int32_t * v, int16_t * out, uint32_t stride, int32_t numSamples, int32_t mixbits, int32_t mixres )
+__attribute__((always_inline)) void unmix16( int32_t * u, int32_t * v, int16_t * out, uint32_t stride, int32_t numSamples, int32_t mixbits, int32_t mixres )
 {
 	int16_t *	op = out;
 	int32_t 		j;
@@ -92,7 +92,7 @@ void unmix16( int32_t * u, int32_t * v, int16_t * out, uint32_t stride, int32_t 
 // 20-bit routines
 // - the 20 bits of data are left-justified in 3 bytes of storage but right-aligned for input/output predictor buffers
 
-void unmix20( int32_t * u, int32_t * v, uint8_t * out, uint32_t stride, int32_t numSamples, int32_t mixbits, int32_t mixres )
+__attribute__((always_inline)) void unmix20( int32_t * u, int32_t * v, uint8_t * out, uint32_t stride, int32_t numSamples, int32_t mixbits, int32_t mixres )
 {
 	uint8_t *	op = out;
 	int32_t 		j;
@@ -148,7 +148,7 @@ void unmix20( int32_t * u, int32_t * v, uint8_t * out, uint32_t stride, int32_t 
 // 24-bit routines
 // - the 24 bits of data are right-justified in the input/output predictor buffers
 
-void unmix24( int32_t * u, int32_t * v, uint8_t * out, uint32_t stride, int32_t numSamples,
+__attribute__((always_inline)) void unmix24( int32_t * u, int32_t * v, uint8_t * out, uint32_t stride, int32_t numSamples,
 				int32_t mixbits, int32_t mixres, uint16_t * shiftUV, int32_t bytesShifted )
 {
 	uint8_t *	op = out;
@@ -254,7 +254,7 @@ void unmix24( int32_t * u, int32_t * v, uint8_t * out, uint32_t stride, int32_t 
 // - otherwise, the calculations might overflow into the 33rd bit and be lost
 // - therefore, these routines deal with the specified "unused lower" bytes in the "shift" buffers
 
-void unmix32( int32_t * u, int32_t * v, int32_t * out, uint32_t stride, int32_t numSamples,
+__attribute__((always_inline)) void unmix32( int32_t * u, int32_t * v, int32_t * out, uint32_t stride, int32_t numSamples,
 				int32_t mixbits, int32_t mixres, uint16_t * shiftUV, int32_t bytesShifted )
 {
 	int32_t *	op = out;

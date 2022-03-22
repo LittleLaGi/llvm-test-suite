@@ -58,7 +58,7 @@ LIST hash_TABLE[hash__SIZE];
 /* Functions                                                  */
 /**************************************************************/
 
-void hash_Init(void)
+__attribute__((always_inline)) void hash_Init(void)
 {
   int i;
   

@@ -258,7 +258,7 @@ newAllPairs()
 	return rv;
 }
 
-void
+__attribute__((always_inline)) void
 findAllPairs()
 {
 	List pl;

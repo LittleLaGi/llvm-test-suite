@@ -109,7 +109,7 @@ newTable(op) Operator op;
 	return t;
 }
 
-static void
+__attribute__((always_inline)) static void
 GT_1(t) Table t;
 {
 	Item_Set	*ts;
@@ -125,7 +125,8 @@ GT_1(t) Table t;
 	t->transition = ts;
 }
 
-static void
+
+__attribute__((always_inline)) static void
 GT_2_0(t) Table t;
 {
 	Item_Set	*ts;
@@ -144,7 +145,7 @@ GT_2_0(t) Table t;
 	t->transition = ts;
 }
 
-static void
+__attribute__((always_inline)) static void
 GT_2_1(t) Table t;
 {
 	Item_Set	*ts;
@@ -175,7 +176,7 @@ GT_2_1(t) Table t;
 	t->transition = ts;
 }
 
-static void
+__attribute__((always_inline)) static void
 growTransition(t, dim) Table t; ArityNum dim;
 {
 
@@ -205,7 +206,7 @@ growTransition(t, dim) Table t; ArityNum dim;
 	}
 }
 
-static Item_Set
+__attribute__((always_inline)) static Item_Set
 restrict(d, ts) Dimension d; Item_Set ts;
 {
 	DeltaCost	base;
@@ -247,7 +248,7 @@ restrict(d, ts) Dimension d; Item_Set ts;
 	return r;
 }
 
-static void
+__attribute__((always_inline)) static void
 addHP_1(t, ts) Table t; Item_Set ts;
 {
 	List pl;
@@ -284,7 +285,7 @@ addHP_1(t, ts) Table t; Item_Set ts;
 	}
 }
 
-static void
+__attribute__((always_inline)) static void
 addHP_2_0(t, ts) Table t; Item_Set ts;
 {
 	List pl;
@@ -331,7 +332,7 @@ addHP_2_0(t, ts) Table t; Item_Set ts;
 	}
 }
 
-static void
+__attribute__((always_inline)) static void
 addHP_2_1(t, ts) Table t; Item_Set ts;
 {
 	List pl;
@@ -377,7 +378,7 @@ addHP_2_1(t, ts) Table t; Item_Set ts;
 	}
 }
 
-static void
+__attribute__((always_inline)) static void
 addHyperPlane(t, i, ts) Table t; ArityNum i; Item_Set ts;
 {
 	switch (t->op->arity) {
@@ -402,7 +403,7 @@ addHyperPlane(t, i, ts) Table t; ArityNum i; Item_Set ts;
 	}
 }
 
-void
+__attribute__((always_inline)) void
 addToTable(t, ts) Table t; Item_Set ts;
 {
 	ArityNum i;

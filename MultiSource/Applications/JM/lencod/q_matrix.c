@@ -154,7 +154,7 @@ __attribute__((always_inline)) int CheckParameterName (char *s, int *type)
  *    buffer size of buffer
  ***********************************************************************
  */
-void ParseMatrix (char *buf, int bufsize)
+__attribute__((always_inline)) void ParseMatrix (char *buf, int bufsize)
 {
   char *items[MAX_ITEMS_TO_PARSE];
   int MapIdx;

@@ -227,7 +227,7 @@ int FmoInit(pic_parameter_set_rbsp_t* pps, seq_parameter_set_rbsp_t* sps)
  *    Free memory allocated by FMO functions
  ************************************************************************
  */
-int FmoFinit()
+__attribute__((always_inline)) int FmoFinit()
 {
   if (MbToSliceGroupMap)
   {
@@ -325,7 +325,7 @@ int FmoGetSliceGroupId (int mb)
  *    number of the current macroblock
  ************************************************************************
  */
-int FmoGetNextMBNr (int CurrentMbNr)
+__attribute__((always_inline)) int FmoGetNextMBNr (int CurrentMbNr)
 {
   int SliceGroup = FmoGetSliceGroupId (CurrentMbNr);
 

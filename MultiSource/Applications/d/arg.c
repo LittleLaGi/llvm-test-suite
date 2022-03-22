@@ -57,7 +57,7 @@ process_arg(ArgumentState *arg_state, int i, char ***argv) {
     desc[i].pfn(arg_state, arg);
 }
 
-void
+__attribute__((always_inline)) void
 process_args(ArgumentState *arg_state, char **argv) {
   int i = 0, len;
   char *end;

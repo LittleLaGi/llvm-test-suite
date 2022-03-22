@@ -73,7 +73,7 @@ LIST    fol_SYMBOLS;
 /* ********************************************************** */
 /**************************************************************/
 
-void fol_Init(BOOL All, PRECEDENCE Precedence)
+__attribute__((always_inline)) void fol_Init(BOOL All, PRECEDENCE Precedence)
 /**************************************************************
   INPUT:   A boolean value determining whether only 'equality' or
            all fol symbols are created, and a precedence.
@@ -298,7 +298,7 @@ void fol_NormalizeVars(TERM Formula)
 }
 
 
-void fol_NormalizeVarsStartingAt(TERM Formula, SYMBOL S)
+__attribute__((always_inline)) void fol_NormalizeVarsStartingAt(TERM Formula, SYMBOL S)
 /**************************************************************
   INPUT:   A sentence.
   RETURNS: void.

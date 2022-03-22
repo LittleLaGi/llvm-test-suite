@@ -2019,7 +2019,7 @@ initialize_whitespace_parser(Parser *p) {
   }
 }
 
-D_ParseNode *
+__attribute__((always_inline)) D_ParseNode *
 dparse(D_Parser *ap, char *buf, int buf_len) {
   int r;
   Parser *p = (Parser *)ap;

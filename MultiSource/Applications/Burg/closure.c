@@ -7,7 +7,7 @@ int prevent_divergence = 0;
 
 List chainrules;
 
-void
+__attribute__((always_inline)) void
 findChainRules()
 {
 	List pl;

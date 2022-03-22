@@ -220,7 +220,7 @@ int CheckOffsetParameterName (char *s, int *type)
  *    buffer size of buffer
  ***********************************************************************
  */
-void ParseQOffsetMatrix (char *buf, int bufsize)
+__attribute__((always_inline)) void ParseQOffsetMatrix (char *buf, int bufsize)
 {
   char *items[MAX_ITEMS_TO_PARSE];
   int MapIdx;

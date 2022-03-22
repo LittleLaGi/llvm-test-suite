@@ -145,7 +145,7 @@ enterStateMap(im, v, width, new) PlankMap im; short * v; int width; int *new;
 	smt.maps = newList(sm, smt.maps);
 }
 
-static List
+__attribute__((always_inline)) static List
 assemblePlanks()
 {
 	List planks = 0;
@@ -232,7 +232,7 @@ dumpSortedRules()
 	printf("\n");
 }
 
-static void
+__attribute__((always_inline)) static void
 renumber()
 {
 	int i;
@@ -472,7 +472,7 @@ doNonTermPmaps(n) NonTerminal n;
 	n->pmap = im;
 }
 
-static void
+__attribute__((always_inline)) static void
 makePmaps()
 {
 	foreachList((ListFn) doDimPmaps, operators);
@@ -480,7 +480,7 @@ makePmaps()
 	foreachList((ListFn) doNonTermPmaps, nonterminals);
 }
 
-static void
+__attribute__((always_inline)) static void
 outPlank(p) Plank p;
 {
 	List f;
@@ -507,7 +507,7 @@ outPlank(p) Plank p;
 	fprintf(outfile, "};\n");
 }
 
-static void
+__attribute__((always_inline)) static void
 purgePlanks(planks) List planks;
 {
 	List p;
@@ -518,7 +518,7 @@ purgePlanks(planks) List planks;
 	}
 }
 
-static void
+__attribute__((always_inline)) static void
 inToEx()
 {
 	int i;
@@ -550,7 +550,7 @@ inToEx()
 	fprintf(outfile, "\n};\n");
 }
 
-static void
+__attribute__((always_inline)) static void
 makePlankRuleMacros()
 {
 	int i;
@@ -585,7 +585,7 @@ makePlankRuleMacros()
 }
 
 static void
-makePlankRule()
+__attribute__((always_inline)) makePlankRule()
 {
 	int i;
 
@@ -853,7 +853,7 @@ doPlankLabelSafely(op) Operator op;
 	}
 }
 
-static void
+__attribute__((always_inline)) static void
 makePlankState()
 {
 	fprintf(outfile, "\n");
@@ -919,7 +919,7 @@ makePlankState()
 	fprintf(outfile, "}\n");
 }
 
-void
+__attribute__((always_inline)) void
 makePlanks()
 {
 	List planks;

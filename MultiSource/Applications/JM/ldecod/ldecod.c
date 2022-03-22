@@ -22,7 +22,7 @@
  *     H.264/AVC reference decoder project main()
  *  \author
  *     Main contributors (see contributors.h for copyright, address and affiliation details)
- *     - Inge Lille-Langøy       <inge.lille-langoy@telenor.com>
+ *     - Inge Lille-Langï¿½y       <inge.lille-langoy@telenor.com>
  *     - Rickard Sjoberg         <rickard.sjoberg@era.ericsson.se>
  *     - Stephan Wenger          <stewe@cs.tu-berlin.de>
  *     - Jani Lainema            <jani.lainema@nokia.com>
@@ -135,7 +135,7 @@ void JMDecHelpExit ()
 }
 
 
-void Configure(int ac, char *av[])
+__attribute__((always_inline)) void Configure(int ac, char *av[])
 {
   int CLcount;
   char *config_filename=NULL;
@@ -470,7 +470,7 @@ void init_frext(struct img_par *img)  //!< image parameters
  *    none
  ************************************************************************
  */
-void init_conf(struct inp_par *inp, char *config_filename)
+__attribute__((always_inline)) void init_conf(struct inp_par *inp, char *config_filename)
 {
   FILE *fd;
   int NAL_mode;
@@ -588,7 +588,7 @@ void init_conf(struct inp_par *inp, char *config_filename)
  *    None
  ************************************************************************
  */
-void report(struct inp_par *inp, struct img_par *img, struct snr_par *snr)
+__attribute__((always_inline)) void report(struct inp_par *inp, struct img_par *img, struct snr_par *snr)
 {
   #define OUTSTRING_SIZE 255
   char string[OUTSTRING_SIZE];
@@ -823,7 +823,7 @@ void FreePartition (DataPartition *dp, int n)
  *    Input Parameters struct inp_par *inp,  struct img_par *img
  ************************************************************************
  */
-void malloc_slice(struct inp_par *inp, struct img_par *img)
+__attribute__((always_inline)) void malloc_slice(struct inp_par *inp, struct img_par *img)
 {
   Slice *currSlice;
 
@@ -857,7 +857,7 @@ void malloc_slice(struct inp_par *inp, struct img_par *img)
  *    Input Parameters struct inp_par *inp,  struct img_par *img
  ************************************************************************
  */
-void free_slice(struct inp_par *inp, struct img_par *img)
+__attribute__((always_inline)) void free_slice(struct inp_par *inp, struct img_par *img)
 {
   Slice *currSlice = img->currentSlice;
 

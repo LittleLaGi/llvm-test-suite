@@ -322,7 +322,7 @@ int ReadHRDParameters(DataPartition *p, hrd_parameters_t *hrd)
 }
 
 
-int InterpretPPS (DataPartition *p, pic_parameter_set_rbsp_t *pps)
+__attribute__((always_inline)) int InterpretPPS (DataPartition *p, pic_parameter_set_rbsp_t *pps)
 {
   unsigned i;
   int NumberBitsPerSliceGroupId;
@@ -462,7 +462,7 @@ void MakePPSavailable (int id, pic_parameter_set_rbsp_t *pps)
   pps->slice_group_id          = NULL;
 }
 
-void CleanUpPPS()
+__attribute__((always_inline)) void CleanUpPPS()
 {
   int i;
 
@@ -483,7 +483,7 @@ void MakeSPSavailable (int id, seq_parameter_set_rbsp_t *sps)
 }
 
 
-void ProcessSPS (NALU_t *nalu)
+__attribute__((always_inline)) void ProcessSPS (NALU_t *nalu)
 {
   DataPartition *dp = AllocPartition(1);
   seq_parameter_set_rbsp_t *sps = AllocSPS();
@@ -522,7 +522,7 @@ void ProcessSPS (NALU_t *nalu)
 }
 
 
-void ProcessPPS (NALU_t *nalu)
+__attribute__((always_inline)) void ProcessPPS (NALU_t *nalu)
 {
   DataPartition *dp;
   pic_parameter_set_rbsp_t *pps;

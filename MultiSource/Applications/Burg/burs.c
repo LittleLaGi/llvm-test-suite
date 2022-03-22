@@ -43,7 +43,7 @@ doLeaf(leaf) Operator leaf;
 
 static Operator addTypeInfo(Operator op) { return op; }
 
-void
+__attribute__((always_inline)) void
 build()
 {
 	int new;

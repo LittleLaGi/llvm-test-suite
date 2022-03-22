@@ -357,7 +357,7 @@ __attribute__((always_inline)) void runInteractively(char *fileName, Configurati
 
 }
 
-__attribute__((always_inline)) void exhaustiveLegSearch(char *fileName, Configuration *config)
+void exhaustiveLegSearch(char *fileName, Configuration *config)
 {
     Graph *graph;
     int found;

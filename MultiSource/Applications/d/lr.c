@@ -124,7 +124,7 @@ build_state_for(Grammar *g, State *s, Elem *e) {
     add_goto(s, build_closure(g, ss), e);
 }
 
-static void
+__attribute__((always_inline)) static void
 build_new_states(Grammar *g) {
   int i, j;
   State *s;
@@ -145,7 +145,7 @@ build_new_states(Grammar *g) {
   }
 }
 
-static void
+__attribute__((always_inline)) static void
 build_states_for_each_production(Grammar *g) {
   int i;
   for (i = 0; i < g->productions.n; i++)
@@ -171,7 +171,7 @@ gotocmp(const void *aa, const void *bb) {
   return ((i > j) ? 1 : ((i < j) ? -1 : 0));
 }
 
-static void
+__attribute__((always_inline)) static void
 sort_Gotos(Grammar *g) {
   int i;
 
@@ -181,7 +181,7 @@ sort_Gotos(Grammar *g) {
   }
 }
 
-static void
+__attribute__((always_inline)) static void
 build_LR_sets(Grammar *g) {
   State *s = new_state();
   insert_item(s, g->productions.v[0]->rules.v[0]->elems.v[0]);
@@ -253,7 +253,7 @@ sort_VecAction(VecAction *v) {
   qsort(v->v, v->n, sizeof(Action*), actioncmp);
 }
 
-static void
+__attribute__((always_inline)) static void
 build_actions(Grammar *g) {
   int x, y, z;
   State *s;
@@ -310,7 +310,7 @@ hintcmp(const void *ai, const void *aj) {
 	  (i->rule->index < j->rule->index) ? -1 : 0)));
 }
 
-static void
+__attribute__((always_inline)) static void
 build_right_epsilon_hints(Grammar *g) {
   int x, y, z;
   State *s, *ss;
@@ -344,7 +344,7 @@ build_right_epsilon_hints(Grammar *g) {
   }
 }
 
-static void
+__attribute__((always_inline)) static void
 build_error_recovery(Grammar *g) {
   int i, j, k, depth;
   State *s;
@@ -381,7 +381,7 @@ build_error_recovery(Grammar *g) {
   }
 }
 
-void
+__attribute__((always_inline)) void
 build_LR_tables(Grammar *g) {
   init_LR(g);
   build_LR_sets(g);

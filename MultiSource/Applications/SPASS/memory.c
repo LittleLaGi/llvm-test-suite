@@ -107,7 +107,7 @@ static BOOL memory_ManagementInitialized(void)
 }
 #endif /* CHECK */
 
-void memory_Init(long Maxmem)
+__attribute__((always_inline)) void memory_Init(long Maxmem)
 /*************************************************************
   INPUT  : The maximal amount of memory available in bytes 
            for the memory module; if Maxmem < 0 the module 
@@ -217,7 +217,7 @@ void memory_Init(long Maxmem)
 
     TotalSize                        = CurrentResource->total_size;
 
-    /* last block´s offset */
+    /* last blockï¿½s offset */
     CurrentResource->offset          =
       ((memory_PAGESIZE-extra)/TotalSize)*TotalSize 
       + sizeof(POINTER) + memory_OFFSET;
@@ -305,7 +305,7 @@ static void memory_CheckIfPointerIsAlreadyFreed(POINTER Pointer,
 *********************************************************/
 {
   if ( memory_GetBlockStatus(Pointer) == memory_MAGICFREE) {
-    MEMORY_INFO  Info;          /* block´s debug information      */
+    MEMORY_INFO  Info;          /* blockï¿½s debug information      */
 
     Info = (MEMORY_INFO) ((char *) Pointer - memory_OFFSET);
 
@@ -370,7 +370,7 @@ static void memory_CheckPointer(POINTER Pointer, unsigned int Size)
 
 
   if (Size == 0) {
-    /* We don´t allocate 0 byte sized blocks */
+    /* We donï¿½t allocate 0 byte sized blocks */
     misc_StartUserErrorReport();
     misc_UserErrorReport("\n In memory_CheckPointer:");
     misc_UserErrorReport("\n Memory Error.");
@@ -418,7 +418,7 @@ static void memory_CheckPointer(POINTER Pointer, unsigned int Size)
   if (BlockStatus == memory_MAGICMALLOC) {
     if (BlockSize != Size) {
       
-      /* we expect block size in a block´s debug
+      /* we expect block size in a blockï¿½s debug
 	 information and given block size to match.
       */
 
@@ -533,7 +533,7 @@ void memory_CheckFree(POINTER Freepointer, unsigned int Size,
 	    information.
 **********************************************************/
 {
-  MEMORY_INFO  Info;          /* block´s debug information      */
+  MEMORY_INFO  Info;          /* blockï¿½s debug information      */
 
   /* Check if memory management was initialized */
   memory_CheckIfModuleIsInitialized("memory_Free", File, Line);
@@ -547,10 +547,10 @@ void memory_CheckFree(POINTER Freepointer, unsigned int Size,
   /* Set all bytes to zero, so we can detect overwriting of freed memory */
   memset (Freepointer, memory__FREESHREDDER, RealBlockSize);
 
-  /* Get current block´s debug information */
+  /* Get current blockï¿½s debug information */
   Info = (MEMORY_INFO) ((char *) Freepointer - memory_OFFSET);
 
-  /* Set block´s debug and administration information */
+  /* Set blockï¿½s debug and administration information */
   memory_SetInfo(Info,Info->mallocInFile, Info->mallocAtLine, File, Line);
   memory_SetBlockStatusAndSize(Freepointer, memory_MAGICFREE, Size);
 }
@@ -570,7 +570,7 @@ POINTER memory_Malloc(unsigned int Bytes)
 {
   char *mem; /* pointer to memory block obtained from malloc */
 
-  /* Pass the call through to compiler´s malloc */
+  /* Pass the call through to compilerï¿½s malloc */
   mem = (char *)malloc(Bytes);
 
   /* If malloc fails print an error message and exit */
@@ -672,7 +672,7 @@ POINTER memory_Malloc(unsigned int Bytes)
     /* Check for violation of maximum allocation limit */
     if (memory_MAXMEM >= 0) {
       /* there is a maximum allocation limit, 
-	 let´s see if there is enough left 
+	 letï¿½s see if there is enough left 
       */
       if ((unsigned int)memory_MAXMEM < RealBigBlockSize) {
 	/* if it is not print an error message and exit */
@@ -711,7 +711,7 @@ POINTER memory_Malloc(unsigned int Bytes)
 	 is double linked for fast deletion 
       */
 
-      MEMORY_BIGBLOCKHEADER NewBigBlock; /* new block´s administration 
+      MEMORY_BIGBLOCKHEADER NewBigBlock; /* new blockï¿½s administration 
 					    information */
 
       /* insert the fresh block as the first list element */
@@ -720,8 +720,8 @@ POINTER memory_Malloc(unsigned int Bytes)
       NewBigBlock->previous = NULL;
 
       /* if there are already elements in the big block list,
-	 change the first element´s pointer to the previous block
-	 to point to the fresh block´s administration information
+	 change the first elementï¿½s pointer to the previous block
+	 to point to the fresh blockï¿½s administration information
       */
       if (memory_BIGBLOCKS != NULL) {
 	memory_BIGBLOCKS->previous = NewBigBlock;
@@ -741,7 +741,7 @@ POINTER memory_Malloc(unsigned int Bytes)
       NewMemory += memory_OFFSET;
 #endif
 
-      /* add block´s real size to the total sum of allocated bytes */
+      /* add blockï¿½s real size to the total sum of allocated bytes */
       memory_NEWBYTES    += RealBigBlockSize;
     }
     else {
@@ -781,11 +781,11 @@ POINTER memory_Malloc(unsigned int Bytes)
       /* update the free blocks list for that size */
       Resource->free            = *((POINTER *)(NewMemory));
 
-      /* subtract block´s total size from the sum of freed bytes */
+      /* subtract blockï¿½s total size from the sum of freed bytes */
       memory_FREEDBYTES        -= Resource->total_size;
 
 #ifdef CHECK
-      /* calculate the address of the block´s debug information */ 
+      /* calculate the address of the blockï¿½s debug information */ 
       NewInfo = (MEMORY_INFO) ((char*) NewMemory - memory_OFFSET);
 
       /* Check if the block has been used after deallocation */
@@ -804,11 +804,11 @@ POINTER memory_Malloc(unsigned int Bytes)
 	/* update the pointer to the next usable block */
 	Resource->next           = NewMemory + Resource->total_size;
 
-	/* add block´s total size to the sum of allocated bytes */
+	/* add blockï¿½s total size to the sum of allocated bytes */
 	memory_NEWBYTES         += Resource->total_size;
 
 #ifdef CHECK
-	/* Check if the fresh block´s address is sane */
+	/* Check if the fresh blockï¿½s address is sane */
 	if ((char *)NewMemory > (char *) Resource->end_of_page) {
 	  /* if it is not, then we have detected an internal error
 	     in the module itself. Oops! So we print an error message
@@ -823,7 +823,7 @@ POINTER memory_Malloc(unsigned int Bytes)
 	  misc_FinishErrorReport();
 	}
 
-	/* if all is well, we initialize the pointer to fresh block´s
+	/* if all is well, we initialize the pointer to fresh blockï¿½s
 	   debug information 
 	*/
 	NewInfo = (MEMORY_INFO)((char*) NewMemory - memory_OFFSET);
@@ -834,7 +834,7 @@ POINTER memory_Malloc(unsigned int Bytes)
 	/* Check for violation of maximum allocation limit */
 	if (memory_MAXMEM >=0) {
 	  /* there is a maximum allocation limit, 
-	     let´s see if there is enough left
+	     letï¿½s see if there is enough left
 	  */
 	  if ((unsigned int)memory_MAXMEM < memory_PAGESIZE) {
 	    /* if it is not, then print an error message and exit */
@@ -860,7 +860,7 @@ POINTER memory_Malloc(unsigned int Bytes)
 
 	/* check if allocation was successful */
 	if (NewMemory == NULL) {
-	  /* if it wasn´t print an error message and exit */
+	  /* if it wasnï¿½t print an error message and exit */
 	  misc_StartUserErrorReport();
 	  misc_UserErrorReport("\n In memory_Malloc:");
 	  misc_UserErrorReport("\n Memory Error.");
@@ -880,7 +880,7 @@ POINTER memory_Malloc(unsigned int Bytes)
 	*((POINTER *)NewMemory)     = Resource->page;
 	Resource->page              = NewMemory;
 
-	/* add block´s total size to the sum of allocated bytes */
+	/* add blockï¿½s total size to the sum of allocated bytes */
 	memory_NEWBYTES            += Resource->total_size;
 
 	/* set the end of page pointer for the fresh page */
@@ -904,12 +904,12 @@ POINTER memory_Malloc(unsigned int Bytes)
   }
 
 #ifdef CHECK
-  /* Set block´s debug information */
+  /* Set blockï¿½s debug information */
   memory_SetInfo(NewInfo, File, Line, NULL, 0);
   memory_SetBlockStatusAndSize(NewMemory,  
 			       memory_MAGICMALLOC, Bytes);
 
-  /* delete all block´s usable bytes with a shredder value */
+  /* delete all blockï¿½s usable bytes with a shredder value */
   memset(NewMemory, memory__FREESHREDDER,
 	 memory_LookupRealBlockSize(Bytes));
 #endif
@@ -927,7 +927,7 @@ POINTER memory_Calloc(unsigned int Elements, unsigned int Bytes)
 {
   char *mem; /* pointer to memory block obtained from calloc */
 
-  /* Pass call through to compiler´s calloc */
+  /* Pass call through to compilerï¿½s calloc */
   mem = (char *)calloc(Elements, Bytes);
   
   /* If calloc fails print an error message and exit */
@@ -1052,7 +1052,7 @@ void memory_FreeAllMem(void)
 /* ********************************************************** */
 /**************************************************************/
 
-void memory_Print(void)
+__attribute__((always_inline)) void memory_Print(void)
 /**************************************************************
   INPUT  : None.
   RETURNS: None.
@@ -1070,7 +1070,7 @@ void memory_Print(void)
 #endif
 }
 
-void memory_FPrint(FILE* File)
+__attribute__((always_inline)) void memory_FPrint(FILE* File)
 /**************************************************************
   INPUT  : A file pointer.
   RETURNS: None.
@@ -1137,7 +1137,7 @@ void memory_PrintAllocatedBlocks(unsigned int Size)
   unsigned int     BlockSize;    /* current block size                 */
 
 #ifdef CHECK
-  MEMORY_INFO      Info;         /* current block´s debug information  */
+  MEMORY_INFO      Info;         /* current blockï¿½s debug information  */
 #endif
 
   /* Allocated blocks are administered 
@@ -1161,7 +1161,7 @@ void memory_PrintAllocatedBlocks(unsigned int Size)
   */
 
   if (Size >= memory__DYNMAXSIZE) {
-    /* if that´s not the case print an error message and exit */
+    /* if thatï¿½s not the case print an error message and exit */
     misc_StartUserErrorReport();
     misc_UserErrorReport("\n In memory_PrintAllocatedBlocks:");
     misc_UserErrorReport("\n Parameter size is too big: %d.",
@@ -1220,7 +1220,7 @@ void memory_PrintAllocatedBlocks(unsigned int Size)
 
 	/* Check if there were any allocated blocks from current page */
 	if (ActData == ActNext || ActData == ActEndOfPage) {
-	  /* if that´s not the case print the information to stdout */
+	  /* if thatï¿½s not the case print the information to stdout */
 	  printf("\n\n   No memory allocated from page at address %p\n", ActPage);
 	}
 	else {
@@ -1262,10 +1262,10 @@ void memory_PrintFreedBlocks(unsigned int Size)
   POINTER     ActFree; /* current block */
 
 #ifdef CHECK
-  MEMORY_INFO Info;    /* current block´s debug information */
+  MEMORY_INFO Info;    /* current blockï¿½s debug information */
 #endif
 
-  /* since we don´t recycle blocks whose size is
+  /* since we donï¿½t recycle blocks whose size is
      greater or equal to memory__DYNMAXSIZE, 
      memory_PrintFreedBlocks is meaningless
      for such block sizes.
@@ -1273,7 +1273,7 @@ void memory_PrintFreedBlocks(unsigned int Size)
 
   /* test if given block size is legal */
   if (Size >= memory__DYNMAXSIZE) {
-    /* if that´s not the case print an error message and exit */
+    /* if thatï¿½s not the case print an error message and exit */
     misc_StartUserErrorReport();
     misc_UserErrorReport("\n In memory_PrintFreedBlocks.");
     misc_UserErrorReport("\n Parameter Size is too big: %d.", 
@@ -1292,7 +1292,7 @@ void memory_PrintFreedBlocks(unsigned int Size)
 
     /* test if the free block list is empty */
     if (*((int *)ActFree) == EOF) {
-      /* if that´s true, print that information to stdout */
+      /* if thatï¿½s true, print that information to stdout */
       puts("\n\n   No freed memory");
     }
     else {
@@ -1301,13 +1301,13 @@ void memory_PrintFreedBlocks(unsigned int Size)
       fputs("\n\n   Free: ", stdout);
       while (*((int *)ActFree) != EOF) {
 #ifdef CHECK
-	/* in debug mode print current block´s address
+	/* in debug mode print current blockï¿½s address
 	   and origin of (de)allocation
 	*/
 
-	/* check if block´s size is correct */ 
+	/* check if blockï¿½s size is correct */ 
 	if ( memory_GetBlockSize(ActFree) == Size) {
-	  /* if that´s true than print block´s information */
+	  /* if thatï¿½s true than print blockï¿½s information */
 	  Info = (MEMORY_INFO) ((char *) ActFree - memory_OFFSET);
 	  printf("\n\t%p\tallocated in file %s at line %d",
 		 ActFree,  Info->mallocInFile, Info->mallocAtLine);
@@ -1324,7 +1324,7 @@ void memory_PrintFreedBlocks(unsigned int Size)
 
 	  /* test if we are not in page sharing mode */
 	  if (memory__SHAREDPAGES == 1) {
-	    /* if that´s true print an error message and exit */
+	    /* if thatï¿½s true print an error message and exit */
 	    misc_StartUserErrorReport();
 	    misc_UserErrorReport("\n In memory_PrintFreedBlocks:");
 	    misc_UserErrorReport("\n Memory Error. Memory block size mismatch.");
@@ -1357,16 +1357,16 @@ void memory_PrintAllocatedBigBlocks(void)
 #ifndef NO_MEMORY_MANAGEMENT
 #ifdef CHECK
   MEMORY_BIGBLOCKHEADER Ptr;         /* current big block in list */
-  MEMORY_INFO           Info;        /* block´s debug information */
-  char                * BlockStart;  /* block´s start address     */
+  MEMORY_INFO           Info;        /* blockï¿½s debug information */
+  char                * BlockStart;  /* blockï¿½s start address     */
   
   /* start with the first block in the big block list */
   Ptr = memory_BIGBLOCKS;
 
-  /* check whether big block list isn´t empty */
+  /* check whether big block list isnï¿½t empty */
   if (Ptr != NULL) {
-    /* if that´s the case traverse through the list
-       and print each block´s address, size and
+    /* if thatï¿½s the case traverse through the list
+       and print each blockï¿½s address, size and
        origin of (de)allocation information
     */
     do {
@@ -1404,12 +1404,12 @@ void memory_PrintDetailed(void)
   POINTER           ActData;      /* current block                         */
   POINTER           ActEndOfPage; /* end of current page                   */
   unsigned int      BlockSize;    /* total size of a block of current size */
-  unsigned int      PageOffset;   /* current page´s offset                 */
+  unsigned int      PageOffset;   /* current pageï¿½s offset                 */
 
   unsigned int      i;
 
 
-  /* print end-of-memory pointer´s address */
+  /* print end-of-memory pointerï¿½s address */
   printf("\n\nEOF Pointer: %p\n", (void*)&memory__EOF);
 
   /* for all administrated block sizes print detailed information */
@@ -1430,9 +1430,9 @@ void memory_PrintDetailed(void)
 
     /* Check if there were any requests for blocks of size i */
     if (*((int *)ActPage) == EOF) {
-      /* if that´s not the case check if memory management is consistent */
+      /* if thatï¿½s not the case check if memory management is consistent */
       if (*((int *)ActData) == EOF) {
-	/* if that´s true, print that no requests occurred to stdout */
+	/* if thatï¿½s true, print that no requests occurred to stdout */
 	puts("   No request so far");
       }
       else {
@@ -1494,7 +1494,7 @@ void memory_PrintDetailed(void)
 }
 
 
-void memory_PrintLeaks(void)
+__attribute__((always_inline)) void memory_PrintLeaks(void)
 /**************************************************************
   INPUT  : None.
   RETURNS: None.
@@ -1514,7 +1514,7 @@ void memory_PrintLeaks(void)
   /* Check if some memory is still allocated */ 
   if (memory_UsedBytes() != 0L) { 
 
-    /* If that´s true, print all allocated blocks  */
+    /* If thatï¿½s true, print all allocated blocks  */
 
     /* Start with blocks administered by our memory management */
     for (Size = 1; Size < memory__DYNMAXSIZE; Size++) {
@@ -1529,7 +1529,7 @@ void memory_PrintLeaks(void)
 	 memory blocks of that size */
       if (*((int *)ActPage) != EOF) {
       
-	/* if that´s true, browse through all blocks on all pages
+	/* if thatï¿½s true, browse through all blocks on all pages
 	   to find a block that is still allocated
 	*/
 #ifdef CHECK

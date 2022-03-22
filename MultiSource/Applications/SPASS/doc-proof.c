@@ -68,7 +68,7 @@ void dp_Init(void)
 }
 
 
-static void dp_FPrintDFGProof(LIST Clauses, const char *FilePrefix,
+__attribute__((always_inline)) static void dp_FPrintDFGProof(LIST Clauses, const char *FilePrefix,
 			      FLAGSTORE Flags, PRECEDENCE Precedence)
 /*********************************************************
   INPUT:   A list of clauses representing a proof, a
@@ -143,7 +143,7 @@ static void dp_FPrintDFGProof(LIST Clauses, const char *FilePrefix,
   memory_Free(name, sizeof(char)*(strlen(FilePrefix)+5));
 }
 
-LIST dp_PrintProof(PROOFSEARCH Search, LIST Clauses, const char *FilePrefix)
+__attribute__((always_inline)) LIST dp_PrintProof(PROOFSEARCH Search, LIST Clauses, const char *FilePrefix)
 /*********************************************************
   INPUT:   A proofsearch object, a list of empty clauses and
            the prefix of the output file name.

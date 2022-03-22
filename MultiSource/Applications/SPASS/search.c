@@ -237,7 +237,7 @@ static void prfs_DeleteFromSortTheories(PROOFSEARCH Search, CLAUSE Clause)
 }
 
 
-void prfs_DeleteDocProof(PROOFSEARCH Search)
+__attribute__((always_inline)) void prfs_DeleteDocProof(PROOFSEARCH Search)
 /**************************************************************
   INPUT:   A proof search object.
   RETURNS: Nothing.
@@ -343,7 +343,7 @@ void prfs_Clean(PROOFSEARCH Search)
 }
 
 
-void prfs_SwapIndexes(PROOFSEARCH Search)
+__attribute__((always_inline)) void prfs_SwapIndexes(PROOFSEARCH Search)
 /**************************************************************
   INPUT:   A proof search object.
   RETURNS: Nothing.
@@ -1189,7 +1189,7 @@ CLAUSE prfs_PerformSplitting(PROOFSEARCH Search, CLAUSE Clause)
 }
 
 
-void prfs_InstallFiniteMonadicPredicates(PROOFSEARCH Search, LIST Clauses,
+__attribute__((always_inline)) void prfs_InstallFiniteMonadicPredicates(PROOFSEARCH Search, LIST Clauses,
 					 LIST Predicates)
 /**************************************************************
   INPUT:   A proof search object a list of clauses and a list

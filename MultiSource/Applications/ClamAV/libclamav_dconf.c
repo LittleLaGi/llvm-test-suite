@@ -145,7 +145,7 @@ struct cli_dconf *cli_dconf_init(void)
     return dconf;
 }
 
-void cli_dconf_print(struct cli_dconf *dconf)
+__attribute__((always_inline)) void cli_dconf_print(struct cli_dconf *dconf)
 {
 	uint8_t pe = 0, elf = 0, arch = 0, doc = 0, mail = 0, other = 0, phishing=0;
 	unsigned int i;

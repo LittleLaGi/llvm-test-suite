@@ -279,7 +279,7 @@ more unused computed values; it hasn't been tried. */
 
 // --------------------------- increment -------------------------------
 
-static inline __attribute__((always_inline)) int
+__attribute__((always_inline)) static inline int
 increment(void)
 {
 

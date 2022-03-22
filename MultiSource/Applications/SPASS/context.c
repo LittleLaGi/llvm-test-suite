@@ -85,7 +85,7 @@ int     cont_STATETOPSTACK;    /* Storage to save state of the top element of th
 /**************************************************************/
 
 
-void cont_Init(void)
+__attribute__((always_inline)) void cont_Init(void)
 /**********************************************************
   INPUT:   None.
   RETURNS: None.
@@ -130,7 +130,7 @@ void cont_Check(void)
 }
 
 
-void cont_Free(void)
+__attribute__((always_inline)) void cont_Free(void)
 /**********************************************************
   INPUT:   None.
   RETURNS: None.

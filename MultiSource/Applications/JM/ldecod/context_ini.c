@@ -40,7 +40,7 @@
 }
 
 
-void
+__attribute__((always_inline)) void
 init_contexts (struct img_par* img)
 {
   MotionInfoContexts*  mc = img->currentSlice->mot_ctx;

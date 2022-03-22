@@ -68,7 +68,7 @@ extern seq_parameter_set_rbsp_t SeqParSet[MAXSPS];
  *
  ************************************************************************
  */
-void InterpretSEIMessage(byte* msg, int size, ImageParameters *img)
+__attribute__((always_inline)) void InterpretSEIMessage(byte* msg, int size, ImageParameters *img)
 {
   int payload_type = 0;
   int payload_size = 0;
@@ -188,7 +188,7 @@ void InterpretSEIMessage(byte* msg, int size, ImageParameters *img)
 *
 ************************************************************************
 */
-void interpret_spare_pic( byte* payload, int size, ImageParameters *img )
+__attribute__((always_inline)) void interpret_spare_pic( byte* payload, int size, ImageParameters *img )
 {
   int i,x,y;
   Bitstream* buf;
@@ -441,7 +441,7 @@ void interpret_spare_pic( byte* payload, int size, ImageParameters *img )
  *
  ************************************************************************
  */
-void interpret_subsequence_info( byte* payload, int size, ImageParameters *img )
+__attribute__((always_inline)) void interpret_subsequence_info( byte* payload, int size, ImageParameters *img )
 {
   Bitstream* buf;
   int sub_seq_layer_num, sub_seq_id, first_ref_pic_flag, leading_non_ref_pic_flag, last_pic_flag,
@@ -498,7 +498,7 @@ void interpret_subsequence_info( byte* payload, int size, ImageParameters *img )
  *
  ************************************************************************
  */
-void interpret_subsequence_layer_characteristics_info( byte* payload, int size, ImageParameters *img )
+__attribute__((always_inline)) void interpret_subsequence_layer_characteristics_info( byte* payload, int size, ImageParameters *img )
 {
   Bitstream* buf;
   long num_sub_layers, accurate_statistics_flag, average_bit_rate, average_frame_rate;
@@ -547,7 +547,7 @@ void interpret_subsequence_layer_characteristics_info( byte* payload, int size, 
  *
  ************************************************************************
  */
-void interpret_subsequence_characteristics_info( byte* payload, int size, ImageParameters *img )
+__attribute__((always_inline)) void interpret_subsequence_characteristics_info( byte* payload, int size, ImageParameters *img )
 {
   Bitstream* buf;
   int i;
@@ -639,7 +639,7 @@ void interpret_subsequence_characteristics_info( byte* payload, int size, ImageP
  *
  ************************************************************************
  */
-void interpret_scene_information( byte* payload, int size, ImageParameters *img )
+__attribute__((always_inline)) void interpret_scene_information( byte* payload, int size, ImageParameters *img )
 {
   Bitstream* buf;
   int scene_id, scene_transition_type, second_scene_id;
@@ -687,7 +687,7 @@ void interpret_scene_information( byte* payload, int size, ImageParameters *img 
  *
  ************************************************************************
  */
-void interpret_filler_payload_info( byte* payload, int size, ImageParameters *img )
+__attribute__((always_inline)) void interpret_filler_payload_info( byte* payload, int size, ImageParameters *img )
 {
   int payload_cnt = 0;
 
@@ -731,7 +731,7 @@ void interpret_filler_payload_info( byte* payload, int size, ImageParameters *im
  *
  ************************************************************************
  */
-void interpret_user_data_unregistered_info( byte* payload, int size, ImageParameters *img )
+__attribute__((always_inline)) void interpret_user_data_unregistered_info( byte* payload, int size, ImageParameters *img )
 {
   int offset = 0;
   byte payload_byte;
@@ -780,7 +780,7 @@ void interpret_user_data_unregistered_info( byte* payload, int size, ImageParame
  *
  ************************************************************************
  */
-void interpret_user_data_registered_itu_t_t35_info( byte* payload, int size, ImageParameters *img )
+__attribute__((always_inline)) void interpret_user_data_registered_itu_t_t35_info( byte* payload, int size, ImageParameters *img )
 {
   int offset = 0;
   byte itu_t_t35_country_code, itu_t_t35_country_code_extension_byte, payload_byte;
@@ -826,7 +826,7 @@ void interpret_user_data_registered_itu_t_t35_info( byte* payload, int size, Ima
  *
  ************************************************************************
  */
-void interpret_pan_scan_rect_info( byte* payload, int size, ImageParameters *img )
+__attribute__((always_inline)) void interpret_pan_scan_rect_info( byte* payload, int size, ImageParameters *img )
 {
   int pan_scan_rect_cancel_flag;
   int pan_scan_cnt_minus1, i;
@@ -885,7 +885,7 @@ void interpret_pan_scan_rect_info( byte* payload, int size, ImageParameters *img
  *
  ************************************************************************
  */
-void interpret_recovery_point_info( byte* payload, int size, ImageParameters *img )
+__attribute__((always_inline)) void interpret_recovery_point_info( byte* payload, int size, ImageParameters *img )
 {
   int recovery_frame_cnt, exact_match_flag, broken_link_flag, changing_slice_group_idc;
 
@@ -935,7 +935,7 @@ void interpret_recovery_point_info( byte* payload, int size, ImageParameters *im
  *
  ************************************************************************
  */
-void interpret_dec_ref_pic_marking_repetition_info( byte* payload, int size, ImageParameters *img )
+__attribute__((always_inline)) void interpret_dec_ref_pic_marking_repetition_info( byte* payload, int size, ImageParameters *img )
 {
   int original_idr_flag, original_frame_num;
 
@@ -1107,7 +1107,7 @@ void interpret_full_frame_freeze_release_info( byte* payload, int size, ImagePar
  *
  ************************************************************************
  */
-void interpret_full_frame_snapshot_info( byte* payload, int size, ImageParameters *img )
+__attribute__((always_inline)) void interpret_full_frame_snapshot_info( byte* payload, int size, ImageParameters *img )
 {
   int snapshot_id;
 
@@ -1225,7 +1225,7 @@ void interpret_progressive_refinement_end_info( byte* payload, int size, ImagePa
  *
  ************************************************************************
  */
-void interpret_motion_constrained_slice_group_set_info( byte* payload, int size, ImageParameters *img )
+__attribute__((always_inline)) void interpret_motion_constrained_slice_group_set_info( byte* payload, int size, ImageParameters *img )
 {
   int num_slice_groups_minus1, slice_group_id, exact_match_flag, pan_scan_rect_flag, pan_scan_rect_id;
   int i;
@@ -1291,7 +1291,7 @@ void interpret_motion_constrained_slice_group_set_info( byte* payload, int size,
  *
  ************************************************************************
  */
-void interpret_film_grain_characteristics_info( byte* payload, int size, ImageParameters *img )
+__attribute__((always_inline)) void interpret_film_grain_characteristics_info( byte* payload, int size, ImageParameters *img )
 {
   int film_grain_characteristics_cancel_flag;
   int model_id, separate_colour_description_present_flag;
@@ -1405,7 +1405,7 @@ void interpret_film_grain_characteristics_info( byte* payload, int size, ImagePa
  *
  ************************************************************************
  */
-void interpret_deblocking_filter_display_preference_info( byte* payload, int size, ImageParameters *img )
+__attribute__((always_inline)) void interpret_deblocking_filter_display_preference_info( byte* payload, int size, ImageParameters *img )
 {
   int deblocking_display_preference_cancel_flag;
   int display_prior_to_deblocking_preferred_flag, dec_frame_buffering_constraint_flag, deblocking_display_preference_repetition_period;
@@ -1452,7 +1452,7 @@ void interpret_deblocking_filter_display_preference_info( byte* payload, int siz
  *
  ************************************************************************
  */
-void interpret_stereo_video_info_info( byte* payload, int size, ImageParameters *img )
+__attribute__((always_inline)) void interpret_stereo_video_info_info( byte* payload, int size, ImageParameters *img )
 {
   int field_views_flags;
   int top_field_is_left_view_flag, current_frame_is_left_view_flag, next_frame_is_second_view_flag;
@@ -1513,7 +1513,7 @@ void interpret_stereo_video_info_info( byte* payload, int size, ImageParameters 
  *
  ************************************************************************
  */
-void interpret_reserved_info( byte* payload, int size, ImageParameters *img )
+__attribute__((always_inline)) void interpret_reserved_info( byte* payload, int size, ImageParameters *img )
 {
   int offset = 0;
   byte payload_byte;
@@ -1549,7 +1549,7 @@ void interpret_reserved_info( byte* payload, int size, ImageParameters *img )
  *
  ************************************************************************
  */
-void interpret_buffering_period_info( byte* payload, int size, ImageParameters *img )
+__attribute__((always_inline)) void interpret_buffering_period_info( byte* payload, int size, ImageParameters *img )
 {
   int seq_parameter_set_id, initial_cpb_removal_delay, initial_cpb_removal_delay_offset;
   unsigned int k;
@@ -1629,7 +1629,7 @@ void interpret_buffering_period_info( byte* payload, int size, ImageParameters *
  *
  ************************************************************************
  */
-void interpret_picture_timing_info( byte* payload, int size, ImageParameters *img )
+__attribute__((always_inline)) void interpret_picture_timing_info( byte* payload, int size, ImageParameters *img )
 {
   int cpb_removal_delay, dpb_output_delay, picture_structure_present_flag, picture_structure;
   int clock_time_stamp_flag;

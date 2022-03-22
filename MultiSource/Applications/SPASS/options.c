@@ -783,7 +783,7 @@ static void opts_PrintParameters(void)
 }
 
 
-void opts_PrintSPASSNames(void)
+__attribute__((always_inline)) void opts_PrintSPASSNames(void)
 /**************************************************************
   INPUT:   None 
   RETURNS: Nothing

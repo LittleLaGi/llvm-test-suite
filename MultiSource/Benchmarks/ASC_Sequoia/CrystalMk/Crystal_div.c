@@ -13,7 +13,7 @@
 //-------------- 
 //  test FDIV
 //-------------- 
-void Crystal_div(int nSlip,  
+__attribute__((always_inline)) void Crystal_div(int nSlip,  
          double deltaTime,
          double slipRate[MS_XTAL_NSLIP_MAX],
          double dSlipRate[MS_XTAL_NSLIP_MAX],

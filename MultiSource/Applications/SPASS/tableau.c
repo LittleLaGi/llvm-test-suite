@@ -185,7 +185,7 @@ void tab_AddSplitAtCursor(TABPATH Path, BOOL LeftSide)
   tab_PathPush(NewBranch, Path);
 }
 
-void tab_AddClauseOnItsLevel(CLAUSE C, TABPATH Path)
+__attribute__((always_inline)) void tab_AddClauseOnItsLevel(CLAUSE C, TABPATH Path)
 /**************************************************************
   INPUT:   A clause, a tableau path 
   RETURNS: Nothing

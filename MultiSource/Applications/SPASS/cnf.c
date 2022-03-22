@@ -3679,7 +3679,7 @@ LIST cnf_CheckOptimizedSkolemization(LIST* AxClauses, LIST* ConClauses,
 #endif
 
 
-PROOFSEARCH cnf_Flotter(LIST AxiomList, LIST ConjectureList, LIST* AxClauses, 
+__attribute__((always_inline)) PROOFSEARCH cnf_Flotter(LIST AxiomList, LIST ConjectureList, LIST* AxClauses, 
 			LIST* AllLabels, HASH TermLabelToClauselist, 
 			HASH ClauseToTermLabellist, FLAGSTORE InputFlags,
 			PRECEDENCE InputPrecedence, LIST* Symblist)
@@ -3931,7 +3931,7 @@ PROOFSEARCH cnf_Flotter(LIST AxiomList, LIST ConjectureList, LIST* AxClauses,
   }
 }
 
-LIST cnf_QueryFlotter(PROOFSEARCH Search, TERM Term, LIST* Symblist)
+__attribute__((always_inline)) LIST cnf_QueryFlotter(PROOFSEARCH Search, TERM Term, LIST* Symblist)
 /**************************************************************
   INPUT:   A term to derive clauses from, using optimized skolemization,
            and a ProofSearch object. 

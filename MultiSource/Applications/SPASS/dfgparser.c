@@ -2735,7 +2735,7 @@ static void dfg_Init(FILE* Input, FLAGSTORE Flags, PRECEDENCE Precedence)
 }
 
 
-void dfg_Free(void)
+__attribute__((always_inline)) void dfg_Free(void)
 /**************************************************************
   INPUT:   None.
   RETURNS: Nothing.
@@ -2889,7 +2889,7 @@ void dfg_FPrintDescription(FILE* File)
 }
 
 
-LIST dfg_DFGParser(FILE* File, FLAGSTORE Flags, PRECEDENCE Precedence,
+__attribute__((always_inline)) LIST dfg_DFGParser(FILE* File, FLAGSTORE Flags, PRECEDENCE Precedence,
 		   LIST* Axioms, LIST* Conjectures, LIST* SortDecl,
 		   LIST* UserDefinedPrecedence)
 /**************************************************************

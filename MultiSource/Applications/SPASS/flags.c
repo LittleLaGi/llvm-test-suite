@@ -119,7 +119,7 @@ static __inline__ void flag_InitIntern (FLAG_ID Flag, FLAG_TYPE Type,
 #endif
 }
 
-void flag_Init(void)
+__attribute__((always_inline)) void flag_Init(void)
 /**************************************************************
   INPUT:   None.
   RETURNS: Nothing.
@@ -753,7 +753,7 @@ void flag_InitFlotterSubproofFlags(FLAGSTORE Source, FLAGSTORE Target)
 }
 
 
-void flag_InitFlotterFlags(FLAGSTORE Source, FLAGSTORE Target)
+__attribute__((always_inline)) void flag_InitFlotterFlags(FLAGSTORE Source, FLAGSTORE Target)
 /**************************************************************
   INPUT:   Two flag stores.
   RETURNS: Nothing.

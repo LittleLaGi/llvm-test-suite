@@ -420,7 +420,7 @@ LIST symbol_GetAllFunctions(void)
 }
 
 
-void symbol_FreeAllSymbols(void)
+__attribute__((always_inline)) void symbol_FreeAllSymbols(void)
 /**************************************************************
   INPUT:   None.
   RETURNS: Nothing.
@@ -444,7 +444,7 @@ void symbol_FreeAllSymbols(void)
 }
 
 
-void symbol_Init(BOOL Signature)
+__attribute__((always_inline)) void symbol_Init(BOOL Signature)
 /**************************************************************
   INPUT:   A flag indicating whether a signature is used or not.
   RETURNS: None.
@@ -480,7 +480,7 @@ BOOL symbol_SignatureExists(void)
   return symbol_HASSIGNATURE;
 }
 
-void symbol_ReinitGenericNameCounters(void)
+__attribute__((always_inline)) void symbol_ReinitGenericNameCounters(void)
 /**************************************************************
   INPUT:   None.
   RETURNS: Nothing.
@@ -668,7 +668,7 @@ LIST symbol_SortByPrecedence(LIST Symbols, PRECEDENCE Precedence)
   return Symbols;
 }
 
-void symbol_RearrangePrecedence(PRECEDENCE Precedence, LIST UserPrecedence)
+__attribute__((always_inline)) void symbol_RearrangePrecedence(PRECEDENCE Precedence, LIST UserPrecedence)
 /**************************************************************
   INPUT:   A precedence and a list of symbols in the user 
            specified precedence, sorted in decreasing order.

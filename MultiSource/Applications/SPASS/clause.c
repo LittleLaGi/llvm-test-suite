@@ -1813,7 +1813,7 @@ static __inline__ void clause_FixLiteralSubsetOrder(CLAUSE Clause,
   list_Delete(literals);
 }
 
-void clause_FixLiteralOrder(CLAUSE Clause, FLAGSTORE FlagStore, PRECEDENCE Precedence)
+__attribute__((always_inline)) void clause_FixLiteralOrder(CLAUSE Clause, FLAGSTORE FlagStore, PRECEDENCE Precedence)
 /**************************************************************
   INPUT:   A clause, a flag store, and a precedence.
   RETURNS: None.
@@ -1914,7 +1914,7 @@ static int clause_CompareByClausePartSize(CLAUSE Left, CLAUSE Right)
   return 0;
 }
 
-void clause_CountSymbols(CLAUSE Clause)
+__attribute__((always_inline)) void clause_CountSymbols(CLAUSE Clause)
 /**************************************************************
   INPUT:   A clause.
   RETURNS: None.
@@ -3414,7 +3414,7 @@ BOOL clause_IsSortTheoryClause(CLAUSE Clause, FLAGSTORE Flags,
   return FALSE;
 }
 
-BOOL clause_IsPotentialSortTheoryClause(CLAUSE Clause, FLAGSTORE Flags,
+__attribute__((always_inline)) BOOL clause_IsPotentialSortTheoryClause(CLAUSE Clause, FLAGSTORE Flags,
 					PRECEDENCE Precedence)
 /**************************************************************
   INPUT:   A Clause, a flag store and a precedence.
@@ -4169,7 +4169,7 @@ BOOL clause_ContainsPotPredDef(CLAUSE Clause, FLAGSTORE Flags,
   return FALSE;
 }
 
-BOOL clause_IsPartOfDefinition(CLAUSE Clause, TERM Predicate, int *Index,
+__attribute__((always_inline)) BOOL clause_IsPartOfDefinition(CLAUSE Clause, TERM Predicate, int *Index,
 			       LIST Pair)
 /**************************************************************
   INPUT:   A clause, a term, a pointer to an int and a pair of term lists.
@@ -4533,7 +4533,7 @@ void clause_FPrintCnfDFGDerivables(FILE* File, LIST Clauses, BOOL Type)
 }
 
 
-void clause_FPrintDFGStep(FILE* File, CLAUSE Clause, BOOL Justif)
+__attribute__((always_inline)) void clause_FPrintDFGStep(FILE* File, CLAUSE Clause, BOOL Justif)
 /**************************************************************
   INPUT:   A file, a clause and a boolean value.
   RETURNS: Nothing.

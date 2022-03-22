@@ -8,7 +8,7 @@
  *
  * \author
  *    Main contributors (see contributors.h for copyright, address and affiliation details)
- *    - Inge Lille-Langøy               <inge.lille-langoy@telenor.com>
+ *    - Inge Lille-Langï¿½y               <inge.lille-langoy@telenor.com>
  *    - Detlev Marpe                    <marpe@hhi.de>
  *    - Gabi Blaettermann               <blaetter@hhi.de>
  ************************************************************************
@@ -380,7 +380,7 @@ int readSyntaxElement_UVLC(SyntaxElement *sym, struct img_par *img, struct datap
  *    map it to the corresponding Intra Prediction Direction
  ************************************************************************
  */
-int readSyntaxElement_Intra4x4PredictionMode(SyntaxElement *sym, struct img_par *img,struct datapartition *dP)
+__attribute__((always_inline)) int readSyntaxElement_Intra4x4PredictionMode(SyntaxElement *sym, struct img_par *img,struct datapartition *dP)
 {
   Bitstream   *currStream            = dP->bitstream;
   int         frame_bitoffset        = currStream->frame_bitoffset;
@@ -402,7 +402,7 @@ int readSyntaxElement_Intra4x4PredictionMode(SyntaxElement *sym, struct img_par 
   return 1;
 }
 
-int GetVLCSymbol_IntraMode (byte buffer[],int totbitoffset,int *info, int bytecount)
+__attribute__((always_inline)) int GetVLCSymbol_IntraMode (byte buffer[],int totbitoffset,int *info, int bytecount)
 {
 
   register int inf;

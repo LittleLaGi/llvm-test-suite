@@ -241,7 +241,7 @@ const byte COEFF_COST8x8[64] =
  *
  ************************************************************************
  */
-int intrapred8x8( struct img_par *img,  //!< image parameters
+__attribute__((always_inline)) int intrapred8x8( struct img_par *img,  //!< image parameters
                   int b8)
 
 {
@@ -870,7 +870,7 @@ int intrapred8x8( struct img_par *img,  //!< image parameters
  *    Prefiltering for Intra8x8 prediction
  *************************************************************************************
  */
-void LowPassForIntra8x8Pred(imgpel *PredPel, int block_up_left, int block_up, int block_left)
+__attribute__((always_inline)) void LowPassForIntra8x8Pred(imgpel *PredPel, int block_up_left, int block_up, int block_left)
 {
   int i;
   imgpel LoopArray[25];

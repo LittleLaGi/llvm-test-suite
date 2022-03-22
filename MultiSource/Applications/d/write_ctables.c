@@ -148,7 +148,7 @@ shift_fns = {
   {0, 0}
 };
 
-static void
+__attribute__((always_inline)) static void
 write_scanner_data_as_C(FILE *fp, Grammar *g, char *tag) {
   State *s;
   ScannerBlock *vsblock, *xv, *yv;
@@ -388,7 +388,7 @@ write_scanner_data_as_C(FILE *fp, Grammar *g, char *tag) {
 #define reduction_index(_r) \
 ((_r)->same_reduction ? (_r)->same_reduction->index : (_r)->index)
 
-static void
+__attribute__((always_inline)) static void
 write_goto_data_as_C(FILE *fp, Grammar *g, char *tag) {
   Vec(long) vgoto;
   State *s;
@@ -487,7 +487,7 @@ write_goto_data_as_C(FILE *fp, Grammar *g, char *tag) {
     fprintf(fp, "unsigned short d_gotos_%s[1] = {0};\n", tag);
 }
 
-static void
+__attribute__((always_inline)) static void
 write_scanner_code_as_C(FILE *fp, Grammar *g, char *tag) {
   int i, j, l;
   Action *a;
@@ -628,7 +628,7 @@ write_code_as_C(FILE *fp, Grammar *g, Rule *r, char *code,
   fprintf(fp, "}\n\n");
 }
 
-static void
+__attribute__((always_inline)) static void
 write_global_code_as_C(FILE *fp, Grammar *g, char *tag) {
   int i;
   char *c;
@@ -667,7 +667,7 @@ write_global_code_as_C(FILE *fp, Grammar *g, char *tag) {
 
 static char * reduction_args = "(void *_ps, void **_children, int _n_children, int _offset, D_Parser *_parser)";
 
-static void
+__attribute__((always_inline)) static void
 write_reductions_as_C(FILE *fp, Grammar *g, char *tag) {
   int i, j, k, l, pmax;
   Production *p, *pdefault;
@@ -831,7 +831,7 @@ er_hint_hash_fns = {
   {0, 0}
 };
 
-static void
+__attribute__((always_inline)) static void
 write_error_data_as_C(FILE *fp, Grammar *g, VecState *er_hash, char *tag) {
   int i, j;
   State *s;
@@ -868,7 +868,7 @@ write_error_data_as_C(FILE *fp, Grammar *g, VecState *er_hash, char *tag) {
 
 static char *scan_kind_strings[] = {"D_SCAN_ALL", "D_SCAN_LONGEST", "D_SCAN_MIXED", NULL};
 
-static void
+__attribute__((always_inline)) static void
 write_state_data_as_C(FILE *fp, Grammar *g, VecState *er_hash, char *tag) {
   int i;
   State *s, *h;
@@ -945,7 +945,7 @@ write_state_data_as_C(FILE *fp, Grammar *g, VecState *er_hash, char *tag) {
     fprintf(fp, "{{0, {0, NULL}, 0, NULL}};\n\n");
 }
 
-static int
+__attribute__((always_inline)) static int
 write_header_as_C(Grammar *g, char *base_pathname, char *tag) {
   char pathname[FILENAME_MAX];
   int i, tokens = 0, states = 0, col;
@@ -1007,7 +1007,7 @@ write_header_as_C(Grammar *g, char *base_pathname, char *tag) {
 static char *d_internal[] = {"D_SYMBOL_NTERM", "D_SYMBOL_INTERNAL"};
 static char *d_symbol[] = { 
   "D_SYMBOL_STRING", "D_SYMBOL_REGEX", "D_SYMBOL_CODE", "D_SYMBOL_TOKEN" };
-static void
+__attribute__((always_inline)) static void
 write_symbol_data_as_C(FILE *fp, Grammar *g, char *tag) {
   int i;
   fprintf(fp, "D_Symbol d_symbols_%s[] = {\n", tag);
@@ -1027,7 +1027,7 @@ write_symbol_data_as_C(FILE *fp, Grammar *g, char *tag) {
   fprintf(fp, "};\n\n");
 }
 
-static void
+__attribute__((always_inline)) static void
 write_passes_as_C(FILE *fp, Grammar *g, char *tag) {
   int i;
   if (g->passes.n) {
@@ -1042,7 +1042,7 @@ write_passes_as_C(FILE *fp, Grammar *g, char *tag) {
   }
 }
 
-void
+__attribute__((always_inline)) void
 write_parser_tables_as_C(Grammar *g, char *base_pathname, char *tag) {
   char pathname[FILENAME_MAX];
   FILE *fp;
@@ -1102,7 +1102,7 @@ write_parser_tables_as_C(Grammar *g, char *base_pathname, char *tag) {
   //fclose(fp);
 }
 
-int
+__attribute__((always_inline)) int
 write_ctables(Grammar *g) {
   g->scanner_block_size = 256/g->scanner_blocks;
   write_parser_tables_as_C(g, g->pathname, 

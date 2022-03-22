@@ -125,7 +125,7 @@ void opt_free(struct optstruct *opt)
     free(opt);
 }
 
-struct optstruct *opt_parse(int argc, char * const *argv, const char *getopt_short, const struct option *options_long, const char * const *accepted_long)
+__attribute__((always_inline)) struct optstruct *opt_parse(int argc, char * const *argv, const char *getopt_short, const struct option *options_long, const char * const *accepted_long)
 {
 	int ret, opt_index, i, len;
 	struct optstruct *opt;

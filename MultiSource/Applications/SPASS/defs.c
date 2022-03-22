@@ -52,7 +52,7 @@
 static void def_DeleteFromClauses(DEF);
 static void def_DeleteFromTerm(DEF);
 
-DEF def_CreateFromClauses(TERM ExpTerm, TERM PredTerm, LIST Clauses, LIST Lits,
+__attribute__((always_inline)) DEF def_CreateFromClauses(TERM ExpTerm, TERM PredTerm, LIST Clauses, LIST Lits,
 			  BOOL Con)
 /**********************************************************
   INPUT:   Two terms, a list of clausenumbers, a list of literal indices and
@@ -325,7 +325,7 @@ LIST def_ExtractDefsFromTerm(TERM Term, const char* Label)
   return defslist;
 }
 
-void def_ExtractDefsFromClauselist(PROOFSEARCH Search, LIST Clauselist)
+__attribute__((always_inline)) void def_ExtractDefsFromClauselist(PROOFSEARCH Search, LIST Clauselist)
 /**************************************************************
   INPUT:   A proofsearch object and a list of clauses
   RETURNS: Nothing.
@@ -726,7 +726,7 @@ void def_Print(DEF D)
   }    
 } 
 
-LIST def_ApplyDefToClauselist(PROOFSEARCH Search, DEF Def, 
+__attribute__((always_inline)) LIST def_ApplyDefToClauselist(PROOFSEARCH Search, DEF Def, 
 			      LIST Clauselist, BOOL Destructive)
 /**************************************************************
   INPUT:   A proofsearch object, a DEF structure, a list of unshared clauses
@@ -834,7 +834,7 @@ LIST def_ApplyDefToTermlist(DEF Def, LIST Termlist,
   return Termlist;
 }
 
-void def_ExtractDefsFromTermlist(PROOFSEARCH Search, LIST Axioms, LIST Conj)
+__attribute__((always_inline)) void def_ExtractDefsFromTermlist(PROOFSEARCH Search, LIST Axioms, LIST Conj)
 /**************************************************************
   INPUT:   A proofsearch object and 2 lists of pairs label/term.
   RETURNS: None.
@@ -990,7 +990,7 @@ void def_FlattenWithOneDefinitionDestructive(PROOFSEARCH Search, DEF Def)
   }
 }
 
-void def_FlattenWithOneDefinitionSemiDestructive(PROOFSEARCH Search, DEF Def)
+__attribute__((always_inline)) void def_FlattenWithOneDefinitionSemiDestructive(PROOFSEARCH Search, DEF Def)
 /**************************************************************
   INPUT:   A proofsearch object and one definition.
   RETURNS: Nothing.
@@ -1042,7 +1042,7 @@ void def_FlattenWithOneDefinitionSemiDestructive(PROOFSEARCH Search, DEF Def)
   }
 }
 
-void def_FlattenDefinitionsDestructive(PROOFSEARCH Search)
+__attribute__((always_inline)) void def_FlattenDefinitionsDestructive(PROOFSEARCH Search)
 /**************************************************************
   INPUT:   A proofsearch object.
   RETURNS: None.
@@ -1169,7 +1169,7 @@ LIST def_GetTermsForProof(TERM Term, TERM SubTerm, int Polarity)
   return list_Nil();
 }
 
-BOOL def_FindProofForGuard(TERM Term, TERM Atom, TERM Guard, FLAGSTORE FlagStore, PRECEDENCE Precedence)
+__attribute__((always_inline)) BOOL def_FindProofForGuard(TERM Term, TERM Atom, TERM Guard, FLAGSTORE FlagStore, PRECEDENCE Precedence)
 /**************************************************************************
   INPUT:   A formula Term, an atom Atom, a term Guard a flag store and a 
            precedence.
@@ -1236,7 +1236,7 @@ BOOL def_FindProofForGuard(TERM Term, TERM Atom, TERM Guard, FLAGSTORE FlagStore
   return FALSE;
 }
 
-LIST def_ApplyDefinitionToTermList(LIST Defs, LIST Terms,
+__attribute__((always_inline)) LIST def_ApplyDefinitionToTermList(LIST Defs, LIST Terms,
 				   FLAGSTORE Flags, PRECEDENCE Precedence)
 /**************************************************************************
   INPUT:   A list of definitions <Defs> and a list of pairs (Label.Formula),

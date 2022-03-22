@@ -343,7 +343,7 @@ get_other_commands()
 //  -v print version information.
 //  -w wait for standard in to be closed before exiting.
 //########################################################
-static __attribute__((always_inline)) void
+__attribute__((always_inline)) static void
 decode_switches(int argc, char **argv)
 {
   int c;
@@ -434,7 +434,7 @@ stop_alrm_handler(int sig)
   exit(0);
 }
 
-static __attribute__((always_inline)) void
+__attribute__((always_inline)) static void
 set_stop_alrm(long minutes)
 {
   struct sigaction   act;
@@ -543,7 +543,7 @@ write_to_lock_file(char winner, const char* num_nodes)
 }
 
 
-static __attribute__((always_inline)) void
+__attribute__((always_inline)) static void
 get_solve_command_from_lock_file()
 {
   FILE* file = NULL;

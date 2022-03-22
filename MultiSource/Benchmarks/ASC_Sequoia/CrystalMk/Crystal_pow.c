@@ -14,7 +14,7 @@
 //-------------- 
 //  test POW
 //-------------- 
-double Crystal_pow(int nSlip,  
+__attribute__((always_inline)) double Crystal_pow(int nSlip,  
 		double slipRate[MS_XTAL_NSLIP_MAX])
 
 {

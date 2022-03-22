@@ -288,7 +288,7 @@ W_lit litptr;
 #endif
 } /* _P_litsnarf */
 
-static __attribute__((always_inline)) int
+__attribute__((always_inline)) static int
 _P_bolsnarf(bolptr)
 W_bol bolptr; 
 {
@@ -371,7 +371,7 @@ W_bol bolptr;
 /*
 **	pass over a comment -- look for nexting
 */
-static __attribute__((always_inline)) int
+__attribute__((always_inline)) static int
 _P_comsnarf(comptr)
 W_com comptr; 
 {
@@ -484,7 +484,7 @@ W_com comptr;
 /*
 **	parse a file
 */
-static __attribute__((always_inline)) void
+__attribute__((always_inline)) static void
 _P_do_parse()
 {
 

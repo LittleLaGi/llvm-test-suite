@@ -756,7 +756,7 @@ int countamino( char *s, int end )
 	return( val );
 }
 
-static __attribute__((always_inline))  void pairalign( char name[M][B], int nlen[M], char **seq, char **aseq, char **mseq1, char **mseq2, double *effarr, int alloclen )
+__attribute__((always_inline)) static void pairalign( char name[M][B], int nlen[M], char **seq, char **aseq, char **mseq1, char **mseq2, double *effarr, int alloclen )
 {
 	int i, j, ilim;
 	int clus1, clus2;

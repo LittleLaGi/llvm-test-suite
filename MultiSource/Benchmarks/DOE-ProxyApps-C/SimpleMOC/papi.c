@@ -16,7 +16,7 @@ void papi_serial_init(void)
 	}
 }
 
-__attribute__((always_inline)) void counter_init( int *eventset, int *num_papi_events, Input * I )
+void counter_init( int *eventset, int *num_papi_events, Input * I )
 {
 	char error_str[PAPI_MAX_STR_LEN];
 	int stat;

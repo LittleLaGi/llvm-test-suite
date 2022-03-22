@@ -197,7 +197,7 @@ static void pcheck_ParentNumbersToPointersInVector(CLAUSE* ClauseVector, int Siz
 }
 
 
-static LIST pcheck_ForceParentNumbersToPointersInVector(CLAUSE* ClauseVector,
+__attribute__((always_inline)) static LIST pcheck_ForceParentNumbersToPointersInVector(CLAUSE* ClauseVector,
 							int Size)
 /**************************************************************
   INPUT:   A clause vector, possibly with duplicates
@@ -279,7 +279,7 @@ static int pcheck_CompareClauseNumber(const void* C1, const void* C2)
 }
 
 
-static LIST pcheck_ConvertParentsInList(LIST List)
+__attribute__((always_inline)) static LIST pcheck_ConvertParentsInList(LIST List)
 /**************************************************************
   INPUT:   A list of clauses.
   RETURNS: The list of missing parent clause numbers from the list 
@@ -310,7 +310,7 @@ static LIST pcheck_ConvertParentsInList(LIST List)
 }
 
 
-LIST pcheck_ConvertParentsInSPASSProof(PROOFSEARCH Search, LIST EmptyClauses) 
+__attribute__((always_inline)) LIST pcheck_ConvertParentsInSPASSProof(PROOFSEARCH Search, LIST EmptyClauses) 
 /**************************************************************
   INPUT  : A proofsearch object with clauses sorted by weight
            and an unsorted list <EmptyClauses>
@@ -700,7 +700,7 @@ static void pcheck_SplitPrecheck(TABLEAU T)
 }
 
 
-BOOL pcheck_BuildTableauFromProof(LIST Proof, TABLEAU* Tableau)
+__attribute__((always_inline)) BOOL pcheck_BuildTableauFromProof(LIST Proof, TABLEAU* Tableau)
 /**************************************************************
   INPUT  : A list of clauses representing a proof, and a pointer
            to a tableau used as return value.
@@ -1158,8 +1158,8 @@ static void pcheck_SplitToProblems(TABLEAU T, const char* ProofFileName,
 
   Negations = tab_RightSplitClauses(T);
   if (!list_Empty(Negations) && pcheck_IsRightSplitHalf(list_Car(Negations))) {
-    /* EK: Meiner Meinung nach ist es eine Invariante, daß die erste */
-    /* Elternklausel die rechte Hälfte eines Splittings ist???  */
+    /* EK: Meiner Meinung nach ist es eine Invariante, daï¿½ die erste */
+    /* Elternklausel die rechte Hï¿½lfte eines Splittings ist???  */
     Negations = list_Cdr(Negations);
     /* build C <=> C' v C''  */
     RightClauseTerm = pcheck_ClauseToTerm(list_Car(tab_RightSplitClauses(T)));
@@ -1242,7 +1242,7 @@ void pcheck_TableauToProofTask(TABLEAU T, const char* ProofFileName,
 }
 
 
-int pcheck_SeqProofDepth(LIST Proof)
+__attribute__((always_inline)) int pcheck_SeqProofDepth(LIST Proof)
 /**************************************************************
   INPUT  : A sequential proof (list of clauses)
   RETURNS: The maximum clause depth in the proof
@@ -1259,7 +1259,7 @@ int pcheck_SeqProofDepth(LIST Proof)
 }
 
 
-LIST pcheck_ReduceSPASSProof(LIST Proof)
+__attribute__((always_inline)) LIST pcheck_ReduceSPASSProof(LIST Proof)
 /**************************************************************
   INPUT:   A list of clauses representing a SPASS proof.
            Parents are pointers.

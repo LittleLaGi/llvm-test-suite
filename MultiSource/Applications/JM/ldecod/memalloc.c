@@ -192,7 +192,7 @@ int get_mem2Dint64(int64 ***array2D, int rows, int columns)
  ************************************************************************
  */
 // same change as in get_mem2Dint
-int get_mem3D(byte ****array3D, int frames, int rows, int columns)
+__attribute__((always_inline)) int get_mem3D(byte ****array3D, int frames, int rows, int columns)
 {
   int  j;
 
@@ -350,7 +350,7 @@ void free_mem2Dint64(int64 **array2D)
  *    which was alocated with get_mem3D()
  ************************************************************************
  */
-void free_mem3D(byte ***array3D, int frames)
+__attribute__((always_inline)) void free_mem3D(byte ***array3D, int frames)
 {
   int i;
 

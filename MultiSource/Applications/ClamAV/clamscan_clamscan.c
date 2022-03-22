@@ -257,7 +257,7 @@ int main(int argc, char **argv)
     return ret;
 }
 
-void help(void)
+__attribute__((always_inline)) void help(void)
 {
 
     mprintf_stdout = 1;

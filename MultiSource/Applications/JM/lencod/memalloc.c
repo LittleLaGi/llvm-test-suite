@@ -915,7 +915,7 @@ int get_mem2Ddb_offset(double ***array2D, int rows, int columns, int offset)
  *    memory size in bytes
  ************************************************************************
  */
-int get_mem3Ddb_offset(double ****array3D, int rows, int columns, int pels, int offset)
+__attribute__((always_inline)) int get_mem3Ddb_offset(double ****array3D, int rows, int columns, int pels, int offset)
 {
   int  i,j;
 

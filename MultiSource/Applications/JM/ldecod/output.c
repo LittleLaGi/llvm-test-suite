@@ -486,7 +486,7 @@ void write_out_picture(StorablePicture *p, int p_out)
  *    Initialize output buffer for direct output
  ************************************************************************
  */
-void init_out_buffer()
+__attribute__((always_inline)) void init_out_buffer()
 {
   out_buffer = alloc_frame_store();
 #ifdef PAIR_FIELDS_IN_OUTPUT
@@ -503,7 +503,7 @@ void init_out_buffer()
  *    Uninitialize output buffer for direct output
  ************************************************************************
  */
-void uninit_out_buffer()
+__attribute__((always_inline)) void uninit_out_buffer()
 {
   free_frame_store(out_buffer);
   out_buffer=NULL;

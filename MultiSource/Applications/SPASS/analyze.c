@@ -181,7 +181,7 @@ void ana_AnalyzeProblem(PROOFSEARCH Search, LIST Clauses)
 }
 
 
-void ana_AnalyzeSortStructure(LIST Clauses, FLAGSTORE Flags,
+__attribute__((always_inline)) void ana_AnalyzeSortStructure(LIST Clauses, FLAGSTORE Flags,
 			      PRECEDENCE Precedence)
 /**************************************************************
   INPUT:   A list of clauses, a flag store and a precedence.

@@ -419,7 +419,7 @@ plus_EBNF(Grammar *g) {
   vec_add(&pp->rules, rr);
 }
 
-void
+__attribute__((always_inline)) void
 initialize_productions(Grammar *g) {
   Production *pp, *ppp;
   Rule *rrr;
@@ -456,7 +456,7 @@ lookup_production(Grammar *g, char *name, int l) {
   return NULL;
 }
 
-static Term *
+__attribute__((always_inline)) static Term *
 lookup_token(Grammar *g, char *name, int l) {
   int i;
   
@@ -470,7 +470,7 @@ lookup_token(Grammar *g, char *name, int l) {
   return NULL;
 }
 
-static Term *
+__attribute__((always_inline)) static Term *
 unique_term(Grammar *g, Term *t) {
   int i;
   for (i = 0; i < g->terminals.n; i++) 
@@ -485,7 +485,7 @@ unique_term(Grammar *g, Term *t) {
   return t;
 }
 
-static void
+__attribute__((always_inline)) static void
 compute_nullable(Grammar *g) {
   int i, j, k, changed = 1;
   Elem *e;
@@ -523,7 +523,7 @@ compute_nullable(Grammar *g) {
   - resolve non-terminals
   - set element indexes
 */
-static void
+__attribute__((always_inline)) static void
 resolve_grammar(Grammar *g) {
   int i, j, k, l;
   Production *p, *pp;
@@ -576,7 +576,7 @@ resolve_grammar(Grammar *g) {
   compute_nullable(g);
 }
 
-static void
+__attribute__((always_inline)) static void
 merge_identical_terminals(Grammar *g) {
   int i, j, k;
   Production *p;
@@ -793,7 +793,7 @@ state_for_declaration(Grammar *g, int iproduction) {
   return 0;
 }
 
-static void
+__attribute__((always_inline)) static void
 make_elems_for_productions(Grammar *g) {
   int i, j, k, l;
   Rule *rr;
@@ -945,7 +945,7 @@ convert_regex_production_one(Grammar *g, Production *p) {
   p->in_regex = 0;
 }
 
-static void
+__attribute__((always_inline)) static void
 convert_regex_productions(Grammar *g) {
   int i, j, k;
   Production *p;
@@ -986,7 +986,7 @@ typedef struct {
   struct State 	*diff_state;
 } EqState;
 
-void
+__attribute__((always_inline)) void
 build_eq(Grammar *g) {
   int i, j, k, changed = 1, x, xx;
   State *s, *ss;
@@ -1113,7 +1113,7 @@ free_D_Grammar(Grammar *g) {
   FREE(g->pathname);
 }
 
-int
+__attribute__((always_inline)) int
 parse_grammar(Grammar *g, D_ParserTables *t, int sizeof_ParseNode_User) {
   FILE *fp = fopen(g->pathname, "r");
   char *s;
@@ -1165,7 +1165,7 @@ set_declaration_group(Production *p, Production *root, Declaration *d) {
   }
 }
 
-static void
+__attribute__((always_inline)) static void
 propogate_declarations(Grammar *g) {
   int i, j, k;
   Production *p;
@@ -1224,7 +1224,7 @@ propogate_declarations(Grammar *g) {
   }
 }
 
-static void
+__attribute__((always_inline)) static void
 merge_shift_actions(State *to, State *from) {
   int i, j;
   for (i = 0; i < from->shift_actions.n; i++) {
@@ -1236,7 +1236,7 @@ merge_shift_actions(State *to, State *from) {
   }
 }
 
-static void
+__attribute__((always_inline)) static void
 compute_declaration_states(Grammar *g, Production *p, Declaration *d) {
   State *s, *base_s = NULL;
   int j, k, scanner = scanner_declaration(d);
@@ -1276,7 +1276,7 @@ compute_declaration_states(Grammar *g, Production *p, Declaration *d) {
   }
 }
 
-static void
+__attribute__((always_inline)) static void
 map_declarations_to_states(Grammar *g) {
   int i;
   State *s;
@@ -1297,7 +1297,7 @@ map_declarations_to_states(Grammar *g) {
   }
 }
 
-int
+__attribute__((always_inline)) int
 build_grammar(Grammar *g) {
   resolve_grammar(g);
   convert_regex_productions(g);

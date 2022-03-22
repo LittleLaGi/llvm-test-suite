@@ -27,7 +27,7 @@ static char rcsid[]= "$Header$";
 */
 
 
-E_edit
+__attribute__((always_inline)) E_edit
 G_do_miller(m,n,max_d,comflags)
 int m;
 int n;

@@ -1539,7 +1539,7 @@ SOJU sort_ComputeSortNoResidues(SORTTHEORY Theory, TERM Term, CLAUSE Clause,
 /**************************************************************/
 
 
-static BOOL sort_SortTheoryIsTrivial(SORTTHEORY Theory, LIST Clauses)
+__attribute__((always_inline)) static BOOL sort_SortTheoryIsTrivial(SORTTHEORY Theory, LIST Clauses)
 /*********************************************************
   INPUT:   A sort theory and a list of clauses that generated the theory.
   RETURNS: TRUE iff all considered base sorts are top.
@@ -1630,7 +1630,7 @@ static LIST sort_ApproxPseudoLinear(LIST Constraint, TERM Head, SYMBOL Var)
 }
 
 
-static LIST sort_ApproxHornClauses(CLAUSE Clause, FLAGSTORE Flags,
+__attribute__((always_inline)) static LIST sort_ApproxHornClauses(CLAUSE Clause, FLAGSTORE Flags,
 				   PRECEDENCE Precedence)
 /**************************************************************
   INPUT:   A clause to make special horn clauses from, a flag
@@ -1761,7 +1761,7 @@ LIST sort_ApproxMaxDeclClauses(CLAUSE Clause, FLAGSTORE Flags,
 }
 
 
-static LIST sort_ApproxClauses(LIST Clauses, FLAGSTORE Flags,
+__attribute__((always_inline)) static LIST sort_ApproxClauses(LIST Clauses, FLAGSTORE Flags,
 			       PRECEDENCE Precedence)
 /**************************************************************
   INPUT:   A list of top level clauses, a flag store and a
@@ -1786,7 +1786,7 @@ static LIST sort_ApproxClauses(LIST Clauses, FLAGSTORE Flags,
   return Result;
 }
 
-LIST sort_EliminateSubsumedClauses(LIST Clauses)
+__attribute__((always_inline)) LIST sort_EliminateSubsumedClauses(LIST Clauses)
 /*********************************************************
   INPUT:   A list of clauses.
   RETURNS: <Clauses> without subsumed clauses.
@@ -1812,7 +1812,7 @@ LIST sort_EliminateSubsumedClauses(LIST Clauses)
 }
 
 
-SORTTHEORY sort_ApproxStaticSortTheory(LIST Clauses, FLAGSTORE Flags,
+__attribute__((always_inline)) SORTTHEORY sort_ApproxStaticSortTheory(LIST Clauses, FLAGSTORE Flags,
 				       PRECEDENCE Precedence)
 /*********************************************************
   INPUT:   A list of clauses, a flag store and a
@@ -1871,7 +1871,7 @@ SORTTHEORY sort_ApproxDynamicSortTheory(LIST Clauses)
   return (SORTTHEORY)NULL;
 }
 
-STR sort_AnalyzeSortStructure(LIST Clauses, FLAGSTORE Flags,
+__attribute__((always_inline)) STR sort_AnalyzeSortStructure(LIST Clauses, FLAGSTORE Flags,
 			      PRECEDENCE Precedence)
 /*********************************************************
   INPUT:   A list of clauses, a flag store and a

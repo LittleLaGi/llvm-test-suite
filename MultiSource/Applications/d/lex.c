@@ -51,7 +51,7 @@ free_DFAState(DFAState *y) {
   FREE(y);
 }
 
-static void
+__attribute__((always_inline)) static void
 free_VecDFAState(VecDFAState *dfas) {
   int i;
   for (i = 0; i < dfas->n; i++)
@@ -59,7 +59,7 @@ free_VecDFAState(VecDFAState *dfas) {
   vec_free(dfas);
 }
 
-static void
+__attribute__((always_inline)) static void
 free_NFAState(NFAState *y) {
   int i;
   for (i = 0; i < 256; i++)
@@ -69,7 +69,7 @@ free_NFAState(NFAState *y) {
   FREE(y);
 }
 
-static void
+__attribute__((always_inline)) static void
 free_VecNFAState(VecNFAState *nfas) {
   int i;
   for (i = 0; i < nfas->n; i++)
@@ -106,7 +106,7 @@ nfa_closure(DFAState *x) {
   qsort(x->states.v, x->states.n, sizeof(x->states.v[0]), nfacmp);
 }
 
-static int
+__attribute__((always_inline)) static int
 eq_dfa_state(DFAState *x, DFAState *y) {
   int i;
 
@@ -118,7 +118,7 @@ eq_dfa_state(DFAState *x, DFAState *y) {
   return 1;
 }
 
-static void
+__attribute__((always_inline)) static void
 dfa_to_scanner(VecDFAState *alldfas, VecScanState *scanner) {
   int i, j, k, highest, p;
 
@@ -149,7 +149,7 @@ dfa_to_scanner(VecDFAState *alldfas, VecScanState *scanner) {
   }
 }
 
-static void
+__attribute__((always_inline)) static void
 nfa_to_scanner(NFAState *n, Scanner *s) {
   DFAState *x = new_DFAState(), *y;
   VecDFAState alldfas;
@@ -287,7 +287,7 @@ build_regex_nfa(LexState *ls, uint8 **areg, NFAState *pp, NFAState *nn) {
   d_fail("bad (part of) regex: %s\n", *areg);
 }
 
-static void
+__attribute__((always_inline)) static void
 action_diff(VecAction *a, VecAction *b, VecAction *c) {
   int bb = 0, cc = 0;
   while (1) {
@@ -316,7 +316,7 @@ action_diff(VecAction *a, VecAction *b, VecAction *c) {
   }
 }
 
-static void
+__attribute__((always_inline)) static void
 action_intersect(VecAction *a, VecAction *b, VecAction *c) {
   int bb = 0, cc = 0;
   while (1) {
@@ -342,7 +342,7 @@ action_intersect(VecAction *a, VecAction *b, VecAction *c) {
   }
 }
 
-static void
+__attribute__((always_inline)) static void
 compute_liveness(Scanner *scanner) {
   int i, j, changed = 1;
   ScanState *ss, *sss;
@@ -411,7 +411,7 @@ static hash_fns_t trans_hash_fns = {
   { 0, 0 }
 };
 
-static void
+__attribute__((always_inline)) static void
 build_transitions(LexState *ls, Scanner *s) {
   int i, j;
   ScanState *ss;
@@ -451,13 +451,13 @@ build_transitions(LexState *ls, Scanner *s) {
   ls->transitions += s->transitions.n;
 }
 
-static void
+__attribute__((always_inline)) static void
 compute_transitions(LexState *ls, Scanner *s) {
   compute_liveness(s);
   build_transitions(ls, s);
 }
 
-static void
+__attribute__((always_inline)) static void
 build_state_scanner(LexState *ls, State *s) {
   NFAState *n, *nn, *nnn;
   Action *a;
@@ -529,7 +529,7 @@ new_LexState() {
   return ls;
 }
 
-void 
+__attribute__((always_inline)) void 
 build_scanners(Grammar *g) {
   int i, j, k;
   State *s;

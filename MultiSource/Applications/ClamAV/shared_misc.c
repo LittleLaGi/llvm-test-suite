@@ -104,7 +104,7 @@ char *freshdbdir(void)
     return retdir;
 }
 
-void print_version(void)
+__attribute__((always_inline)) void print_version(void)
 {
 	char *dbdir;
 	char *path;

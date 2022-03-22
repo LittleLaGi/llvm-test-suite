@@ -249,7 +249,7 @@ doStart(name) char *name;
 	}
 }
 
-void
+__attribute__((always_inline)) void
 doGrammarNts()
 {
 	List l;

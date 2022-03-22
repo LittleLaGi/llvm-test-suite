@@ -9,7 +9,7 @@
  *
  *  \author
  *      Main contributors (see contributors.h for copyright, address and affiliation details)
- *      - Karsten Sühring                 <suehring@hhi.de>
+ *      - Karsten Sï¿½hring                 <suehring@hhi.de>
  *      - Alexis Tourapis                 <alexismt@ieee.org>
  *      - Jill Boyce                      <jill.boyce@thomson.net>
  *      - Saurav K Bandyopadhyay          <saurav@ieee.org>
@@ -3480,7 +3480,7 @@ void free_colocated(ColocatedParams* p)
  ************************************************************************
  */
 
-void compute_colocated(ColocatedParams* p, StorablePicture **listX[6])
+__attribute__((always_inline)) void compute_colocated(ColocatedParams* p, StorablePicture **listX[6])
 {
   StorablePicture *fs, *fs_top, *fs_bottom;
   int i,j, ii, jj, jdiv;

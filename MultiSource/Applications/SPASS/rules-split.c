@@ -151,7 +151,7 @@ LIST split_Backtrack(PROOFSEARCH PS, CLAUSE EmptyClause, CLAUSE* SplitClause)
 #ifdef CHECK
     if (*SplitClause == NULL) {
       misc_StartErrorReport();
-      misc_ErrorReport("\n In split_Backtrack: Didn´t find a blocked clause");
+      misc_ErrorReport("\n In split_Backtrack: Didnï¿½t find a blocked clause");
       misc_ErrorReport("\n with clause number 0. (this marks the clause ");
       misc_ErrorReport("\n for the right branch of the tableau).");
       misc_FinishErrorReport();
@@ -439,7 +439,7 @@ LIST split_ExtractEmptyClauses(LIST Clauses, LIST* EmptyClauses)
   return Clauses;
 }
 
-CLAUSE split_SmallestSplitLevelClause(LIST Clauses)
+__attribute__((always_inline)) CLAUSE split_SmallestSplitLevelClause(LIST Clauses)
 /**************************************************************
   INPUT:   A non-empty list of clauses.
   RETURNS: The clause with the smallest split level.

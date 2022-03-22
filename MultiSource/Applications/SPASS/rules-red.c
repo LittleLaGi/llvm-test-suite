@@ -4405,7 +4405,7 @@ LIST red_ReduceInput(PROOFSEARCH Search, LIST ClauseList)
 }
 
 
-LIST red_SatInput(PROOFSEARCH Search) 
+__attribute__((always_inline)) LIST red_SatInput(PROOFSEARCH Search) 
 /*********************************************************
   INPUT:   A proof search object.
   RETURNS: A list of derived empty clauses.
@@ -4471,7 +4471,7 @@ LIST red_SatInput(PROOFSEARCH Search)
   return EmptyClauses;
 }
 
-void red_CheckSplitSubsumptionCondition(PROOFSEARCH Search)
+__attribute__((always_inline)) void red_CheckSplitSubsumptionCondition(PROOFSEARCH Search)
 /*********************************************************
   INPUT:   A proof search object.
   EFFECT:  For all deleted clauses in the split stack, it

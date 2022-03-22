@@ -28,7 +28,7 @@ newList(x, next) void *x; List next;
 	return l;
 }
 
-List
+__attribute__((always_inline)) List
 appendList(x, l) void *x; List l;
 {
 	List last;

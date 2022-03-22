@@ -85,7 +85,7 @@ static int scandirs(const char *dirname, struct cl_engine *engine, const struct 
     return treewalk(dirname, engine, user, opt, limits, options, 1);
 }
 
-static int scanstdin(const struct cl_engine *engine, const struct cl_limits *limits, int options)
+__attribute__((always_inline)) static int scanstdin(const struct cl_engine *engine, const struct cl_limits *limits, int options)
 {
 	int ret;
 	const char *virname, *tmpdir;
@@ -147,7 +147,7 @@ static int scanstdin(const struct cl_engine *engine, const struct cl_limits *lim
     return ret;
 }
 
-int scanmanager(const struct optstruct *opt)
+__attribute__((always_inline)) int scanmanager(const struct optstruct *opt)
 {
 	mode_t fmode;
 	int ret = 0, extunpacker = 0, fmodeint, i, x;

@@ -82,7 +82,7 @@ trailing_zeroes(z) int z;
 	}
 }
 
-void
+__attribute__((always_inline)) void
 makeLabel()
 {
 	int flag;
@@ -192,7 +192,7 @@ setVectors(ast) PatternAST ast;
 
 #define MAX_VECTOR	10
 
-void
+__attribute__((always_inline)) void
 makeRuleTable()
 {
 	int s,nt;
@@ -352,7 +352,7 @@ static int seminal(from, to)
 	*/
 }
 
-void
+__attribute__((always_inline)) void
 makeClosureArray()
 {
 	int i, j;
@@ -403,7 +403,7 @@ makeCostVector(z,d) int z; DeltaCost d;
 	fprintf(outfile, "}");
 }
 
-void
+__attribute__((always_inline)) void
 makeCostArray()
 {
 	int i;
@@ -422,7 +422,7 @@ makeCostArray()
 	fprintf(outfile, "};\n");
 }
 
-void
+__attribute__((always_inline)) void
 makeStateStringArray()
 {
 	int s;
@@ -440,7 +440,7 @@ makeStateStringArray()
 	fprintf(outfile, "};\n");
 }
 
-void
+__attribute__((always_inline)) void
 makeDeltaCostArray()
 {
 	int s;
@@ -575,7 +575,7 @@ doLayout(ast) RuleAST ast;
 	strcat(cumBuf, "0 }");
 }
 
-void
+__attribute__((always_inline)) void
 makeNts()
 {
 	int i;
@@ -626,7 +626,7 @@ printRule(r,d) RuleAST r; char *d;
 	}
 }
 
-void
+__attribute__((always_inline)) void
 makeRuleDescArray()
 {
 	int i;
@@ -708,7 +708,7 @@ makeRuleDescArray2()
 	fprintf(outfile, "};\n");
 }
 
-void
+__attribute__((always_inline)) void
 makeStringArray()
 {
 	int i;
@@ -764,7 +764,7 @@ doKids(ast) RuleAST ast;
 
 }
 
-void
+__attribute__((always_inline)) void
 makeKids()
 {
 	List e;
@@ -806,7 +806,7 @@ makeKids()
 	fprintf(outfile, "}\n");
 }
 
-void
+__attribute__((always_inline)) void
 makeOpLabel()
 {
 	fprintf(outfile, "#ifdef __STDC__\n");
@@ -837,7 +837,7 @@ makeStateLabel()
 	fprintf(outfile, "}\n");
 }
 
-void
+__attribute__((always_inline)) void
 makeChild()
 {
 	fprintf(outfile, "#ifdef __STDC__\n");
@@ -887,7 +887,7 @@ makeOperatorVector()
 	}
 }
 
-void
+__attribute__((always_inline)) void
 makeOperators()
 {
 	int i;
@@ -928,7 +928,7 @@ makeDebug()
 	fprintf(outfile, "#endif /* DEBUG */\n");
 }
 
-void
+__attribute__((always_inline)) void
 makeSimple()
 {
 	makeRuleTable();
@@ -937,7 +937,7 @@ makeSimple()
 	makeState();
 }
 
-void
+__attribute__((always_inline)) void
 startOptional()
 {
 	fprintf(outfile, "#ifdef %s_STATE_LABEL\n", prefix);
@@ -957,7 +957,7 @@ startOptional()
 
 }
 
-void
+__attribute__((always_inline)) void
 makeNonterminals()
 {
 	List l;
@@ -971,7 +971,7 @@ makeNonterminals()
 	fprintf(outfile, "#define %s_NT %d\n", prefix, last_user_nonterminal-1);
 }
 
-void
+__attribute__((always_inline)) void
 makeNonterminalArray()
 {
 	int i;
@@ -1004,7 +1004,7 @@ endOptional()
 	fprintf(outfile, "#endif /* %s_INCLUDE_EXTRA */\n", prefix);
 }
 
-void
+__attribute__((always_inline)) void
 startBurm()
 {
 	fprintf(outfile, "#ifndef %s_PANIC\n", prefix);
@@ -1022,7 +1022,7 @@ startBurm()
 	fprintf(outfile, "#endif\n");
 }
 
-void
+__attribute__((always_inline)) void
 reportDiagnostics()
 {
 	List l;

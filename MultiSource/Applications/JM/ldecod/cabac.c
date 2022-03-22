@@ -177,7 +177,7 @@ void readFieldModeInfo_CABAC( SyntaxElement *se,
 }
 
 
-int check_next_mb_and_get_field_mode_CABAC( SyntaxElement *se,
+__attribute__((always_inline)) int check_next_mb_and_get_field_mode_CABAC( SyntaxElement *se,
                                             struct img_par *img,
                                             DataPartition  *act_dp)
 {

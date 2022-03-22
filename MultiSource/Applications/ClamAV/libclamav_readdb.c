@@ -1553,7 +1553,7 @@ void cl_free(struct cl_engine *engine)
     free(engine);
 }
 
-int cl_build(struct cl_engine *engine)
+__attribute__((always_inline)) int cl_build(struct cl_engine *engine)
 {
 	int i, ret;
 	struct cli_matcher *root;

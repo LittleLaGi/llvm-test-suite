@@ -151,7 +151,7 @@ void MbAffPostProc()
  ***********************************************************************
  */
 
-int decode_one_frame(struct img_par *img,struct inp_par *inp, struct snr_par *snr)
+__attribute__((always_inline)) int decode_one_frame(struct img_par *img,struct inp_par *inp, struct snr_par *snr)
 {
   int current_header;
   Slice *currSlice = img->currentSlice;
@@ -844,7 +844,7 @@ void reorder_lists(int currSliceType, Slice * currSlice)
  *    initialize ref_pic_num array
  ************************************************************************
  */
-void set_ref_pic_num()
+__attribute__((always_inline)) void set_ref_pic_num()
 {
   int i,j;
 
@@ -890,7 +890,7 @@ void set_ref_pic_num()
  *    Reads new slice from bit_stream
  ************************************************************************
  */
-int read_new_slice()
+__attribute__((always_inline)) int read_new_slice()
 {
   NALU_t *nalu = AllocNALU(MAX_CODED_FRAME_SIZE);
   int current_header = 0;
@@ -1583,7 +1583,7 @@ void exit_picture()
  ************************************************************************
  */
 
-void ercWriteMBMODEandMV(struct img_par *img,struct inp_par *inp)
+__attribute__((always_inline)) void ercWriteMBMODEandMV(struct img_par *img,struct inp_par *inp)
 {
   extern objectBuffer_t *erc_object_list;
   int i, ii, jj, currMBNum = img->current_mb_nr;
@@ -1707,7 +1707,7 @@ void init_old_slice()
  *    NAL unit of a picture"
  ************************************************************************
  */
-void exit_slice()
+__attribute__((always_inline)) void exit_slice()
 {
 
   old_slice.pps_id = img->currentSlice->pic_parameter_set_id;
@@ -1796,7 +1796,7 @@ int is_new_picture()
  *    decodes one slice
  ************************************************************************
  */
-void decode_one_slice(struct img_par *img,struct inp_par *inp)
+__attribute__((always_inline)) void decode_one_slice(struct img_par *img,struct inp_par *inp)
 {
 
   Boolean end_of_slice = FALSE;
@@ -1840,7 +1840,7 @@ void decode_one_slice(struct img_par *img,struct inp_par *inp)
 }
 
 
-void decode_slice(struct img_par *img,struct inp_par *inp, int current_header)
+__attribute__((always_inline)) void decode_slice(struct img_par *img,struct inp_par *inp, int current_header)
 {
   Slice *currSlice = img->currentSlice;
 
@@ -1907,7 +1907,7 @@ void reset_wp_params(struct img_par *img)
 }
 
 
-void fill_wp_params(struct img_par *img)
+__attribute__((always_inline)) void fill_wp_params(struct img_par *img)
 {
   int i, j, k;
   int comp;
@@ -2044,7 +2044,7 @@ void fill_wp_params(struct img_par *img)
  *                    current frame is lost, current frame is incorrect.
  ************************************************************************
  */
-void Error_tracking()
+__attribute__((always_inline)) void Error_tracking()
 {
   int i;
 

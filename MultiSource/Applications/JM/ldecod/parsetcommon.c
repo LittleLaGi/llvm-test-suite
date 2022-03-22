@@ -95,7 +95,7 @@ seq_parameter_set_rbsp_t *AllocSPS ()
  }
 
 
-int sps_is_equal(seq_parameter_set_rbsp_t *sps1, seq_parameter_set_rbsp_t *sps2)
+__attribute__((always_inline)) int sps_is_equal(seq_parameter_set_rbsp_t *sps1, seq_parameter_set_rbsp_t *sps2)
 {
   unsigned i;
   int equal = 1;
@@ -156,7 +156,7 @@ int sps_is_equal(seq_parameter_set_rbsp_t *sps1, seq_parameter_set_rbsp_t *sps2)
   return equal;
 }
 
-int pps_is_equal(pic_parameter_set_rbsp_t *pps1, pic_parameter_set_rbsp_t *pps2)
+__attribute__((always_inline)) int pps_is_equal(pic_parameter_set_rbsp_t *pps1, pic_parameter_set_rbsp_t *pps2)
 {
   unsigned i;
   int equal = 1;

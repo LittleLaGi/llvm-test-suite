@@ -133,7 +133,7 @@ int quant8_org[64] = { //to be use if no q matrix is chosen
  ***********************************************************************
  */
 
-int intrapred( struct img_par *img,  //!< image parameters
+__attribute__((always_inline)) int intrapred( struct img_par *img,  //!< image parameters
                int ioff,             //!< pixel offset X within MB
                int joff,             //!< pixel offset Y within MB
                int img_block_x,      //!< location of block X, multiples of 4
@@ -441,7 +441,7 @@ int intrapred( struct img_par *img,  //!< image parameters
  *    best SAD
  ***********************************************************************
  */
-int intrapred_luma_16x16(struct img_par *img, //!< image parameters
+__attribute__((always_inline)) int intrapred_luma_16x16(struct img_par *img, //!< image parameters
                          int predmode)        //!< prediction mode
 {
   int s0=0,s1,s2;
@@ -562,7 +562,7 @@ int intrapred_luma_16x16(struct img_par *img, //!< image parameters
 }
 
 
-void intrapred_chroma(struct img_par *img, int uv)
+__attribute__((always_inline)) void intrapred_chroma(struct img_par *img, int uv)
 {
   int i,j, ii, jj, ioff, joff;
 
@@ -833,7 +833,7 @@ void itrans(struct img_par *img, //!< image parameters
  *
  ************************************************************************
  */
-void AssignQuantParam(pic_parameter_set_rbsp_t* pps, seq_parameter_set_rbsp_t* sps)
+__attribute__((always_inline)) void AssignQuantParam(pic_parameter_set_rbsp_t* pps, seq_parameter_set_rbsp_t* sps)
 {
   int i;
 
@@ -927,7 +927,7 @@ void AssignQuantParam(pic_parameter_set_rbsp_t* pps, seq_parameter_set_rbsp_t* s
  *
  ************************************************************************
  */
-void CalculateQuantParam()
+__attribute__((always_inline)) void CalculateQuantParam()
 {
   int i, j, k, temp;
 
@@ -952,7 +952,7 @@ void CalculateQuantParam()
  *    Luma DC inverse transform
  ***********************************************************************
  */
-void itrans_2(struct img_par *img) //!< image parameters
+__attribute__((always_inline)) void itrans_2(struct img_par *img) //!< image parameters
 {
   int i,j;
   int M5[4];
@@ -1230,7 +1230,7 @@ void copyblock_sp(struct img_par *img,int block_x,int block_y)
 
 }
 
-void itrans_sp_chroma(struct img_par *img,int ll)
+__attribute__((always_inline)) void itrans_sp_chroma(struct img_par *img,int ll)
 {
   int i,j,i1,j2,ilev,n2,n1,j1,mb_y;
   int m5[BLOCK_SIZE];

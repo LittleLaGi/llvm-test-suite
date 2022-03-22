@@ -63,7 +63,7 @@ float      clock_Ping;
 /* Functions                                                  */
 /**************************************************************/
 
-void clock_Init(void)
+__attribute__((always_inline)) void clock_Init(void)
 /*********************************************************
   INPUT:   None.
   EFFECT:  Initializes the clock Module.

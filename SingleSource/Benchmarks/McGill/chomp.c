@@ -224,7 +224,7 @@ int *make_data(int row,int col) /* creates a new _data with the correct */
   return current;                           /* not the empty board */
 }
 
- __attribute__((always_inline)) struct _play *make_play(int all) /* make up the entire tree-like stuff */
+struct _play *make_play(int all) /* make up the entire tree-like stuff */
 {
   int val;
   int *temp;

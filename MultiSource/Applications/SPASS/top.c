@@ -408,7 +408,7 @@ static LIST top_GetLiteralsForSplitting(CLAUSE Clause)
       for (j = clause_FirstLitIndex();
 	   j <= clause_LastLitIndex(Clause) && !Stop; j++) {
 	if (i != j && list_HasIntersection(Variables[i], Variables[j])) {
-	  Stop   = TRUE;  /* Literal isn´t candidate for "optimal" splitting */
+	  Stop   = TRUE;  /* Literal isnï¿½t candidate for "optimal" splitting */
 	  Failed = list_Cons((POINTER)i, Failed);
 	  Failed = list_Cons((POINTER)j, Failed);
 	}
@@ -550,7 +550,7 @@ static CLAUSE top_GetPowerfulSplitClause(PROOFSEARCH Search, BOOL Usables,
 }
 
 
-static LIST top_FullReductionSelectGivenComputeDerivables(PROOFSEARCH Search,
+__attribute__((always_inline)) static LIST top_FullReductionSelectGivenComputeDerivables(PROOFSEARCH Search,
 							  CLAUSE *SplitClause,
 							  int *Counter)
 /**************************************************************
@@ -689,7 +689,7 @@ static LIST top_FullReductionSelectGivenComputeDerivables(PROOFSEARCH Search,
 }
 
 
-static LIST top_LazyReductionSelectGivenComputeDerivables(PROOFSEARCH Search,
+__attribute__((always_inline)) static LIST top_LazyReductionSelectGivenComputeDerivables(PROOFSEARCH Search,
 							  CLAUSE *SplitClause,
 							  int *Counter)
 /**************************************************************
@@ -837,7 +837,7 @@ static LIST top_LazyReductionSelectGivenComputeDerivables(PROOFSEARCH Search,
 }
 
 
-static PROOFSEARCH top_ProofSearch(PROOFSEARCH Search, LIST ProblemClauses,
+__attribute__((always_inline)) static PROOFSEARCH top_ProofSearch(PROOFSEARCH Search, LIST ProblemClauses,
 				   FLAGSTORE InputFlags, LIST UserPrecedence, int *BoundApplied)
 /**************************************************************
   INPUT:   A proof search object, a list of clauses, a flag store
@@ -1101,7 +1101,7 @@ static PROOFSEARCH top_ProofSearch(PROOFSEARCH Search, LIST ProblemClauses,
 }
 
 
-static void top_Flotter(int argc, const char* argv[], LIST InputClauses)
+__attribute__((always_inline)) static void top_Flotter(int argc, const char* argv[], LIST InputClauses)
 /**************************************************************
   INPUT:  
   RETURNS: Nothing.

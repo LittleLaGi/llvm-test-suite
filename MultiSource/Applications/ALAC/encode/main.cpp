@@ -190,7 +190,7 @@ int main (int argc, char * argv[])
 }
 
 
-int32_t GetInputFormat(FILE * inputFile, AudioFormatDescription * theInputFormat, uint32_t * theFileType)
+__attribute__((always_inline)) int32_t GetInputFormat(FILE * inputFile, AudioFormatDescription * theInputFormat, uint32_t * theFileType)
 {
   // assumes the file is open
   uint8_t theReadBuffer[20];
@@ -267,7 +267,7 @@ int32_t GetInputFormat(FILE * inputFile, AudioFormatDescription * theInputFormat
   return 0;
 }
 
-int32_t SetOutputFormat(AudioFormatDescription theInputFormat, AudioFormatDescription * theOutputFormat)
+__attribute__((always_inline)) int32_t SetOutputFormat(AudioFormatDescription theInputFormat, AudioFormatDescription * theOutputFormat)
 {
   if (theInputFormat.mFormatID == kALACFormatLinearPCM)
     {
@@ -335,7 +335,7 @@ int32_t SetOutputFormat(AudioFormatDescription theInputFormat, AudioFormatDescri
   return 0;
 }
 
-int32_t FindDataStart(FILE * inputFile, uint32_t inputFileType, int32_t * dataPos, int32_t * dataSize)
+__attribute__((always_inline)) int32_t FindDataStart(FILE * inputFile, uint32_t inputFileType, int32_t * dataPos, int32_t * dataSize)
 {
   // returns the absolute position within the file
   int32_t currentPosition = ftell(inputFile); // record the current position
@@ -381,7 +381,7 @@ int32_t FindDataStart(FILE * inputFile, uint32_t inputFileType, int32_t * dataPo
   return 0;
 }
 
-int32_t EncodeALAC(FILE * inputFile, FILE * outputFile, AudioFormatDescription theInputFormat, AudioFormatDescription theOutputFormat, int32_t inputDataSize)
+__attribute__((always_inline)) int32_t EncodeALAC(FILE * inputFile, FILE * outputFile, AudioFormatDescription theInputFormat, AudioFormatDescription theOutputFormat, int32_t inputDataSize)
 {
   int32_t theInputPacketBytes = theInputFormat.mChannelsPerFrame * (theInputFormat.mBitsPerChannel >> 3) * theOutputFormat.mFramesPerPacket;
   int32_t theOutputPacketBytes = theInputPacketBytes + kALACMaxEscapeHeaderBytes;
@@ -585,7 +585,7 @@ int32_t EncodeALAC(FILE * inputFile, FILE * outputFile, AudioFormatDescription t
 }
 
 // There's not a whole lot of difference between encode and decode on this level
-int32_t DecodeALAC(FILE * inputFile, FILE * outputFile, AudioFormatDescription theInputFormat, AudioFormatDescription theOutputFormat, int32_t inputDataSize, uint32_t outputFileType)
+__attribute__((always_inline)) int32_t DecodeALAC(FILE * inputFile, FILE * outputFile, AudioFormatDescription theInputFormat, AudioFormatDescription theOutputFormat, int32_t inputDataSize, uint32_t outputFileType)
 {
   int32_t theInputPacketBytes = theInputFormat.mChannelsPerFrame * (theOutputFormat.mBitsPerChannel >> 3) * theInputFormat.mFramesPerPacket + kALACMaxEscapeHeaderBytes;
   int32_t theOutputPacketBytes = theInputPacketBytes - kALACMaxEscapeHeaderBytes;
@@ -720,7 +720,7 @@ void WriteWAVERIFFChunk(FILE * outputFile)
   fwrite(theReadBuffer, 1, kWAVERIFFChunkSize, outputFile);
 }
 
-void WriteWAVEfmtChunk(FILE * outputFile, AudioFormatDescription theOutputFormat)
+__attribute__((always_inline)) void WriteWAVEfmtChunk(FILE * outputFile, AudioFormatDescription theOutputFormat)
 {
   // we use a standard 'fmt ' chunk for our pcm data where 16 is the chunk size and 1 is the compression code
   uint8_t theBuffer[kWAVEfmtChunkSize] = {'f', 'm', 't', ' ', 16, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; 

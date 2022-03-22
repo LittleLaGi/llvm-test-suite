@@ -13,7 +13,7 @@
 //-------------- 
 //  test Cholesky solver on matrix
 //-------------- 
-void Crystal_Cholesky(int nSlip,  
+__attribute__((always_inline)) void Crystal_Cholesky(int nSlip,  
                       double a[MS_XTAL_NSLIP_MAX][MS_XTAL_NSLIP_MAX],
                       double r[MS_XTAL_NSLIP_MAX],
                       double g[MS_XTAL_NSLIP_MAX])

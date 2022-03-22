@@ -369,7 +369,7 @@ cli_file_t cli_filetype2(int desc, const struct cl_engine *engine)
     return ret;
 }
 
-int cli_addtypesigs(struct cl_engine *engine)
+__attribute__((always_inline)) int cli_addtypesigs(struct cl_engine *engine)
 {
 	int i, ret;
 	struct cli_matcher *root;

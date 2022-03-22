@@ -72,7 +72,7 @@ static NAT  term_STAMPUSERS;
 /* ********************************************************** */
 /**************************************************************/
 
-void term_Init(void)
+__attribute__((always_inline)) void term_Init(void)
 /**********************************************************
   INPUT:   None.
   RETURNS: None.
@@ -2455,7 +2455,7 @@ void term_StartStamp(void)
 
 #endif
 
-LIST term_FindAllAtoms(TERM Term, SYMBOL Predicate)
+__attribute__((always_inline)) LIST term_FindAllAtoms(TERM Term, SYMBOL Predicate)
 /**********************************************************************
    INPUT:  A term Term and a symbol Predicate.
    RETURN: A list of all atoms of Term with Symbol as top symbol.

@@ -8,7 +8,7 @@
  *
  * \author
  *    Main contributors (see contributors.h for copyright, address and affiliation details)
- *    - Inge Lille-Langøy               <inge.lille-langoy@telenor.com>
+ *    - Inge Lille-Langï¿½y               <inge.lille-langoy@telenor.com>
  *    - Rickard Sjoberg                 <rickard.sjoberg@era.ericsson.se>
  *    - Jani Lainema                    <jani.lainema@nokia.com>
  *    - Sebastian Purreiter             <sebastian.purreiter@mch.siemens.de>
@@ -69,7 +69,7 @@ static void SetMotionVectorPredictor (struct img_par  *img,
  *    initializes the current macroblock
  ************************************************************************
  */
-void start_macroblock(struct img_par *img,int CurrentMBInScanOrder)
+__attribute__((always_inline)) void start_macroblock(struct img_par *img,int CurrentMBInScanOrder)
 {
   int l,j;
   Macroblock *currMB;   // intialization code deleted, see below, StW
@@ -155,7 +155,7 @@ void start_macroblock(struct img_par *img,int CurrentMBInScanOrder)
  *    check end_of_slice condition
  ************************************************************************
  */
-Boolean exit_macroblock(struct img_par *img,struct inp_par *inp,int eos_bit)
+__attribute__((always_inline)) Boolean exit_macroblock(struct img_par *img,struct inp_par *inp,int eos_bit)
 {
  //! The if() statement below resembles the original code, which tested
   //! img->current_mb_nr == img->PicSizeInMbs.  Both is, of course, nonsense
@@ -261,7 +261,7 @@ void interpret_mb_mode_P(struct img_par *img)
  *    Interpret the mb mode for I-Frames
  ************************************************************************
  */
-void interpret_mb_mode_I(struct img_par *img)
+__attribute__((always_inline)) void interpret_mb_mode_I(struct img_par *img)
 {
   const int ICBPTAB[6] = {0,16,32,15,31,47};
   Macroblock *currMB   = &img->mb_data[img->current_mb_nr];
@@ -298,7 +298,7 @@ void interpret_mb_mode_I(struct img_par *img)
  *    Interpret the mb mode for B-Frames
  ************************************************************************
  */
-void interpret_mb_mode_B(struct img_par *img)
+__attribute__((always_inline)) void interpret_mb_mode_B(struct img_par *img)
 {
   static const int offset2pdir16x16[12]   = {0, 0, 1, 2, 0,0,0,0,0,0,0,0};
   static const int offset2pdir16x8[22][2] = {{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{1,1},{0,0},{0,1},{0,0},{1,0},
@@ -380,7 +380,7 @@ void interpret_mb_mode_B(struct img_par *img)
  *    Interpret the mb mode for SI-Frames
  ************************************************************************
  */
-void interpret_mb_mode_SI(struct img_par *img)
+__attribute__((always_inline)) void interpret_mb_mode_SI(struct img_par *img)
 {
   const int ICBPTAB[6] = {0,16,32,15,31,47};
   Macroblock *currMB   = &img->mb_data[img->current_mb_nr];
@@ -486,7 +486,7 @@ void reset_coeffs()
   memset(&img->nz_coeff[img->current_mb_nr][0][0],0, BLOCK_SIZE * (BLOCK_SIZE + img->num_blk8x8_uv) * sizeof(int));
 }
 
-void field_flag_inference()
+__attribute__((always_inline)) void field_flag_inference()
 {
   Macroblock *currMB = &img->mb_data[img->current_mb_nr];
 
@@ -524,7 +524,7 @@ void set_chroma_qp(Macroblock* currMB)
  *    Get the syntax elements from the NAL
  ************************************************************************
  */
-int read_one_macroblock(struct img_par *img,struct inp_par *inp)
+__attribute__((always_inline)) int read_one_macroblock(struct img_par *img,struct inp_par *inp)
 {
   int i;
 
@@ -996,7 +996,7 @@ int read_one_macroblock(struct img_par *img,struct inp_par *inp)
  *    Dong Wang <Dong.Wang@bristol.ac.uk>
  ************************************************************************
  */
-void init_decoding_engine_IPCM(struct img_par *img)
+__attribute__((always_inline)) void init_decoding_engine_IPCM(struct img_par *img)
 {
   Slice *currSlice = img->currentSlice;
   Bitstream *currStream;
@@ -1038,7 +1038,7 @@ void init_decoding_engine_IPCM(struct img_par *img)
  ************************************************************************
  */
 
-void readIPCMcoeffsFromNAL(struct img_par *img, struct inp_par *inp, struct datapartition *dP)
+__attribute__((always_inline)) void readIPCMcoeffsFromNAL(struct img_par *img, struct inp_par *inp, struct datapartition *dP)
 {
   SyntaxElement currSE;
   int i,j;
@@ -1138,7 +1138,7 @@ void readIPCMcoeffsFromNAL(struct img_par *img, struct inp_par *inp, struct data
 
 
 
-void read_ipred_modes(struct img_par *img,struct inp_par *inp)
+__attribute__((always_inline)) void read_ipred_modes(struct img_par *img,struct inp_par *inp)
 {
   int b8,i,j,bi,bj,bx,by,dec;
   SyntaxElement currSE;
@@ -2586,7 +2586,7 @@ void readCoeff4x4_CAVLC (struct img_par *img,struct inp_par *inp,
  *
  ************************************************************************
  */
-void CalculateQuant8Param()
+__attribute__((always_inline)) void CalculateQuant8Param()
 {
   int i, j, k, temp;
 
@@ -2609,7 +2609,7 @@ void CalculateQuant8Param()
 *    from the NAL (CABAC Mode)
 ************************************************************************
 */
-void readLumaCoeff8x8_CABAC (struct img_par *img,struct inp_par *inp, int b8)
+__attribute__((always_inline)) void readLumaCoeff8x8_CABAC (struct img_par *img,struct inp_par *inp, int b8)
 {
   int i,j,k;
   int level = 1;
@@ -2730,7 +2730,7 @@ void readLumaCoeff8x8_CABAC (struct img_par *img,struct inp_par *inp, int b8)
  *    from the NAL
  ************************************************************************
  */
-void readCBPandCoeffsFromNAL(struct img_par *img,struct inp_par *inp)
+__attribute__((always_inline)) void readCBPandCoeffsFromNAL(struct img_par *img,struct inp_par *inp)
 {
   int i,j,k;
   int level;
@@ -3771,7 +3771,7 @@ void readCBPandCoeffsFromNAL(struct img_par *img,struct inp_par *inp)
  ************************************************************************
  */
 
-void decode_ipcm_mb(struct img_par *img)
+__attribute__((always_inline)) void decode_ipcm_mb(struct img_par *img)
 {
   int i,j;
 
@@ -3823,7 +3823,7 @@ void decode_ipcm_mb(struct img_par *img)
  ************************************************************************
  */
 
-int decode_one_macroblock(struct img_par *img,struct inp_par *inp)
+__attribute__((always_inline)) int decode_one_macroblock(struct img_par *img,struct inp_par *inp)
 {
   int tmp_block[BLOCK_SIZE][BLOCK_SIZE];
   int tmp_blockbw[BLOCK_SIZE][BLOCK_SIZE];

@@ -18,7 +18,7 @@ static char rcsid[]= "$Header$";
 /*
 **	routine to compare each object with its ordinal twin
 */
-E_edit
+__attribute__((always_inline)) E_edit
 Q_do_exact(size1,size2,max_d,comflags)
 int size1;
 int size2;
