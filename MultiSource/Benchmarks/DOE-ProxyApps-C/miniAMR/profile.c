@@ -32,7 +32,7 @@
 #include "timer.h"
 
 // Profiling output.
-void profile(void)
+__attribute__((always_inline)) void profile(void)
 {
    int i;
    double total_gflops, gflops_rank, total_fp_ops, total_fp_adds,
@@ -577,7 +577,7 @@ void profile(void)
    }
 }
 
-void calculate_results(void)
+__attribute__((always_inline)) void calculate_results(void)
 {
    double results[128];
    int i;
@@ -629,7 +629,7 @@ void calculate_results(void)
       average[i] = results[i];
 }
 
-void init_profile(void)
+__attribute__((always_inline)) void init_profile(void)
 {
    int i;
 

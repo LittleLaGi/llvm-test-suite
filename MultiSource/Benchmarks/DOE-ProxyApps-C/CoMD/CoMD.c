@@ -166,7 +166,7 @@ int main(int argc, char** argv)
 /// Initialization order is set by the natural dependencies of the
 /// substructure such as the atoms need the link cells so the link cells
 /// must be initialized before the atoms.
-SimFlat* initSimulation(Command cmd)
+__attribute__((always_inline)) SimFlat* initSimulation(Command cmd)
 {
    SimFlat* sim = comdMalloc(sizeof(SimFlat));
    sim->nSteps = cmd.nSteps;
@@ -222,7 +222,7 @@ SimFlat* initSimulation(Command cmd)
 }
 
 /// frees all data associated with *ps and frees *ps
-void destroySimulation(SimFlat** ps)
+__attribute__((always_inline)) void destroySimulation(SimFlat** ps)
 {
    if ( ! ps ) return;
 
@@ -242,7 +242,7 @@ void destroySimulation(SimFlat** ps)
    return;
 }
 
-void initSubsystems(void)
+__attribute__((always_inline)) void initSubsystems(void)
 {
 #if REDIRECT_OUTPUT
    freopen("testOut.txt","w",screenOut);
@@ -265,7 +265,7 @@ void finalizeSubsystems(void)
 }
 
 /// decide whether to get LJ or EAM potentials
-BasePotential* initPotential(
+__attribute__((always_inline)) BasePotential* initPotential(
    int doeam, const char* potDir, const char* potName, const char* potType)
 {
    BasePotential* pot = NULL;
@@ -289,7 +289,7 @@ SpeciesData* initSpecies(BasePotential* pot)
    return species;
 }
 
-Validate* initValidate(SimFlat* sim)
+__attribute__((always_inline)) Validate* initValidate(SimFlat* sim)
 {
    sumAtoms(sim);
    Validate* val = comdMalloc(sizeof(Validate));
@@ -307,7 +307,7 @@ Validate* initValidate(SimFlat* sim)
    return val;
 }
 
-void validateResult(const Validate* val, SimFlat* sim)
+__attribute__((always_inline)) void validateResult(const Validate* val, SimFlat* sim)
 {
    if (printRank())
    {
@@ -449,7 +449,7 @@ void printSimulationDataYaml(FILE* file, SimFlat* s)
 }
 
 /// Check that the user input meets certain criteria.
-void sanityChecks(Command cmd, double cutoff, double latticeConst, char latticeType[8])
+__attribute__((always_inline)) void sanityChecks(Command cmd, double cutoff, double latticeConst, char latticeType[8])
 {
    int failCode = 0;
 

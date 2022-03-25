@@ -82,7 +82,7 @@ static MyOption* lastOption(MyOption* o)
    return o;
 }
 
-static MyOption* findOption(MyOption* o, unsigned char shortArg)
+__attribute__((always_inline)) static MyOption* findOption(MyOption* o, unsigned char shortArg)
 {
    while(o)
    {
@@ -120,7 +120,7 @@ void freeArgs()
    return;
 }
 
-void printArgs()
+__attribute__((always_inline)) void printArgs()
 {
    MyOption* o = myargs;
    char s[4096];
@@ -141,7 +141,7 @@ void printArgs()
    return;
 }
 
-void processArgs(int argc, char** argv)
+__attribute__((always_inline)) void processArgs(int argc, char** argv)
 {
    MyOption* o;
    int n=0;

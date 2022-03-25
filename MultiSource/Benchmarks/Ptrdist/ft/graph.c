@@ -71,7 +71,7 @@ static id = 1;
  * Apparently a good reference is Tinhofer G., ,
  * C. Hanser, Verlag, M\"{u}nchen 1980.
  */
-Vertices *
+__attribute__((always_inline)) Vertices *
 GenGraph(int nVertex, int nEdge)
 {
   Vertices * graph;
@@ -86,7 +86,7 @@ GenGraph(int nVertex, int nEdge)
   return(graph);
 }
 
-Vertices *
+__attribute__((always_inline)) Vertices *
 GenTree(int nVertex)
 {
   int       i;
@@ -137,7 +137,7 @@ GenTree(int nVertex)
   return(graph);
 }
 
-Vertices *
+__attribute__((always_inline)) Vertices *
 AddEdges(Vertices * graph, int nVertex, int nEdge)
 {
   int       i;
@@ -176,7 +176,7 @@ PickVertex(Vertices * graph, int whichVertex)
   return(graph);
 }
 
-void
+__attribute__((always_inline)) void
 Connect(Vertices * vertex1, Vertices * vertex2)
 {
   int    weight;
@@ -199,7 +199,7 @@ Connect(Vertices * vertex1, Vertices * vertex2)
   EDGES(vertex2) = edge;
 }
 
-int
+__attribute__((always_inline)) int
 Duplicate(Vertices * vertex1, Vertices * vertex2)
 {
   Edges * edge;
@@ -259,7 +259,7 @@ NewEdge()
   return(edge);
 }
 
-void
+__attribute__((always_inline)) void
 PrintGraph(Vertices * graph)
 {
   Vertices * vertex;
@@ -277,7 +277,7 @@ PrintGraph(Vertices * graph)
   while(vertex != graph);
 }
 
-void
+__attribute__((always_inline)) void
 PrintNeighbors(Vertices * vertex)
 {
   Edges * edge;

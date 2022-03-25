@@ -210,7 +210,7 @@ void output_trailers(void)
 }
 
 
-void output(void)
+__attribute__((always_inline)) void output(void)
 {
   int c;
 
@@ -246,7 +246,7 @@ void output(void)
   output_program();
 }
 
-void output_token_translations(void)
+__attribute__((always_inline)) void output_token_translations(void)
 {
   register int i, j;
 /*   register short *sp; JF unused */
@@ -290,7 +290,7 @@ void output_token_translations(void)
 
 
 
-void output_gram(void)
+__attribute__((always_inline)) void output_gram(void)
 {
   register int i;
   register int j;
@@ -344,7 +344,7 @@ void output_gram(void)
 
 
 
-void output_stos(void)
+__attribute__((always_inline)) void output_stos(void)
 {
   register int i;
   register int j;
@@ -374,7 +374,7 @@ void output_stos(void)
 
 
 
-void output_rule_data(void)
+__attribute__((always_inline)) void output_rule_data(void)
 {
   register int i;
   register int j;
@@ -501,7 +501,7 @@ void output_defines(void)
 
 /* compute and output yydefact, yydefgoto, yypact, yypgoto, yytable and yycheck.  */
 
-void output_actions(void)
+__attribute__((always_inline)) void output_actions(void)
 {
   nvectors = nstates + nvars;
 
@@ -537,7 +537,7 @@ void output_actions(void)
    The yydefact table is output now.  The detailed info
    is saved for putting into yytable later.  */
 
-void token_actions(void)
+__attribute__((always_inline)) void token_actions(void)
 {
   register int i;
   register int j;
@@ -788,7 +788,7 @@ void save_row(int state)
    The yydefgoto table is output now.  The detailed info
    is saved for putting into yytable later.  */
 
-void goto_actions(void)
+__attribute__((always_inline)) void goto_actions(void)
 {
   register int i;
   register int j;
@@ -906,7 +906,7 @@ void save_column(int symbol,int default_state)
 /* the next few functions decide how to pack 
    the actions and gotos information into yytable. */
 
-void sort_actions(void)
+__attribute__((always_inline)) void sort_actions(void)
 {
   register int i;
   register int j;
@@ -942,7 +942,7 @@ void sort_actions(void)
 
 
 
-void pack_table(void)
+__attribute__((always_inline)) void pack_table(void)
 {
   register int i;
   register int place;
@@ -988,7 +988,7 @@ void pack_table(void)
 
 
 
-int matching_state(int vector)
+__attribute__((always_inline)) int matching_state(int vector)
 {
   register int i;
   register int j;
@@ -1027,7 +1027,7 @@ int matching_state(int vector)
 
 
 
-int pack_vector(int vector)
+__attribute__((always_inline)) int pack_vector(int vector)
 {
   register int i;
   register int j;
@@ -1095,7 +1095,7 @@ int pack_vector(int vector)
 /* the following functions output yytable, yycheck
    and the vectors whose elements index the portion starts */
 
-void output_base(void)
+__attribute__((always_inline)) void output_base(void)
 {
   register int i;
   register int j;
@@ -1144,7 +1144,7 @@ void output_base(void)
   FREE(base);
 }
 
-void output_table(void)
+__attribute__((always_inline)) void output_table(void)
 {
   register int i;
   register int j;
@@ -1174,7 +1174,7 @@ void output_table(void)
   FREE(table);
 }
 
-void output_check(void)
+__attribute__((always_inline)) void output_check(void)
 {
   register int i;
   register int j;
@@ -1207,7 +1207,7 @@ void output_check(void)
 
 /* copy the parser code into the ftable file at the end.  */
 
-void output_parser(void)
+__attribute__((always_inline)) void output_parser(void)
 {
   register int c;
 #ifdef DONTDEF
@@ -1297,7 +1297,7 @@ static const char *mybasename(const char *str) {
   return base ? base+1 : str;
 }
 
-void output_program(void)
+__attribute__((always_inline)) void output_program(void)
 {
   register int c;
   extern int lineno;
@@ -1314,7 +1314,7 @@ void output_program(void)
 
 
 
-void free_itemsets(void)
+__attribute__((always_inline)) void free_itemsets(void)
 {
   register core *cp,*cptmp;
 
@@ -1326,7 +1326,7 @@ void free_itemsets(void)
   }
 }
 
-void free_shifts(void)
+__attribute__((always_inline)) void free_shifts(void)
 {
   register shifts *sp,*sptmp;/* JF derefrenced freed ptr */
 
@@ -1338,7 +1338,7 @@ void free_shifts(void)
   }
 }
 
-void free_reductions(void)
+__attribute__((always_inline)) void free_reductions(void)
 {
   register reductions *rp,*rptmp;/* JF fixed freed ptr */
 

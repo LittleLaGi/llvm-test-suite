@@ -210,7 +210,7 @@ bool paired[];
 			    17,18  34,459,425
 			    19,20 654,729,075
 */
-void find_optimal_pairing(PLA, strategy)
+__attribute__((always_inline)) void find_optimal_pairing(PLA, strategy)
 pPLA PLA;
 int strategy;
 {
@@ -247,7 +247,7 @@ int strategy;
     EXEC_S(PLA->F=espresso(PLA->F,PLA->D,PLA->R),"ESPRESSO  ",PLA->F);
 }
 
-int **find_pairing_cost(PLA, strategy)
+__attribute__((always_inline)) int **find_pairing_cost(PLA, strategy)
 pPLA PLA;
 int strategy;
 {
@@ -369,7 +369,7 @@ ppair pair;
 }
 
 
-int greedy_best_cost(cost_array_local, pair_p)
+__attribute__((always_inline)) int greedy_best_cost(cost_array_local, pair_p)
 int **cost_array_local;
 ppair *pair_p;
 {
@@ -409,7 +409,7 @@ ppair *pair_p;
 }
 
 
-ppair pair_best_cost(cost_array_local)
+__attribute__((always_inline)) ppair pair_best_cost(cost_array_local)
 int **cost_array_local;
 {
     ppair pair;
@@ -455,7 +455,7 @@ register ppair pair;
 	4) for phase assignment
 */
 
-pair_all(PLA, pair_strategy)
+__attribute__((always_inline)) pair_all(PLA, pair_strategy)
 pPLA PLA;
 int pair_strategy;
 {

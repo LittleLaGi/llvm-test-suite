@@ -572,7 +572,7 @@ int out_type;
 }
 
 
-runtime()
+__attribute__((always_inline)) runtime()
 {
     int i;
     long total = 1, temp;
@@ -592,7 +592,7 @@ runtime()
 }
 
 
-init_runtime()
+__attribute__((always_inline)) init_runtime()
 {
     total_name[READ_TIME] =     "READ       ";
     total_name[WRITE_TIME] =    "WRITE      ";
@@ -664,7 +664,7 @@ usage()
  *  Hack for backward compatibility (ACK! )
  */
 
-backward_compatibility_hack(argc, argv, option, out_type)
+__attribute__((always_inline)) backward_compatibility_hack(argc, argv, option, out_type)
 int *argc;
 char **argv;
 int *option;

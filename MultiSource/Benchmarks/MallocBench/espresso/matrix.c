@@ -536,7 +536,7 @@ int max;
     }
 }
 
-void
+__attribute__((always_inline)) void
 sm_cleanup()
 {
 #ifdef FAST_AND_LOOSE

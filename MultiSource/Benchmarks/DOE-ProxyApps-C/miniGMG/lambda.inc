@@ -9,7 +9,7 @@
 #include "mg.h"
 #include "defines.h"
 //------------------------------------------------------------------------------------------------------------------------------
-void rebuild_lambda(domain_type * domain, int level, double a, double b){
+__attribute__((always_inline)) void rebuild_lambda(domain_type * domain, int level, double a, double b){
   uint64_t _timeStart = CycleTime();
 
   int CollaborativeThreadingBoxSize = 100000; // i.e. never

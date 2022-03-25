@@ -30,7 +30,7 @@ notice and this notice must be preserved on all copies.
 
 short **derives;
 
-void set_derives(void)
+__attribute__((always_inline)) void set_derives(void)
 {
   register int i;
   register int lhs;
@@ -86,7 +86,7 @@ void free_derives(void)
 
 #ifdef	DEBUG
 
-void print_derives(void)
+__attribute__((always_inline)) void print_derives(void)
 {
   register int i;
   register short *sp;

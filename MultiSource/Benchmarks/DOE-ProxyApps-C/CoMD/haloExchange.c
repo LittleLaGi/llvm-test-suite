@@ -141,7 +141,7 @@ static int sortAtomsById(const void* a, const void* b);
 ///   simulation domain, the factor is +1.0.
 ///
 /// \see redistributeAtoms
-HaloExchange* initAtomHaloExchange(Domain* domain, LinkCell* boxes)
+__attribute__((always_inline)) HaloExchange* initAtomHaloExchange(Domain* domain, LinkCell* boxes)
 {
    HaloExchange* hh = initHaloExchange(domain);
    
@@ -325,7 +325,7 @@ void exchangeData(HaloExchange* haloExchange, void* data, int iAxis)
 ///                    consistency check.
 /// \return The list of cells to send.  Caller is responsible to free
 /// the list.
-int* mkAtomCellList(LinkCell* boxes, enum HaloFaceOrder iFace, const int nCells)
+__attribute__((always_inline)) int* mkAtomCellList(LinkCell* boxes, enum HaloFaceOrder iFace, const int nCells)
 {
    int* list = comdMalloc(nCells*sizeof(int));
    int xBegin = -1;

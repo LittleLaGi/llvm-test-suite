@@ -47,7 +47,7 @@ static void getTimeString(char* timestring)
            timeinfo->tm_sec);
 }
 
-void yamlBegin(void)
+__attribute__((always_inline)) void yamlBegin(void)
 {
    if (! printRank())
       return;

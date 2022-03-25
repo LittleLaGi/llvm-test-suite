@@ -26,7 +26,7 @@
  *
  */
 
-void
+__attribute__((always_inline)) void
 BuildChannel(void)
 {
     /*
@@ -49,7 +49,7 @@ BuildChannel(void)
     DensityChannel();
 }
 
-void
+__attribute__((always_inline)) void
 DimensionChannel(void)
 {
     FILE	*channelFP;
@@ -153,7 +153,7 @@ DimensionChannel(void)
     channelNets = net;
 }
 
-void
+__attribute__((always_inline)) void
 DescribeChannel(void)
 {
     FILE	*channelFP;
@@ -255,7 +255,7 @@ DescribeChannel(void)
     }
 }
 
-void
+__attribute__((always_inline)) void
 DensityChannel(void)
 {
     ulong	init;

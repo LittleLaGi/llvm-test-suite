@@ -20,7 +20,7 @@ static void computeVcm(SimFlat* s, real_t vcm[3]);
 /// \details
 /// Call functions such as createFccLattice and setTemperature to set up
 /// initial atom positions and momenta.
-Atoms* initAtoms(LinkCell* boxes)
+__attribute__((always_inline)) Atoms* initAtoms(LinkCell* boxes)
 {
    Atoms* atoms = comdMalloc(sizeof(Atoms));
 
@@ -63,7 +63,7 @@ void destroyAtoms(Atoms *atoms)
 /// Creates atom positions on a face centered cubic (FCC) lattice with
 /// nx * ny * nz unit cells and lattice constant lat.
 /// Set momenta to zero.
-void createFccLattice(int nx, int ny, int nz, real_t lat, SimFlat* s)
+__attribute__((always_inline)) void createFccLattice(int nx, int ny, int nz, real_t lat, SimFlat* s)
 {
    const real_t* localMin = s->domain->localMin; // alias
    const real_t* localMax = s->domain->localMax; // alias
@@ -144,7 +144,7 @@ void setVcm(SimFlat* s, real_t newVcm[3])
 /// unimportant, However, to avoid possible confusion, we set the center
 /// of mass velocity to zero and scale the velocities to exactly match
 /// the input temperature.
-void setTemperature(SimFlat* s, real_t temperature)
+__attribute__((always_inline)) void setTemperature(SimFlat* s, real_t temperature)
 {
    // set initial velocities for the distribution
    for (int iBox=0; iBox<s->boxes->nLocalBoxes; ++iBox)
@@ -186,7 +186,7 @@ void setTemperature(SimFlat* s, real_t temperature)
 /// Atoms are displaced by a random distance in the range
 /// [-delta, +delta] along each axis.
 /// \param [in] delta The maximum displacement (along each axis).
-void randomDisplacements(SimFlat* s, real_t delta)
+__attribute__((always_inline)) void randomDisplacements(SimFlat* s, real_t delta)
 {
    for (int iBox=0; iBox<s->boxes->nLocalBoxes; ++iBox)
    {

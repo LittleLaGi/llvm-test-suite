@@ -34,7 +34,7 @@ void speedup_test(FILE *fp)
   rewind(fp);
 }
 
-uint32 imix_test(FILE *fp)
+__attribute__((always_inline)) uint32 imix_test(FILE *fp)
 {
   char string[100],ostring[100],slask[100];
   uint32 address;
@@ -60,7 +60,7 @@ uint32 imix_test(FILE *fp)
   return data_access;
 }
 
-void find_hard_raws()
+__attribute__((always_inline)) void find_hard_raws()
 {
   hard_raw_t *iter=NULL;
   

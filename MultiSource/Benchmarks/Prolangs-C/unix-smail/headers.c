@@ -263,7 +263,7 @@ int islocal(char *addr,char *domain,char *user)
 ** (3) open the spool file for reading
 */
 
-void spool(int argc,char **argv)
+__attribute__((always_inline)) void spool(int argc,char **argv)
 {
 	static char *tmpf = "/tmp/rmXXXXXX";	/* temp file name */
 	char *mktemp();
@@ -372,7 +372,7 @@ void spool(int argc,char **argv)
 **
 */
 
-void rline(char *from,char *retbuf)
+__attribute__((always_inline)) void rline(char *from,char *retbuf)
 {
 	int parts;			/* for cracking From_ lines ... */
 	char *partv[16];		/* ... apart using ssplit() 	*/
@@ -532,7 +532,7 @@ void rline(char *from,char *retbuf)
 	(void) fprintf(spoolfp, "%s\n", from);
 }
 
-void scanheaders(char *buf)
+__attribute__((always_inline)) void scanheaders(char *buf)
 {
 	int inheader = 0;
 
@@ -574,7 +574,7 @@ void scanheaders(char *buf)
 /*
 ** complete headers - add any required headers that are not in the message
 */
-void compheaders(void)
+__attribute__((always_inline)) void compheaders(void)
 {
 	struct reqheaders *i;
 
@@ -645,7 +645,7 @@ void haveheaders(char *s)
 /*
 ** create default headers for the message.
 */
-void def_headers(int argc,char **argv,char *from)
+def_tovoid def_headers(int argc,char **argv,char *from)
 {
 	def_to(argc, argv);	/* default To:		*/
 	def_date();		/* default Date:	*/
@@ -693,7 +693,7 @@ void def_mid(void)
 **  From: user@hostdomain (Full Name)
 */
 
-void def_from(char *from)
+__attribute__((always_inline)) void def_from(char *from)
 {
 
 	char *nameptr;
@@ -730,7 +730,7 @@ void def_from(char *from)
 ** lines longer than 50 chars are continued on another line.
 */
 
-void def_to(int argc,char **argv)
+__attribute__((always_inline)) void def_to(int argc,char **argv)
 {
 	int i, n;
 	char *bol;

@@ -350,7 +350,7 @@ exit(0);
 ** Parse that argument and act accordingly.
 ** Return 0 if ok, else return -1.
 */
-static int parse_arg(char *argptr)
+__attribute__((always_inline)) static int parse_arg(char *argptr)
 {
 int i;          /* Index */
 FILE *cfile;    /* Command file identifier */
@@ -400,7 +400,7 @@ return(0);
 ** Display a help message showing argument requirements and such.
 ** Exit when you're done...I mean, REALLY exit.
 */
-void display_help(char *progname)
+__attribute__((always_inline)) void display_help(char *progname)
 {
         printf("Usage: %s [-v] [-c<FILE>]\n",progname);
         printf(" -v = verbose\n");
@@ -416,7 +416,7 @@ void display_help(char *progname)
 ** specified.  This routine assumes that the command file
 ** is already open.
 */
-static void read_comfile(FILE *cfile)
+__attribute__((always_inline)) static void read_comfile(FILE *cfile)
 {
 char inbuf[40];
 char *eptr;             /* Offset to "=" sign */
@@ -1020,7 +1020,7 @@ return;
 ** This routine displays statistics for a particular benchmark.
 ** The benchmark is identified by its id.
 */
-static void show_stats (int bid)
+__attribute__((always_inline)) static void show_stats (int bid)
 {
 char buffer[80];        /* Display buffer */
 
@@ -1122,7 +1122,7 @@ return;
 ** you'd better not enter more than 128 characters on a command line, or
 ** things will overflow, and oh boy...
 */
-void UCommandLine(void)
+__attribute__((always_inline)) void UCommandLine(void)
 {
 printf("Enter command line\n:");
 gets((char *)Uargbuff);
@@ -1145,7 +1145,7 @@ return;
 ** This routine allows for up to 20 individual command-line arguments.
 ** Also note that this routine does NOT allow for redirection.
 */
-void UParse(void)
+__attribute__((always_inline)) void UParse(void)
 {
 unsigned char *ptr;
 
@@ -1171,7 +1171,7 @@ return;
 ************
 ** Isolate the next command-line field.
 */
-unsigned char *UField(unsigned char *ptr)
+__attribute__((always_inline)) unsigned char *UField(unsigned char *ptr)
 {
 while(*ptr)
 {       if(isspace(*ptr))

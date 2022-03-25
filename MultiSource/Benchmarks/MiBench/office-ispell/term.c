@@ -185,7 +185,7 @@ static SIGNAL_TYPE	(*oldttou) ();
 static SIGNAL_TYPE	(*oldtstp) ();
 #endif
 
-void terminit ()
+__attribute__((always_inline)) void terminit ()
     {
 #ifdef TIOCPGRP
     int			tpgrp;

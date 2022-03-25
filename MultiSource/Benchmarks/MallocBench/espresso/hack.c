@@ -1,6 +1,6 @@
 #include "espresso.h"
 
-map_dcset(PLA)
+__attribute__((always_inline)) map_dcset(PLA)
 pPLA PLA;
 {
     int var, i;
@@ -467,7 +467,7 @@ pcover F;
 }
 
 
-disassemble_fsm(PLA, verbose_mode)
+__attribute__((always_inline)) disassemble_fsm(PLA, verbose_mode)
 pPLA PLA;
 int verbose_mode;
 {

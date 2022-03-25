@@ -8,7 +8,7 @@ int moves[44],plycnt;
 int rows[8], dias[19];
 int columns[128], height[128];
 
-void reset()
+__attribute__((always_inline)) void reset()
 {
   int i;
 
@@ -22,7 +22,7 @@ void reset()
   }
 }
 
-void play_init()
+__attribute__((always_inline)) void play_init()
 {
   int i;
 

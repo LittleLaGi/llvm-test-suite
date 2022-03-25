@@ -41,7 +41,7 @@ int	unix_smail_optopt;
 char	*optarg;
 #define EOF (-1)
 
-int unix_smail_getopt(int argc,char **argv,char *opts)
+__attribute__((always_inline)) int unix_smail_getopt(int argc,char **argv,char *opts)
 {
 	static int sp = 1;
 	register int c;

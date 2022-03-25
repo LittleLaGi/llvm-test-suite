@@ -8,7 +8,7 @@ static const char *mybasename(const char *str) {
   return base ? base+1 : str;
 }
 
-size_t read_dmatrix(dvarray* out, const char* filename) {
+__attribute__((always_inline)) size_t read_dmatrix(dvarray* out, const char* filename) {
     FILE* fid = fopen(filename,"rt");
     double value;
     int i, j, width = 0, height = 0;

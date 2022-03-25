@@ -83,7 +83,7 @@ BF_BitstreamFrame( BF_FrameData *frameInfo, BF_FrameResults *results )
   until all queued headers are written. The
   queue data buffers are also freed.
 */
-void
+__attribute__((always_inline)) void
 BF_FlushBitstream( BF_FrameData *frameInfo, BF_FrameResults *results )
 {
   /*    int elements, forwardFrameLength, forwardSILength; */
@@ -397,7 +397,7 @@ get_side_info(void)
     return &l->side_info;
 }
 
-static void
+__attribute__((always_inline)) static void
 free_side_queues(void)
 {
     side_info_link *l, *next;

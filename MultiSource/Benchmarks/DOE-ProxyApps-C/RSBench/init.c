@@ -1,7 +1,7 @@
 #include "rsbench.h"
 
 // JRT 
-int * generate_n_poles( Input input )
+__attribute__((always_inline)) int * generate_n_poles( Input input )
 {
 	int total_resonances = input.avg_n_poles * input.n_nuclides;
 
@@ -23,7 +23,7 @@ int * generate_n_poles( Input input )
 	return R;
 }
 
-int * generate_n_windows( Input input )
+__attribute__((always_inline)) int * generate_n_windows( Input input )
 {
 	int total_resonances = input.avg_n_windows * input.n_nuclides;
 
@@ -46,7 +46,7 @@ int * generate_n_windows( Input input )
 }
 
 // 
-Pole ** generate_poles( Input input, int * n_poles )
+__attribute__((always_inline)) Pole ** generate_poles( Input input, int * n_poles )
 {
 	// Pole Scaling Factor -- Used to bias hitting of the fast Faddeeva
 	// region to approximately 99.5% (i.e., only 0.5% of lookups should
@@ -83,7 +83,7 @@ Pole ** generate_poles( Input input, int * n_poles )
 	return R;
 }
 
-Window ** generate_window_params( Input input, int * n_windows, int * n_poles )
+__attribute__((always_inline)) Window ** generate_window_params( Input input, int * n_windows, int * n_poles )
 {
 	// Allocating 2D contiguous matrix
 	Window ** R = (Window **) malloc( input.n_nuclides * sizeof( Window *));
@@ -123,7 +123,7 @@ Window ** generate_window_params( Input input, int * n_windows, int * n_poles )
 	return R;
 }
 
-double ** generate_pseudo_K0RS( Input input )
+__attribute__((always_inline)) double ** generate_pseudo_K0RS( Input input )
 {
 	double ** R = (double **) malloc( input.n_nuclides * sizeof( double * ));
 	double * contiguous = (double *) malloc( input.n_nuclides * input.numL * sizeof(double));

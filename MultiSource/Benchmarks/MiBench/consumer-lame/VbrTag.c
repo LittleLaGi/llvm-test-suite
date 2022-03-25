@@ -240,7 +240,7 @@ int GetVbrTag(VBRTAGDATA *pTagData,  unsigned char *buf)
  *				nMode	: Channel Mode: 0=STEREO 1=JS 2=DS 3=MONO
  ****************************************************************************
 */
-int InitVbrTag(Bit_stream_struc* pBs,int nVersion, int nMode, int SampIndex)
+__attribute__((always_inline)) int InitVbrTag(Bit_stream_struc* pBs,int nVersion, int nMode, int SampIndex)
 {
 	int i;
 
@@ -328,7 +328,7 @@ int InitVbrTag(Bit_stream_struc* pBs,int nVersion, int nMode, int SampIndex)
  *				nVbrScale	: encoder quality indicator (0..100)
  ****************************************************************************
 */
-int PutVbrTag(char* lpszFileName,int nVbrScale,int nVersion)
+__attribute__((always_inline)) int PutVbrTag(char* lpszFileName,int nVbrScale,int nVersion)
 {
 	int			i;
 	long lFileSize;

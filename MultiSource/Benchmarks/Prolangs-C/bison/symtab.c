@@ -121,7 +121,7 @@ bucket *getsym(char *key)
   return (bp);
 }
 
-void free_symtab(void)
+__attribute__((always_inline)) void free_symtab(void)
 {
   register int i;
   register bucket *bp,*bptmp;/* JF don't use ptr after free */

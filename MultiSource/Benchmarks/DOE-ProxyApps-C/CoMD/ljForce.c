@@ -107,7 +107,7 @@ void ljDestroy(BasePotential** inppot)
 }
 
 /// Initialize an Lennard Jones potential for Copper.
-BasePotential* initLjPot(void)
+__attribute__((always_inline)) BasePotential* initLjPot(void)
 {
    LjPotential *pot = (LjPotential*)comdMalloc(sizeof(LjPotential));
    pot->force = ljForce;

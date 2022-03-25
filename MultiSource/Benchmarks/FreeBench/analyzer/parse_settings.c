@@ -15,7 +15,7 @@ char *pattern[NUM_TOKENS]={"LOAD_PENALTY","STORE_PENALTY",
 			   "EPOCH_LENGTH_AS_NUM_EPOCHS"};
 int settings[NUM_TOKENS];
 
-int parse_settings(char *filename)
+__attribute__((always_inline)) int parse_settings(char *filename)
 {
   FILE *fp;
   char *line;

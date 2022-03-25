@@ -40,7 +40,7 @@ def_list_t **def_table=NULL;
 hard_raw_t *hard_raw_list=NULL;
 
 
-void init_def_table(int def_size) 
+__attribute__((always_inline)) void init_def_table(int def_size) 
 {
   int i;
 

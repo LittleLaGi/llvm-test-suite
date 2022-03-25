@@ -20,7 +20,7 @@ char brhist_spc[BRHIST_BARMAX+1];
 char stderr_buff[BUFSIZ];
 
 
-void brhist_init(lame_global_flags *gfp,int br_min, int br_max)
+__attribute__((always_inline)) void brhist_init(lame_global_flags *gfp,int br_min, int br_max)
 {
   int i;
   char term_buff[1024];

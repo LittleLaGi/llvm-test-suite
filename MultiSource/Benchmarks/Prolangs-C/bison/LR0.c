@@ -75,7 +75,7 @@ void save_shifts(void);
 void augment_automaton(void);
 void insert_start_shift(void);
 
-void allocate_itemsets(void)
+__attribute__((always_inline)) void allocate_itemsets(void)
 {
   register short *itemp;
   register int symbol;
@@ -124,7 +124,7 @@ void allocate_itemsets(void)
 
 
 
-void allocate_storage(void)
+__attribute__((always_inline)) void allocate_storage(void)
 {
   allocate_itemsets();
 
@@ -151,7 +151,7 @@ void free_storage(void)
 /* compute the nondeterministic finite state machine (see state.h for details)
 from the grammar.  */
 
-void generate_states(void)
+__attribute__((always_inline)) void generate_states(void)
 {
   allocate_storage();
   initialize_closure(nitems);
@@ -197,7 +197,7 @@ void generate_states(void)
    a vector of item numbers activated if that symbol is shifted,
    and kernel_end[symbol] points after the end of that vector.  */
 
-void new_itemsets(void)
+__attribute__((always_inline)) void new_itemsets(void)
 {
   register int i;
   register int shiftcount;
@@ -245,7 +245,7 @@ void new_itemsets(void)
 
    shiftset is set up as a vector of state numbers of those states.  */
 
-void append_states(void)
+__attribute__((always_inline)) void append_states(void)
 {
   register int i;
   register int j;
@@ -393,7 +393,7 @@ core *new_state(int symbol)
 
 
 
-void initialize_states(void)
+__attribute__((always_inline)) void initialize_states(void)
 {
   register core *p;
 /*  register unsigned *rp1; JF unused */
@@ -407,7 +407,7 @@ void initialize_states(void)
 
 
 
-void save_shifts(void)
+__attribute__((always_inline)) void save_shifts(void)
 {
   register shifts *p;
   register short *sp1;
@@ -444,7 +444,7 @@ void save_shifts(void)
 /* find which rules can be used for reduction transitions from the current state
    and make a reductions structure for the state to record their rule numbers.  */
 
-void save_reductions(void)
+__attribute__((always_inline)) void save_reductions(void)
 {
   register short *isp;
   register short *rp1;
@@ -505,7 +505,7 @@ which has a shift going to the final state, which has a shift
 to the termination state.
 Create such states and shifts if they don't happen to exist already.  */
 
-void augment_automaton(void)
+__attribute__((always_inline)) void augment_automaton(void)
 {
   register int i;
   register int k;

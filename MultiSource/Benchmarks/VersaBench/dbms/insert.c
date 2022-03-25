@@ -86,7 +86,7 @@
  */
 extern void keysUnion( IndexEntry *I, IndexKey *U );
 
-Int insert( IndexNode **root,       /*  root node of index          */
+__attribute__((always_inline)) Int insert( IndexNode **root,       /*  root node of index          */
             DataObject *dataObject, /*  object to insert into index */
             Int fan )               /*  fan or order of index       */
 {   /* beginning of insert()    */

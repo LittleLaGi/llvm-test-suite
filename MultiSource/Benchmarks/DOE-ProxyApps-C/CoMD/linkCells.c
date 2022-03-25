@@ -80,7 +80,7 @@ static int getBoxFromCoord(LinkCell* boxes, real_t rr[3]);
 static void emptyHaloCells(LinkCell* boxes);
 static void getTuple(LinkCell* boxes, int iBox, int* ixp, int* iyp, int* izp);
 
-LinkCell* initLinkCells(const Domain* domain, real_t cutoff)
+__attribute__((always_inline)) LinkCell* initLinkCells(const Domain* domain, real_t cutoff)
 {
    assert(domain);
    LinkCell* ll = comdMalloc(sizeof(LinkCell));

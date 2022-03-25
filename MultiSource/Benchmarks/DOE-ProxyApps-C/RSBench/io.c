@@ -61,7 +61,7 @@ void fancy_int( int a )
         printf("%d\n",a);
 }
 
-Input read_CLI( int argc, char * argv[] )
+__attribute__((always_inline)) Input read_CLI( int argc, char * argv[] )
 {
 	Input input;
 	
@@ -201,7 +201,7 @@ void print_CLI_error(void)
 	exit(4);
 }
 
-void print_input_summary(Input input)
+__attribute__((always_inline)) void print_input_summary(Input input)
 {
 	// Calculate Estimate of Memory Usage
 	size_t mem = get_mem_estimate(input);

@@ -58,7 +58,7 @@
 
 #include "des_locl.h"
 
-void des_encrypt(data, ks, encrypt)
+__attribute__((always_inline)) void des_encrypt(data, ks, encrypt)
 DES_LONG *data;
 des_key_schedule ks;
 int encrypt;

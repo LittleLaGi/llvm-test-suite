@@ -30,7 +30,7 @@
  *
  */
 
-void
+__attribute__((always_inline)) void
 AllocAssign(void)
 {
     ulong	net;
@@ -80,7 +80,7 @@ FreeAssign(void)
     free(netsAssignCopy);
 }
 
-void
+__attribute__((always_inline)) void
 NetsAssign(void)
 {
     ulong	net;
@@ -120,7 +120,7 @@ NetsAssign(void)
 #endif
 }
 
-void
+__attribute__((always_inline)) void
 MaxNetsAssign(void)
 {
     ulong	net;

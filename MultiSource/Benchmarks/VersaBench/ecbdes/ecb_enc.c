@@ -102,7 +102,7 @@ char *des_options()
 	}
 		
 
-void des_ecb_encrypt(input, output, ks, encrypt)
+__attribute__((always_inline))  void des_ecb_encrypt(input, output, ks, encrypt)
 des_cblock (*input);
 des_cblock (*output);
 des_key_schedule ks;

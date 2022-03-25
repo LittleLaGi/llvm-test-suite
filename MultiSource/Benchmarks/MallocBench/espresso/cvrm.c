@@ -395,7 +395,7 @@ static pcube phase;
 /*
  *  minimize each output function individually
  */
-void so_espresso(PLA, strategy)
+__attribute__((always_inline)) void so_espresso(PLA, strategy)
 pPLA PLA;
 int strategy;
 {
@@ -414,7 +414,7 @@ int strategy;
  *  minimize each output function, choose function or complement based on the
  *  one with the fewer number of terms
  */
-void so_both_espresso(PLA, strategy)
+__attribute__((always_inline)) void so_both_espresso(PLA, strategy)
 pPLA PLA;
 int strategy;
 {

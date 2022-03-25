@@ -33,7 +33,7 @@ extern void fatal(char *s);
 extern int getopt(int argc,char **argv,char *optstring);
 #endif
 
-void getargs(int argc,char *argv[])
+__attribute__((always_inline)) void getargs(int argc,char *argv[])
 {
   register int c;
   char *p = argv[0];

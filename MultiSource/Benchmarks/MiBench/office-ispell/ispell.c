@@ -165,7 +165,7 @@ static void usage ()
     exit (1);
     }
 
-static void initckch (wchars)
+__attribute__((always_inline)) static void initckch (wchars)
     char *		wchars;		/* Characters in -w option, if any */
     {
     register ichar_t	c;
@@ -937,7 +937,7 @@ static void update_file (filename, statbuf)
 	(void) unlink (bakfile);
     }
 
-static void expandmode (option)
+__attribute__((always_inline)) static void expandmode (option)
     int			option;		/* How to print: */
 					/* 1 = expansions only */
 					/* 2 = original line + expansions */

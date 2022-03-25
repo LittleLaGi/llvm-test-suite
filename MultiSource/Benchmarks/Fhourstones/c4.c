@@ -55,7 +55,7 @@ extern int reset();
 extern int emptyTT();
 extern int htstat();
 
-void c4_init()
+__attribute__((always_inline)) void c4_init()
 {
   trans_init();
 }
@@ -154,7 +154,7 @@ int ab(int alpha, int beta)
   return score;
 }
 
-int solve()
+__attribute__((always_inline)) int solve()
 {
   int i,side;
   int x,work,score;

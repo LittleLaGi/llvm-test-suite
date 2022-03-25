@@ -107,7 +107,7 @@ static void DeInstallXErrorHandler()
 /* connect to server, create and map window,
  * allocate colors and (shared) memory
  */
-void Initialize_Display_Process(name)
+__attribute__((always_inline)) void Initialize_Display_Process(name)
 char *name;
 {
   int crv, cbu, cgu, cgv;
@@ -404,7 +404,7 @@ shmemerror:
 #endif
 }
 
-void Terminate_Display_Process()
+__attribute__((always_inline)) void Terminate_Display_Process()
 {
 #ifdef SH_MEM
   if (Shmem_Flag)
@@ -465,7 +465,7 @@ void Display_Second_Field()
  *  15  7 13  5
  */
 
-void Initialize_Dither_Matrix()
+__attribute__((always_inline)) void Initialize_Dither_Matrix()
 {
   int i, v;
 

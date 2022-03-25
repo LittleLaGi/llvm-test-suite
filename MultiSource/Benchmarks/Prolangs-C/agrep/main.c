@@ -342,7 +342,7 @@ CONT:
  exit(0);
 } /* end of main() */
 
-void initial_value(void)
+__attribute__((always_inline)) void initial_value(void)
 {
    int i; 
 
@@ -915,7 +915,7 @@ int bp;
       while (bp <= i ) putchar(buffer[bp++]);
 }
 
-void file_out(char *fname)
+__attribute__((always_inline)) void file_out(char *fname)
 {
 int num_read;
 int fd;
@@ -959,7 +959,7 @@ void usage(void)
     	exit(2);
 }
 
-void checksg(CHAR *Pattern, int D)
+__attribute__((always_inline))  void checksg(CHAR *Pattern, int D)
 {                          
   char c;
   int i, m;

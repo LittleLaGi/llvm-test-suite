@@ -3,7 +3,7 @@
 
 #include "common.h"
 
-void init_viterbi(param_viterbi_t* param, coderate_tt in_rate) 
+__attribute__((always_inline)) void init_viterbi(param_viterbi_t* param, coderate_tt in_rate) 
 {
   unsigned char Tabl[7][MAX_Nways];
   size_t i, j;

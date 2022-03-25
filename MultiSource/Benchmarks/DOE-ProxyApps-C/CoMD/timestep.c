@@ -28,7 +28,7 @@ static void advancePosition(SimFlat* s, int nBoxes, real_t dt);
 /// the next call.
 ///
 /// After nSteps the kinetic energy is computed for diagnostic output.
-double timestep(SimFlat* s, int nSteps, real_t dt)
+__attribute__((always_inline)) double timestep(SimFlat* s, int nSteps, real_t dt)
 {
    for (int ii=0; ii<nSteps; ++ii)
    {
@@ -77,7 +77,7 @@ void advanceVelocity(SimFlat* s, int nBoxes, real_t dt)
    }
 }
 
-void advancePosition(SimFlat* s, int nBoxes, real_t dt)
+__attribute__((always_inline)) void advancePosition(SimFlat* s, int nBoxes, real_t dt)
 {
    for (int iBox=0; iBox<nBoxes; iBox++)
    {

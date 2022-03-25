@@ -14,7 +14,7 @@ double rn(unsigned long * seed)
 	return ret;
 }
 
-size_t get_mem_estimate( Input input )
+__attribute__((always_inline)) size_t get_mem_estimate( Input input )
 {
 	size_t poles = input.n_nuclides * input.avg_n_poles * sizeof(Pole) + input.n_nuclides * sizeof(Pole *);
 	size_t windows = input.n_nuclides * input.avg_n_windows * sizeof(Window) + input.n_nuclides * sizeof(Window *);

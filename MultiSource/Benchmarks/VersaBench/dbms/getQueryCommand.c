@@ -67,7 +67,7 @@
 #include "getNonKeyAttribute.h" /* for prototype and return code definitions  */
 #include "getQueryCommand.h"    /* for getQueryCommand() return codes         */
 
-Int getQueryCommand( FILE           *file,            /* file for reading     */
+__attribute__((always_inline)) Int getQueryCommand( FILE           *file,            /* file for reading     */
                      IndexKey       *searchKey,       /* index key            */
                      DataAttribute  **searchNonKey )  /* list of attributes   */
 {   /*  begin getQueryCommand() */

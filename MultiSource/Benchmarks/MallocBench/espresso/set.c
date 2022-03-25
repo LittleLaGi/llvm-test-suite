@@ -359,7 +359,7 @@ pset_family A;
 
 
 /* sf_cleanup -- free all of the set families from the garbage list */
-void sf_cleanup()
+__attribute__((always_inline)) void sf_cleanup()
 {
     register pset_family p, pnext;
     for(p = set_family_garbage; p != (pset_family) NULL; p = pnext) {

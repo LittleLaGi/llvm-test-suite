@@ -8,7 +8,7 @@ long start_time;
 
 
 /* cv_sharp -- form the sharp product between two covers */
-pcover cv_sharp(A, B)
+__attribute__((always_inline)) pcover cv_sharp(A, B)
 pcover A, B;
 {
     pcube last, p;
@@ -87,7 +87,7 @@ pcube a, b;
     return r;
 }
 
-pcover make_disjoint(A)
+__attribute__((always_inline)) pcover make_disjoint(A)
 pcover A;
 {
     pcover R, new;
@@ -103,7 +103,7 @@ pcover A;
 
 
 /* cv_dsharp -- disjoint-sharp product between two covers */
-pcover cv_dsharp(A, B)
+__attribute__((always_inline)) pcover cv_dsharp(A, B)
 pcover A, B;
 {
     register pcube last, p;

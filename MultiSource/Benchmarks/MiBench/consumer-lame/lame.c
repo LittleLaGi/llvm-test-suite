@@ -67,7 +67,7 @@ static const char *mybasename(const char *str) {
  *   (globalflags struct filled in by calling program)
  *
  ********************************************************************/
-void lame_init_params(lame_global_flags *gfp)
+__attribute__((always_inline)) void lame_init_params(lame_global_flags *gfp)
 {
   int i;
   FLOAT compression_ratio;
@@ -517,7 +517,7 @@ void lame_init_params(lame_global_flags *gfp)
  * PURPOSE:  Prints the encoding parameters used
  *
  ************************************************************************/
-void lame_print_config(lame_global_flags *gfp)
+__attribute__((always_inline)) void lame_print_config(lame_global_flags *gfp)
 {
   static const char *mode_names[4] = { "stereo", "j-stereo", "dual-ch", "single-ch" };
   FLOAT out_samplerate=gfp->out_samplerate/1000.0;
@@ -1198,7 +1198,7 @@ int lame_encode(lame_global_flags *gfp, short int in_buffer[2][1152],char *mp3bu
 
 
 /* initialize mp3 encoder */
-void lame_init(lame_global_flags *gfp)
+__attribute__((always_inline)) void lame_init(lame_global_flags *gfp)
 {
 
   /*
@@ -1347,7 +1347,7 @@ void lame_init(lame_global_flags *gfp)
 /*****************************************************************/
 /* flush internal mp3 buffers,                                   */
 /*****************************************************************/
-int lame_encode_finish(lame_global_flags *gfp,char *mp3buffer, int mp3buffer_size)
+__attribute__((always_inline)) int lame_encode_finish(lame_global_flags *gfp,char *mp3buffer, int mp3buffer_size)
 {
   int imp3,mp3count,mp3buffer_size_remaining;
   short int buffer[2][1152];
@@ -1409,7 +1409,7 @@ int lame_encode_finish(lame_global_flags *gfp,char *mp3buffer, int mp3buffer_siz
 /*****************************************************************/
 /* write VBR Xing header, and ID3 tag, if asked for               */
 /*****************************************************************/
-void lame_mp3_tags(lame_global_flags *gfp)
+__attribute__((always_inline)) void lame_mp3_tags(lame_global_flags *gfp)
 {
   if (gfp->bWriteVbrTag)
     {

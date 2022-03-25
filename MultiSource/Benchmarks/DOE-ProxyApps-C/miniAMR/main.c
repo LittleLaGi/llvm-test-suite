@@ -201,7 +201,7 @@ void print_help_message(void)
 
 // =================================== allocate ==============================
 
-void allocate(void)
+__attribute__((always_inline)) void allocate(void)
 {
    int i, j, k, m, n;
 
@@ -254,7 +254,7 @@ void allocate(void)
 
 // =================================== deallocate ============================
 
-void deallocate(void)
+__attribute__((always_inline)) void deallocate(void)
 {
    int i, j, m, n;
 
@@ -282,7 +282,7 @@ void deallocate(void)
    free(p2);
 }
 
-int check_input(void)
+__attribute__((always_inline)) int check_input(void)
 {
    int error = 0;
 

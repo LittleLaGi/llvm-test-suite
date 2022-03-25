@@ -93,7 +93,7 @@ FILE *record(char *command,char *from,long size)
 # endif
 
 
-void setdates(void)
+__attribute__((always_inline)) void setdates(void)
 {
 	time_t time();
 	struct tm *gmtime();
@@ -295,7 +295,7 @@ char *sform(enum eform form)
 **
 */
 
-void getmynames(void)
+__attribute__((always_inline)) void getmynames(void)
 {
 #ifdef HOSTNAME
 	if (!*hostname)

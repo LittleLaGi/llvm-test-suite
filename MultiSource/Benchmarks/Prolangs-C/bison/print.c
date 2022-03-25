@@ -46,7 +46,7 @@ void print_state(int state);
 void print_core(int state);
 void print_actions(int state);
 
-void terse(void)
+__attribute__((always_inline)) void terse(void)
 {
   if (any_conflicts)
     {
@@ -54,7 +54,7 @@ void terse(void)
     }
 }
 
-void verbose(void)
+__attribute__((always_inline)) void verbose(void)
 {
   register int i;
 

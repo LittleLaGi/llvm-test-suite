@@ -92,7 +92,7 @@ char *stringappend(char *string1,int end1,char *string2)
 
 /* JF this has been hacked to death.  Nowaday it sets up the file names for
    the output files, and opens the tmp files and the parser */
-void openfiles(void)
+__attribute__((always_inline))  void openfiles(void)
 {
   char *name_base;
   register char *cp;

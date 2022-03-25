@@ -14,7 +14,7 @@
 //------------------------------------------------------------------------------------------------------------------------------
 int RandomPadding=-1;
 //------------------------------------------------------------------------------------------------------------------------------
-int create_box(box_type *box, int numGrids, int low_i, int low_j, int low_k, int dim_i, int dim_j, int dim_k, int ghosts){
+__attribute__((always_inline)) int create_box(box_type *box, int numGrids, int low_i, int low_j, int low_k, int dim_i, int dim_j, int dim_k, int ghosts){
   uint64_t memory_allocated = 0;
   box->numGrids = numGrids;
   box->low.i = low_i;

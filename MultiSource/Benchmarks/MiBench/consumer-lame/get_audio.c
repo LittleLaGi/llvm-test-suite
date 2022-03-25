@@ -28,7 +28,7 @@ int read_samples_mp3(lame_global_flags *gfp,FILE *musicin,short int mpg123pcm[2]
 
 
 
-void lame_init_infile(lame_global_flags *gfp)
+__attribute__((always_inline)) void lame_init_infile(lame_global_flags *gfp)
 {
   /* open the input file */
   count_samples_carefully=0;

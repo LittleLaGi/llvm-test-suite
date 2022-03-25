@@ -3,7 +3,7 @@
 // This function uses a combination of the Abrarov Approximation
 // and the QUICK_W three term asymptotic expansion.
 // Only expected to use Abrarov ~0.5% of the time.
-double complex fast_nuclear_W( double complex Z )
+__attribute__((always_inline)) double complex fast_nuclear_W( double complex Z )
 {
 	// Abrarov 
 	if( cabs(Z) < 6.0 )
@@ -74,7 +74,7 @@ double complex fast_nuclear_W( double complex Z )
 	return W;
 }
 
-void calculate_macro_xs( double * macro_xs, int mat, double E, Input input, CalcDataPtrs data, complex double * sigTfactors, long * abrarov, long * alls ) 
+__attribute__((always_inline))  void calculate_macro_xs( double * macro_xs, int mat, double E, Input input, CalcDataPtrs data, complex double * sigTfactors, long * abrarov, long * alls ) 
 {
 	// zero out macro vector
 	for( int i = 0; i < 4; i++ )
@@ -105,7 +105,7 @@ void calculate_macro_xs( double * macro_xs, int mat, double E, Input input, Calc
 }
 
 // No Temperature dependence (i.e., 0K evaluation)
-void calculate_micro_xs( double * micro_xs, int nuc, double E, Input input, CalcDataPtrs data, complex double * sigTfactors)
+__attribute__((always_inline)) void calculate_micro_xs( double * micro_xs, int nuc, double E, Input input, CalcDataPtrs data, complex double * sigTfactors)
 {
 	// MicroScopic XS's to Calculate
 	double sigT;
@@ -152,7 +152,7 @@ void calculate_micro_xs( double * micro_xs, int nuc, double E, Input input, Calc
 // Temperature Dependent Variation of Kernel
 // (This involves using the Complex Faddeeva function to
 // Doppler broaden the poles within the window)
-void calculate_micro_xs_doppler( double * micro_xs, int nuc, double E, Input input, CalcDataPtrs data, complex double * sigTfactors, long * abrarov, long * alls)
+__attribute__((always_inline)) void calculate_micro_xs_doppler( double * micro_xs, int nuc, double E, Input input, CalcDataPtrs data, complex double * sigTfactors, long * abrarov, long * alls)
 {
 	// MicroScopic XS's to Calculate
 	double sigT;

@@ -222,13 +222,13 @@ void __stdcall process_cla(int argc,char **argv,int warnflag)
        default:
 	 if (warnflag) printf("bad arg: %s\n",argv[k]);}}}
 
-void __stdcall print_welcome(void)
+__attribute__((always_inline)) void __stdcall print_welcome(void)
 {if (siod_verbose_level >= 2)
    {printf("Welcome to SIOD, Scheme In One Defun, Version %s\n",
 	   siod_version());
     printf("(C) Copyright 1988-1994 Paradigm Associates Inc.\n");}}
 
-void __stdcall print_hs_1(void)
+__attribute__((always_inline)) void __stdcall print_hs_1(void)
 {if (siod_verbose_level >= 2)
    {printf("%ld heaps. size = %ld cells, %ld bytes. %ld inums. GC is %s\n",
 	   nheaps,

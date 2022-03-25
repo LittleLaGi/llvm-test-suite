@@ -74,7 +74,7 @@ void total_conflicts(void);
 void count_sr_conflicts(int state);
 void count_rr_conflicts(int state);
 
-void initialize_conflicts(void)
+__attribute__((always_inline)) void initialize_conflicts(void)
 {
   register int i;
 /*  register errs *sp; JF unused */
@@ -93,7 +93,7 @@ void initialize_conflicts(void)
 
 
 
-void set_conflicts(int state)
+__attribute__((always_inline)) void set_conflicts(int state)
 {
   register int i;
   register int k;
@@ -176,7 +176,7 @@ It has already been checked that the rule has a precedence.
 A conflict is resolved by modifying the shift or reduce tables
 so that there is no longer a conflict.  */
 
-void resolve_sr_conflict(int state,int lookaheadnum)
+__attribute__((always_inline)) void resolve_sr_conflict(int state,int lookaheadnum)
 {
   register int i;
   register int mask;
@@ -304,7 +304,7 @@ void log_resolution(int state,int LAno,int token,char *resolution)
 
 
 
-void conflict_log(void)
+__attribute__((always_inline)) void conflict_log(void)
 {
   register int i;
 
@@ -327,7 +327,7 @@ void conflict_log(void)
   
 
 
-void verbose_conflict_log(void)
+__attribute__((always_inline)) void verbose_conflict_log(void)
 {
   register int i;
 

@@ -134,7 +134,7 @@ III_format_bitstream( lame_global_flags *gfp,
 
 }
 
-void
+__attribute__((always_inline)) void
 III_FlushBitstream(void)
 {
     if (PartHoldersInitialized!=0)

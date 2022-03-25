@@ -74,7 +74,8 @@ extern void RTC(unsigned *R,int n);
 void set_fderives(void);
 void set_firsts(void);
 
-void initialize_closure(int n)
+
+__attribute__((always_inline)) void initialize_closure(int n)
 {
   itemset = NEW2(n, short);
 
@@ -90,7 +91,7 @@ void initialize_closure(int n)
    the sequence of symbols 8 3 20, and one of the rules for deriving
    symbol 8 is rule 4, then the [5 - ntokens, 4] bit in fderives is set.  */
 
-void set_fderives(void)
+__attribute__((always_inline)) void set_fderives(void)
 {
   register unsigned *rrow;
   register unsigned *vrow;
@@ -149,7 +150,7 @@ void set_fderives(void)
    the symbol 8 can be the beginning of the data for symbol 5,
    so the bit [8 - ntokens, 5 - ntokens] in firsts is set. */
 
-void set_firsts(void)
+__attribute__((always_inline)) void set_firsts(void)
 {
   register unsigned *row;
 /*   register int done; JF unused */
@@ -322,7 +323,7 @@ void print_firsts(void)
     }
 }
 
-void print_fderives(void)
+__attribute__((always_inline)) void print_fderives(void)
 {
   register int i;
   register int j;

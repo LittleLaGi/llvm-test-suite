@@ -57,7 +57,7 @@
 #include "getInsertCommand.h"   /* for getInsertCommand() return codes        */
 #include "getNonKeyAttribute.h" /* for prototype and return code definitions  */
 
-Int getInsertCommand( FILE        *file,        /*  file for reading    */
+__attribute__((always_inline)) Int getInsertCommand( FILE        *file,        /*  file for reading    */
                       DataObject **dataObject ) /*  data object         */
 {   /*  begin getInsertCommand()    */
     Int i;                  /* looping index variable for attributes      */

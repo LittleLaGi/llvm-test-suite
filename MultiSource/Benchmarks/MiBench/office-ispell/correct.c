@@ -1450,7 +1450,7 @@ static char * getline_ispell (s)
 	}
     }
 
-void askmode ()
+__attribute__((always_inline)) void askmode ()
     {
     int			bufsize;	/* Length of contextbufs[0] */
     int			ch;		/* Next character read from input */

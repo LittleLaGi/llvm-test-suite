@@ -28,13 +28,13 @@ static void id3_pad(char *string, int length) {
  * initialize temporary fields
  */
 
-void id3_inittag(ID3TAGDATA *tag) {
+__attribute__((always_inline)) void id3_inittag(ID3TAGDATA *tag) {
 	strcpy( tag->title, "");
 	strcpy( tag->artist, "");
 	strcpy( tag->album, "");
 	strcpy( tag->year, "");    
 	strcpy( tag->comment, "");
-	tag->genre[0] = 'ÿ';	/* unset genre */
+	tag->genre[0] = 'ï¿½';	/* unset genre */
 	tag->track = 0;
 
 	tag->valid = 0;		/* not ready for writing*/
@@ -44,7 +44,7 @@ void id3_inittag(ID3TAGDATA *tag) {
  * build an ID3 tag from temporary fields
  */
 
-void id3_buildtag(ID3TAGDATA *tag) {
+__attribute__((always_inline)) void id3_buildtag(ID3TAGDATA *tag) {
 	strcpy(tag->tagtext,"TAG");
 
 	id3_pad( tag->title, 30);   strncat( tag->tagtext, tag->title,30);
@@ -65,7 +65,7 @@ void id3_buildtag(ID3TAGDATA *tag) {
  * write ID3 tag 
  */
 
-int id3_writetag(char* filename, ID3TAGDATA *tag) {
+__attribute__((always_inline)) int id3_writetag(char* filename, ID3TAGDATA *tag) {
 	FILE* f;
 	if( ! tag->valid ) return -1;
 

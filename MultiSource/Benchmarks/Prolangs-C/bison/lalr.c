@@ -104,7 +104,7 @@ void digraph(short **relation);
 void add_lookback_edge(int stateno,int ruleno,int gotono);
 void traverse(register int i);
 
-void lalr(void)
+__attribute__((always_inline)) void lalr(void)
 {
   tokensetsize = WORDSIZE(ntokens);
 
@@ -171,7 +171,7 @@ void set_reduction_table(void)
 
 
 
-void set_maxrhs(void)
+__attribute__((always_inline)) void set_maxrhs(void)
 {
   register short *itemp;
   register int length;
@@ -197,7 +197,7 @@ void set_maxrhs(void)
 
 
 
-void initialize_LA(void)
+__attribute__((always_inline)) void initialize_LA(void)
 {
   register int i;
   register int j;
@@ -255,7 +255,7 @@ void initialize_LA(void)
 
 
 
-void set_goto_map(void)
+__attribute__((always_inline)) void set_goto_map(void)
 {
   register shifts *sp;
   register int i;
@@ -353,7 +353,7 @@ int map_goto(int state,int symbol)
 
 
 
-void initialize_F(void)
+__attribute__((always_inline)) void initialize_F(void)
 {
   register int i;
   register int j;
@@ -427,7 +427,7 @@ void initialize_F(void)
   FREE(edge);
 }
 
-void build_relations(void)
+__attribute__((always_inline)) void build_relations(void)
 {
   register int i;
   register int j;
@@ -522,7 +522,7 @@ void build_relations(void)
 
 
 
-void add_lookback_edge(int stateno,int ruleno,int gotono)
+__attribute__((always_inline)) void add_lookback_edge(int stateno,int ruleno,int gotono)
 {
   register int i;
   register int k;
@@ -551,7 +551,7 @@ void add_lookback_edge(int stateno,int ruleno,int gotono)
 
 
 
-short **transpose(short **R,int n)
+__attribute__((always_inline)) short **transpose(short **R,int n)
 {
   register short **new_R;
   register short **temp_R;
@@ -622,7 +622,7 @@ void compute_FOLLOWS(void)
 
 
 
-void compute_lookaheads(void)
+__attribute__((always_inline)) void compute_lookaheads(void)
 {
   register int i;
   register int n;

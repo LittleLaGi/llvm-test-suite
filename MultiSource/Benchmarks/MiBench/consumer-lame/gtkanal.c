@@ -1178,7 +1178,7 @@ static void get_main_menu(GtkWidget *window, GtkWidget ** menubar) {
 
 
 
-int gtkcontrol(lame_global_flags *gfp2)
+__attribute__((always_inline)) int gtkcontrol(lame_global_flags *gfp2)
 {
     /* GtkWidget is the storage type for widgets */
     GtkWidget *button;

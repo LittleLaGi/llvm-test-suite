@@ -117,7 +117,7 @@ double getElapsedTime(const enum TimerHandle handle)
 /// The report contains two blocks.  The upper block is performance
 /// information for the printRank.  The lower block is statistical
 /// information over all ranks.
-void printPerformanceResults(int nGlobalAtoms, int printRate)
+__attribute__((always_inline)) void printPerformanceResults(int nGlobalAtoms, int printRate)
 {
    // Collect timer statistics overall and across ranks
    timerStats();
@@ -177,7 +177,7 @@ void printPerformanceResults(int nGlobalAtoms, int printRate)
    fprintf(screenOut, "---------------------------------------------------\n\n");
 }
 
-void printPerformanceResultsYaml(FILE* file)
+__attribute__((always_inline)) void printPerformanceResultsYaml(FILE* file)
 {
    if (! printRank())
       return;

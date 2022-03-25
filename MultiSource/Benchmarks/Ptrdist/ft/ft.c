@@ -122,7 +122,7 @@ main(int argc, char *argv[])
   return 0;
 }
 
-Vertices *
+__attribute__((always_inline))  Vertices *
 MST(Vertices * graph)
 {
   HeapP * heap;
@@ -174,7 +174,7 @@ MST(Vertices * graph)
   return(graph);
 }
 
-void
+__attribute__((always_inline)) void
 PrintMST(Vertices * graph)
 {
   Vertices * vertex;

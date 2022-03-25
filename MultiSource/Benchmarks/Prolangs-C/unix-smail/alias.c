@@ -80,7 +80,7 @@ int islocal();
 
 #define escape(s)	((*s != '\\') ? (s) : (s+1))
 
-char **alias(int *pargc,char **argv)
+__attribute__((always_inline)) char **alias(int *pargc,char **argv)
 {
 /*
 **  alias the addresses
@@ -300,7 +300,7 @@ aliasing_complete:
 **	given an string, look for its alias in
 **	the 'vertical' linked list of aliases.
 */
-node *v_search(char *user)
+__attribute__((always_inline)) node *v_search(char *user)
 {
 	node *head;
 	node *a;

@@ -25,7 +25,7 @@ pwlist *pwparse();	/* head of linked list */
 
 #define PNULL	((pwlist *) 0)
 
-char *pwfnam(char *user)
+__attribute__((always_inline)) char *pwfnam(char *user)
 {
 	pwlist *f;
 
@@ -76,7 +76,7 @@ char *pwuid(int uid)
 }
 
 #ifndef SENDMAIL
-char *tilde(char *user)
+__attribute__((always_inline)) char *tilde(char *user)
 {
 	pwlist *f;
 
@@ -184,7 +184,7 @@ pwlist *pwparse(void)
 ** Not too much smarts here.
 */
 
-char *res_fname(register char *user)
+__attribute__((always_inline)) char *res_fname(register char *user)
 {
 	long pos, middle, hi, lo;
 	static long pathlength = 0;

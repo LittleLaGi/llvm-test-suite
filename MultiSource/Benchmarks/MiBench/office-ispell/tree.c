@@ -109,7 +109,7 @@ static char		personaldict[MAXPATHLEN];
 static FILE *		dictf;
 static			newwords = 0;
 
-void treeinit (p, LibDict)
+__attribute__((always_inline)) void treeinit (p, LibDict)
     char *		p;		/* Value specified in -p switch */
     char *		LibDict;	/* Root of default dict name */
     {

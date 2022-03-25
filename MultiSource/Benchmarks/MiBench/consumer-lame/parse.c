@@ -128,7 +128,7 @@ void lame_help(lame_global_flags *gfp,char *name)  /* print syntax & exit */
 *
 ************************************************************************/
 
-void lame_presets_info(lame_global_flags *gfp,char *name)  /* print syntax & exit */
+__attribute__((always_inline)) void lame_presets_info(lame_global_flags *gfp,char *name)  /* print syntax & exit */
 {
   lame_print_version(stdout);
   fprintf(stdout,"\n");
@@ -227,7 +227,7 @@ void lame_presets_info(lame_global_flags *gfp,char *name)  /* print syntax & exi
 * The input and output filenames are read into #inpath# and #outpath#.
 *
 ************************************************************************/
-void lame_parse_args(lame_global_flags *gfp,int argc, char **argv)
+__attribute__((always_inline)) void lame_parse_args(lame_global_flags *gfp,int argc, char **argv)
 {
   FLOAT srate;
   int   err = 0, i = 0;

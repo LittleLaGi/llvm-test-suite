@@ -94,7 +94,7 @@ IN char *name;
 
 
 /* print_trace -- print a line reporting size and time after a function */
-void print_trace(T, name, time)
+__attribute__((always_inline)) void print_trace(T, name, time)
 pcover T;
 char *name;
 long time;

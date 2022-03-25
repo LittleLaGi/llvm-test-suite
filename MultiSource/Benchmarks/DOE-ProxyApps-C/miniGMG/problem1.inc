@@ -10,7 +10,7 @@
 #include "timer.h"
 #include "mg.h"
 //------------------------------------------------------------------------------------------------------------------------------
-void initialize_problem(domain_type *domain, int level, double hLevel, double a, double b){
+__attribute__((always_inline)) void initialize_problem(domain_type *domain, int level, double hLevel, double a, double b){
   double NPi = 2.0*M_PI;
   double Bmin =  1.0;
   double Bmax = 10.0;

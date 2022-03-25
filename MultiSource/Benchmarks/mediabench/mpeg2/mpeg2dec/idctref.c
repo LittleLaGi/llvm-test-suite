@@ -58,7 +58,7 @@ static double c[8][8];
 
 /* initialize DCT coefficient matrix */
 
-void Initialize_Reference_IDCT()
+__attribute__((always_inline)) void Initialize_Reference_IDCT()
 {
   int freq, time;
   double scale;

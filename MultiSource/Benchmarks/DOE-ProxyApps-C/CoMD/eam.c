@@ -168,7 +168,7 @@ static void typeNotSupported(const char* callSite, const char* type);
 /// \param [in] dir   The directory in which potential table files are found.
 /// \param [in] file  The name of the potential table file.
 /// \param [in] type  The file format of the potential file (setfl or funcfl).
-BasePotential* initEamPot(const char* dir, const char* file, const char* type)
+__attribute__((always_inline)) BasePotential* initEamPot(const char* dir, const char* file, const char* type)
 {
    EamPotential* pot = comdMalloc(sizeof(EamPotential));
    assert(pot);
@@ -404,7 +404,7 @@ void eamDestroy(BasePotential** pPot)
 /// Broadcasts an EamPotential from rank 0 to all other ranks.
 /// If the table coefficients are read from a file only rank 0 does the
 /// read.  Hence we need to broadcast the potential to all other ranks.
-void eamBcastPotential(EamPotential* pot)
+__attribute__((always_inline)) void eamBcastPotential(EamPotential* pot)
 {
    assert(pot);
    

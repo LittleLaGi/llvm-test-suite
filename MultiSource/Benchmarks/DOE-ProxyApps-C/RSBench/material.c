@@ -1,7 +1,7 @@
 #include "rsbench.h"
 
 // Handles all material creation tasks - returns Material struct
-Materials get_materials(Input input)
+__attribute__((always_inline)) Materials get_materials(Input input)
 {
 	Materials M;
 	M.num_nucs = load_num_nucs(input);
@@ -12,7 +12,7 @@ Materials get_materials(Input input)
 }
 
 // num_nucs represents the number of nuclides that each material contains
-int * load_num_nucs(Input input)
+__attribute__((always_inline)) int * load_num_nucs(Input input)
 {
 	int * num_nucs = (int*)malloc(12*sizeof(int));
 	
@@ -39,7 +39,7 @@ int * load_num_nucs(Input input)
 }
 
 // Assigns an array of nuclide ID's to each material
-int ** load_mats( Input input, int * num_nucs )
+__attribute__((always_inline)) int ** load_mats( Input input, int * num_nucs )
 {
 	int ** mats = (int **) malloc( 12 * sizeof(int *) );
 	for( int i = 0; i < 12; i++ )
@@ -107,7 +107,7 @@ int ** load_mats( Input input, int * num_nucs )
 }
 
 // Creates a randomized array of 'concentrations' of nuclides in each mat
-double ** load_concs( int * num_nucs )
+__attribute__((always_inline)) double ** load_concs( int * num_nucs )
 {
 	double ** concs = (double **)malloc( 12 * sizeof( double *) );
 	
@@ -129,7 +129,7 @@ double ** load_concs( int * num_nucs )
 }
 
 // picks a material based on a probabilistic distribution
-int pick_mat( unsigned long * seed )
+__attribute__((always_inline)) int pick_mat( unsigned long * seed )
 {
 	// I have a nice spreadsheet supporting these numbers. They are
 	// the fractions (by volume) of material in the core. Not a 

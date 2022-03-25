@@ -10,7 +10,7 @@ extern int def_table_size;
 
 extern hard_raw_t *hard_raw_list;
 
-void hard_raw_mod(uint32 address, int w_epoch, int w_place, uint32 w_issue, int r_epoch, int r_place, uint32 r_issue)
+__attribute__((always_inline)) void hard_raw_mod(uint32 address, int w_epoch, int w_place, uint32 w_issue, int r_epoch, int r_place, uint32 r_issue)
 {
   static hard_raw_t *last;
   static int hr_empty=1;
@@ -57,7 +57,7 @@ uint32 def_hash (uint32 address)
   return address%def_table_size;
 }
 
-def_list_t *def_list_lookup(uint32 address)
+__attribute__((always_inline)) def_list_t *def_list_lookup(uint32 address)
 {
   uint32 place;
   def_list_t *counter;
@@ -74,7 +74,7 @@ def_list_t *def_list_lookup(uint32 address)
   return NULL;
 }
 
-void def_list_mod(uint32 address, int epoch, int place_in_epoch)
+__attribute__((always_inline)) void def_list_mod(uint32 address, int epoch, int place_in_epoch)
 {
   def_list_t *temp=NULL;
   def_list_t *counter;
@@ -117,7 +117,7 @@ void def_list_mod(uint32 address, int epoch, int place_in_epoch)
 
 }
 
-void conflict_list(uint32 address)
+__attribute__((always_inline)) void conflict_list(uint32 address)
 {
   static conf_list_t *next=NULL;
   conf_list_t *temp=NULL;

@@ -50,7 +50,7 @@
  */
 extern void clearLine( FILE *file );
 
-Int getInitCommand( FILE  *file,    /*  file for reading    */
+__attribute__((always_inline)) Int getInitCommand( FILE  *file,    /*  file for reading    */
                     Int   *fan )  /*  output fan read     */
 {   /*  begin getInitCommand()  */
     Int returnCode; /* return code value from getInt() */

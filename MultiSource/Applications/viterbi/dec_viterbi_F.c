@@ -3,7 +3,7 @@
 #include <assert.h>
 #include "common.h"
 
-void dec_viterbi_F(dvector* Metr_mem, unsigned char* history_mem, bitvector* bit_stream,
+__attribute__((always_inline)) void dec_viterbi_F(dvector* Metr_mem, unsigned char* history_mem, bitvector* bit_stream,
                    const dvarray* Dist, const param_viterbi_t* param, size_t n) 
 {
   size_t i_in = 0, i_punct, i, j, vote, bv = 0;

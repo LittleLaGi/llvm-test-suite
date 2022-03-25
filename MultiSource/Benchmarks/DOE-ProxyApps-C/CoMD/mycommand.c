@@ -183,7 +183,7 @@
 ///
 /// \param [in] argc the number of command line arguments
 /// \param [in] argv the command line arguments array
-Command parseCommandLine(int argc, char** argv)
+__attribute__((always_inline)) Command parseCommandLine(int argc, char** argv)
 {
    Command cmd;
 

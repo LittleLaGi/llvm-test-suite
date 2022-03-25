@@ -16,7 +16,7 @@ extern int columns[];
 
 extern int play_init();
 
-void trans_init()
+__attribute__((always_inline)) void trans_init()
 {
   play_init();
   ht = (unsigned int *)calloc(TRANSIZE, sizeof(unsigned int));
@@ -28,7 +28,7 @@ void trans_init()
   }
 }
 
-void emptyTT()
+__attribute__((always_inline)) void emptyTT()
 {
   int i, h, work;
 
@@ -118,7 +118,7 @@ void transtore(int score, int work)
   transput(score, work);
 }
 
-void htstat()      /* some statistics on hash table performance */
+__attribute__((always_inline)) void htstat()      /* some statistics on hash table performance */
 {
   int total, i;
   int works[32];

@@ -28,7 +28,7 @@
 #include "proto.h"
 
 // This routine does the stencil calculations.
-void stencil_calc(int var)
+__attribute__((always_inline)) void stencil_calc(int var)
 {
    int n, i, j, k, in;
    double sb, sm, sf, work[x_block_size+2][y_block_size+2][z_block_size+2];

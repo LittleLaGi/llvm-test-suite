@@ -12,7 +12,7 @@ extern I, S, DD;
 extern JUMP;
 extern char Progname[32];
 
-void compat(void)
+__attribute__((always_inline)) void compat(void)
 {
 	if(BESTMATCH)  if(COUNT || FILENAMEONLY || APPROX || PAT_FILE) {
 		BESTMATCH = 0;

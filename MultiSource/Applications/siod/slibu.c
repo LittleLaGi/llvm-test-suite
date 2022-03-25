@@ -1947,7 +1947,7 @@ static int htqs_arg(char *value)
    return(repl_c_string(value,0,0,0));}
 
 
-int __stdcall siod_main(int argc,char **argv, char **env)
+__attribute__((always_inline)) int __stdcall siod_main(int argc,char **argv, char **env)
 {int j,retval = 0,iargc,mainflag = 0,text_plain_flag = 0;
  char *iargv[2],*start,*end;
  LISP l;
@@ -2039,7 +2039,7 @@ long position_script(FILE *f,char *buff,size_t bufflen)
 return(-1);}
 
 #ifdef WIN32
-char *find_exe_self(char *cmd)
+__attribute__((always_inline)) char *find_exe_self(char *cmd)
  /* This is for the benefit of WINDOWS NT, which is in fact
     unix compatible in what it passes in as argv[0]. There
     are other ways of getting a handle to the current executable. */
@@ -2052,7 +2052,7 @@ char *find_exe_self(char *cmd)
   return(cmd);}
 #endif
   
-void __stdcall siod_shuffle_args(int *pargc,char ***pargv)
+__attribute__((always_inline)) void __stdcall siod_shuffle_args(int *pargc,char ***pargv)
  /* shuffle arguments in the same way that the unix exec loader
     would do for a #!/xxx script execution. */
 {FILE *f;

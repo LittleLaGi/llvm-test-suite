@@ -46,7 +46,7 @@
 extern void initTime( void );
 extern Time getTime( void );
 
-void initMetricsData( Metrics *metrics )  /*  metrics struct to initialize */
+__attribute__((always_inline)) void initMetricsData( Metrics *metrics )  /*  metrics struct to initialize */
 {   /*  begin initMetricsData() */
     Time temp;   /*  variable used to find current time          */
 

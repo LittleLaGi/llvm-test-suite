@@ -20,7 +20,7 @@
 #include "operators.h"
 #include "solver.h"
 //------------------------------------------------------------------------------------------------------------------------------
-int create_subdomain(subdomain_type * box, int subdomain_low_i, int subdomain_low_j, int subdomain_low_k,  
+__attribute__((always_inline)) int create_subdomain(subdomain_type * box, int subdomain_low_i, int subdomain_low_j, int subdomain_low_k,  
                                        int subdomain_dim_i, int subdomain_dim_j, int subdomain_dim_k, 
                                        int numGrids, int ghosts, int numLevels){
   int level;
@@ -45,7 +45,7 @@ int create_subdomain(subdomain_type * box, int subdomain_low_i, int subdomain_lo
 }
 
 
-void destroy_subdomain(subdomain_type * box){
+__attribute__((always_inline)) void destroy_subdomain(subdomain_type * box){
   int level;
   for(level=0;level<box->numLevels;level++){
     destroy_box(&box->levels[level]);
@@ -87,7 +87,7 @@ int calculate_neighboring_subdomain_rank(domain_type * domain, int bi, int bj, i
 
 
 //------------------------------------------------------------------------------------------------------------------------------
-int create_domain(domain_type * domain, 
+__attribute__((always_inline)) int create_domain(domain_type * domain, 
               int subdomain_dim_i,  int subdomain_dim_j,  int subdomain_dim_k,  
               int subdomains_per_rank_in_i, int subdomains_per_rank_in_j, int subdomains_per_rank_in_k, 
               int ranks_in_i,      int ranks_in_j,      int ranks_in_k, 
@@ -491,7 +491,7 @@ int create_domain(domain_type * domain,
 }
 
 
-void destroy_domain(domain_type * domain){
+__attribute__((always_inline)) void destroy_domain(domain_type * domain){
   if(domain->rank==0){printf("deallocating domain...   ");fflush(stdout);}
   int box;for(box=0;box<domain->subdomains_per_rank;box++){
     destroy_subdomain(&domain->subdomains[box]);
@@ -578,7 +578,7 @@ void MGResetTimers(domain_type * domain){
   domain->CAKrylov_formations_of_G    = 0;
 }
 //------------------------------------------------------------------------------------------------------------------------------
-void MGBuild(domain_type * domain, double a, double b, double h0){
+__attribute__((always_inline)) void MGBuild(domain_type * domain, double a, double b, double h0){
   int box,level,numLevels = domain->numLevels;
 
   if(domain->rank==0){printf("MGBuild...                      ");fflush(stdout);}

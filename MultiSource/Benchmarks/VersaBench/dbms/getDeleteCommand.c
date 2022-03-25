@@ -66,7 +66,7 @@
 #include "getKeyAttribute.h"    /* for prototype and return code definitions  */
 #include "getNonKeyAttribute.h" /* for prototype and return code definitions  */
 
-Int getDeleteCommand( FILE           *file,           /* file for reading     */
+__attribute__((always_inline)) Int getDeleteCommand( FILE           *file,           /* file for reading     */
                       IndexKey       *searchKey,      /* index key            */
                       DataAttribute  **searchNonKey ) /* list of attributes   */
 {   /*  begin getDeleteCommand()    */

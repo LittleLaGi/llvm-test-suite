@@ -29,7 +29,7 @@ notice and this notice must be preserved on all copies.
 
 char *nullable;
 
-void set_nullable(void)
+__attribute__((always_inline)) void set_nullable(void)
 {
   register short *r;
   register short *s1;

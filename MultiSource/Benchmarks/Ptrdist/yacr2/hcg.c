@@ -28,7 +28,7 @@
  *
  */
 
-void
+__attribute__((always_inline)) void
 AllocHCG(void)
 {
     HCG = (nodeHCGType *)malloc((channelNets + 1) * sizeof(nodeHCGType));
@@ -45,7 +45,7 @@ FreeHCG(void)
     storageLimitHCG = 0;
 }
 
-void
+__attribute__((always_inline)) void
 BuildHCG(void)
 {
     ulong	net;

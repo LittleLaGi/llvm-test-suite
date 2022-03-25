@@ -46,7 +46,7 @@ static char * mazeRoute;	/* true if the col needs to be maze routed */
  *	dimensions must be set correctly when this routine
  *	is called
  */
-void
+__attribute__((always_inline)) void
 InitAllocMaps(void)
 {
     /* allocate maps */
@@ -306,7 +306,7 @@ PrintChannel(void)
  * 	are also drawn in this routine, and the mazeRoute flags
  *	are set, returns the total columns that need to be maze routed
  */
-int
+__attribute__((always_inline)) int
 DrawNets(void)
 {
     unsigned long i;
@@ -523,7 +523,7 @@ Maze1Mech(unsigned long i,		/* column */
 }
 
 
-int
+__attribute__((always_inline)) int
 Maze1(void)
 {
     int numLeft = 0;
@@ -758,7 +758,7 @@ Maze2Mech(unsigned long bentNet,	/* net to bend */
 }
 
 
-int
+__attribute__((always_inline)) int
 Maze2(void)
 {
     int numLeft = 0;
@@ -896,7 +896,7 @@ FindFreeHorzSeg(unsigned long startCol, unsigned long row,
     *rowEnd = i-1;
 }
 
-static int
+__attribute__((always_inline)) static int
 Maze3Mech(unsigned long topNet,		/* top net to bend */
 	  unsigned long botNet,		/* bottom net to bend */
 	  unsigned long i,		/* column */
@@ -991,7 +991,7 @@ Maze3Mech(unsigned long topNet,		/* top net to bend */
 }
 
 
-int Maze3(void)
+__attribute__((always_inline)) int Maze3(void)
 {
     int numLeft = 0;
     unsigned long p, s;

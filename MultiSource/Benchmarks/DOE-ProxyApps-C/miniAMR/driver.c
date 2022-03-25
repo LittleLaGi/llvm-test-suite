@@ -32,7 +32,7 @@
 #include "proto.h"
 
 // Main driver for program.
-void driver(void)
+__attribute__((always_inline)) void driver(void)
 {
    int ts, var, start, number, stage, comm_stage;
    double t1, t2, t3, t4;

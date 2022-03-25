@@ -61,7 +61,7 @@ void restriction(domain_type *domain, int level_f, int id_c, int id_f){
 //------------------------------------------------------------------------------------------------------------------------------
 // restriction of face-centered data...
 //------------------------------------------------------------------------------------------------------------------------------
-void restriction_betas(domain_type * domain, int level_f, int level_c){
+__attribute__((always_inline)) void restriction_betas(domain_type * domain, int level_f, int level_c){
   uint64_t _timeStart = CycleTime();
   int CollaborativeThreadingBoxSize = 100000; // i.e. never
   #ifdef __COLLABORATIVE_THREADING

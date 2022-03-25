@@ -116,7 +116,7 @@ int get_type(void);
 void record_rule_line(void);
 void output_token_defines(FILE *file);
 
-void reader(void)
+__attribute__((always_inline)) void reader(void)
 {
 
   start_flag = 0;
@@ -183,7 +183,7 @@ void reader(void)
 Handle any % declarations,
 and copy the contents of any %{ ... %} groups to fattrs.  */
 
-void read_declarations(void)
+__attribute__((always_inline)) void read_declarations(void)
 {
   register int c;
   register int tok;
@@ -266,7 +266,7 @@ void read_declarations(void)
 
 /* copy the contents of a %{ ... %} into the definitions file.
 The %{ has already been read.  Return after reading the %}.  */
-void copy_definition(void)
+__attribute__((always_inline)) void copy_definition(void)
 {
   register int c;
   register int match;
@@ -463,7 +463,7 @@ void parse_start_decl(void)
 
 /* read in a %type declaration and record its information for get_type_name to access */
 
-void parse_type_decl(void)
+__attribute__((always_inline)) void parse_type_decl(void)
 {
   register int k;
   register char *name;
@@ -723,7 +723,7 @@ void parse_expect_decl(void)
 
 /* that's all of parsing the declaration section */
 
-void output_ltype(void)
+__attribute__((always_inline)) void output_ltype(void)
 {
   fprintf(fattrs, LTYPESTR);/* JF added YYABORT() */
   if (fdefines)
@@ -1219,7 +1219,7 @@ The next symbol is the lhs of the following rule.
 All guards and actions are copied out to the appropriate files,
 labelled by the rule number they apply to.  */
 
-void readgram(void)
+__attribute__((always_inline)) void readgram(void)
 {
   register int t;
   register bucket *lhs;
@@ -1533,7 +1533,7 @@ int get_type(void)
 /* assign symbol numbers, and write definition of token names into fdefines.
 Set up vectors tags and sprec of names and precedences of symbols.  */
 
-void packsymbols(void)
+__attribute__((always_inline)) void packsymbols(void)
 {
   register bucket *bp;
   register int tokno = 1;
@@ -1664,7 +1664,7 @@ void output_token_defines(FILE *file)
 
 /* convert the rules into the representation using rrhs, rlhs and ritems.  */
 
-void packgram(void)
+__attribute__((always_inline)) void packgram(void)
 {
   register int itemno;
   register int ruleno;

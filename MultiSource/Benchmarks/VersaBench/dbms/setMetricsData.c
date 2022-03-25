@@ -36,7 +36,7 @@
  */
 extern Time getTime( void );
 
-void setMetricsData( Metrics     *metrics, /* metrics struct to update */
+__attribute__((always_inline)) void setMetricsData( Metrics     *metrics, /* metrics struct to update */
                      CommandType command ) /* command to update        */
 {   /*  begin setMetricsData()  */
     Time temp;   /*  variable used to find current time          */

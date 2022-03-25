@@ -526,7 +526,7 @@ INOUT pPLA PLA;
 
 #define POW2(x)		(1 << (x))
 
-void opoall(PLA, first_output, last_output, opo_strategy)
+__attribute__((always_inline)) void opoall(PLA, first_output, last_output, opo_strategy)
 pPLA PLA;
 int first_output, last_output;
 int opo_strategy;

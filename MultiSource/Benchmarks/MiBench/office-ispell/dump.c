@@ -69,7 +69,7 @@ static void	entdump P ((struct flagent * flagp));
 static void	setdump P ((char * setp, int mask));
 static void	subsetdump P ((char * setp, int mask, int dumpval));
 
-void dumpmode ()
+__attribute__((always_inline)) void dumpmode ()
     {
 
     if (hashheader.flagmarker == '\\'

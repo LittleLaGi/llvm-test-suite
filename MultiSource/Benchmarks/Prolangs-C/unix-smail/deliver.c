@@ -55,7 +55,7 @@ int strcmpic();
 **
 */
 
-void deliver(int argc,char *hostv[],char *userv[],enum eform formv[],
+__attribute__((always_inline)) void deliver(int argc,char *hostv[],char *userv[],enum eform formv[],
              int costv[])
 {
 	FILE *out;			/* pipe to mailer		*/
@@ -419,7 +419,7 @@ form_error:
 ** return mail to sender, as determined by From_ line.
 */
 
-void return_mail(char *from,char *fcommand)
+__attribute__((always_inline)) void return_mail(char *from,char *fcommand)
 {
 	char buf[SMLBUF];
 	char domain[SMLBUF], user[SMLBUF];

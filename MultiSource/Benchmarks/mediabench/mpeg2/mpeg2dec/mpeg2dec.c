@@ -153,7 +153,7 @@ char *argv[];
 }
 
 /* IMPLEMENTAION specific rouintes */
-static void Initialize_Decoder()
+__attribute__((always_inline)) static void Initialize_Decoder()
 {
   int i;
 
@@ -175,7 +175,7 @@ static void Initialize_Decoder()
 }
 
 /* mostly IMPLEMENTAION specific rouintes */
-static void Initialize_Sequence()
+__attribute__((always_inline)) static void Initialize_Sequence()
 {
   int cc, size;
   static int Table_6_20[3] = {6,8,12};
@@ -281,7 +281,7 @@ int code,bits,len;
 
 
 /* option processing */
-static void Process_Options(argc,argv)
+__attribute__((always_inline)) static void Process_Options(argc,argv)
 int argc;                  /* argument count  */
 char *argv[];              /* argument vector */
 {
@@ -598,7 +598,7 @@ static int Headers()
 
 
 
-static int Decode_Bitstream()
+__attribute__((always_inline)) static int Decode_Bitstream()
 {
   int ret;
   int Bitstream_Framenum;
@@ -625,7 +625,7 @@ static int Decode_Bitstream()
 }
 
 
-static void Deinitialize_Sequence()
+__attribute__((always_inline)) static void Deinitialize_Sequence()
 {
   int i;
 
@@ -655,7 +655,7 @@ static void Deinitialize_Sequence()
 }
 
 
-static int video_sequence(Bitstream_Framenumber)
+__attribute__((always_inline)) static int video_sequence(Bitstream_Framenumber)
 int *Bitstream_Framenumber;
 {
   int Bitstream_Framenum;
@@ -710,7 +710,7 @@ int *Bitstream_Framenumber;
 
 
 
-static void Clear_Options()
+__attribute__((always_inline)) static void Clear_Options()
 {
   Verbose_Flag = 0;
   Output_Type = 0;
@@ -737,7 +737,7 @@ static void Clear_Options()
 
 
 #ifdef DEBUG
-static void Print_Options()
+__attribute__((always_inline)) static void Print_Options()
 {
   
   printf("Verbose_Flag                         = %d\n", Verbose_Flag);

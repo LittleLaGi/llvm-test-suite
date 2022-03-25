@@ -30,7 +30,7 @@
  *
  */
 
-void
+__attribute__((always_inline)) void
 AllocVCG(void)
 {
     VCG = (nodeVCGType *)malloc((channelNets + 1) * sizeof(nodeVCGType));
@@ -53,7 +53,7 @@ FreeVCG(void)
     free(removeVCG);
 }
 
-void
+__attribute__((always_inline)) void
 BuildVCG(void)
 {
     ulong	col;
@@ -365,7 +365,7 @@ DumpSCC(ulong * SCC,
     printf("\n");
 }
 
-void
+__attribute__((always_inline)) void
 AcyclicVCG(void)
 {
     ulong	done;
@@ -497,7 +497,7 @@ AcyclicVCG(void)
     }
 }
 
-void
+__attribute__((always_inline)) void
 RemoveConstraintVCG(nodeVCGType * VCG,
 		    ulong * SCC,
 		    ulong * perSCC,
